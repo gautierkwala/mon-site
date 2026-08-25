@@ -150,12 +150,21 @@ export function getAllTags(): string[] {
   return [...tags].sort((a, b) => a.localeCompare(b, "fr"));
 }
 
-/** "2026-02-03" -> "3 février 2026". */
-export function formatDate(iso: string): string {
-  return new Date(`${iso}T12:00:00Z`).toLocaleDateString("fr-FR", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  });
+/**
+ * Articles a suggerer en fin de lecture : meme tag d'abord, complete par les
+ * plus recents si le tag n'en fournit pas assez, pour ne jamais afficher un
+ * bloc a moitie vide.
+ */
+export function getRelatedPosts(slug: string, limite = 3): BlogPost[] {
+  const tous = getAllPosts();
+  const courant = tous.find((p) => p.slug === slug);
+  const autres = tous.filter((p) => p.slug !== slug);
+
+  const memeTag = courant?.tag
+    ? autres.filter((p) => p.tag === courant.tag)
+    : [];
+  const complement = autres.filter((p) => !memeTag.includes(p));
+
+  return [...memeTag, ...complement].slice(0, limite);
 }
+
