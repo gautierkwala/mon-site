@@ -20,9 +20,13 @@ export function Resultats() {
         </a>
       </div>
 
+      {/* lazyOnload : le script (1,9 Mo) ne se charge qu'à l'idle du
+          navigateur, jamais en concurrence avec le LCP. Le widget a en plus
+          son propre data-lazyload="true" qui ne rend son contenu qu'au
+          scroll. */}
       <Script
         src="https://share.trustfolio.co/scripts/embed-v2.js"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
     </section>
   );

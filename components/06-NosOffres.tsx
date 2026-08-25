@@ -35,7 +35,7 @@ const OFFERS: Record<
       "Présentiel à Lyon • 6 à 12 mois • formation/action + coaching des managers",
     photo: {
       src: "/photos/offres-homme-telephone",
-      alt: "Dirigeant Kwala au téléphone avec un prospect",
+      alt: "Dirigeant en session de coaching commercial à distance",
     },
     photoSide: "right",
   },
@@ -69,8 +69,8 @@ export function NosOffres() {
     <section id="offres" className="w-full px-6 py-16 md:px-[120px] md:py-[60px]">
       <p className="font-asap text-2xl italic text-onyx">Nos offres</p>
       <h2 className="mt-4 font-asap text-3xl font-bold italic leading-tight text-onyx md:text-[43.6px]">
-        Pour <span className="text-wisteria">vous</span>. Pour{" "}
-        <span className="text-wisteria">vos équipes</span>.
+        Pour <span className="text-wisteria-text">vous</span>. Pour{" "}
+        <span className="text-wisteria-text">vos équipes</span>.
       </h2>
       <p className="mt-4 max-w-2xl font-dm-sans text-onyx">
         Un parcours en deux temps : d’abord les fondamentaux, puis la
@@ -78,10 +78,14 @@ export function NosOffres() {
       </p>
 
       <div className="relative mt-10">
-        <div className="relative z-10 mx-auto flex w-full max-w-[1349px] rounded-full bg-white p-1 shadow-sm md:-mb-[35px]">
+        {/* Coins à 12px (rx=12 sur les deux calques SVG Figma — la piste
+            blanche pleine largeur et la pastille active, toutes deux
+            65px de haut) : pas une pilule "rounded-full", un arrondi
+            modéré cohérent avec le reste du site. */}
+        <div className="relative z-10 mx-auto flex w-full max-w-[1349px] rounded-xl bg-white p-1 shadow-sm md:-mb-[35px]">
           <span
             aria-hidden
-            className={`absolute inset-y-1 w-[calc(50%-4px)] rounded-full bg-onyx transition-transform duration-300 ${
+            className={`absolute inset-y-1 w-[calc(50%-4px)] rounded-xl bg-onyx transition-transform duration-300 ${
               active === "equipes" ? "translate-x-[calc(100%+8px)]" : "translate-x-0"
             }`}
           />
@@ -90,7 +94,7 @@ export function NosOffres() {
               key={key}
               type="button"
               onClick={() => setActive(key)}
-              className={`relative z-10 flex-1 rounded-full px-6 py-4 font-asap text-lg font-bold italic transition-colors md:text-[25px] ${
+              className={`relative z-10 flex-1 rounded-xl px-6 py-4 font-asap text-lg font-bold italic transition-colors md:text-[25px] ${
                 active === key ? "text-white" : "text-onyx"
               }`}
             >
@@ -99,7 +103,8 @@ export function NosOffres() {
           ))}
         </div>
 
-        <div className="relative overflow-hidden rounded-xl bg-wisteria">
+        {/* Carte à 18px (rx=18 sur le rectangle de fond Figma, 1381×631) */}
+        <div className="relative overflow-hidden rounded-[18px] bg-wisteria">
           <div
             className="absolute inset-0 mix-blend-soft-light"
             style={{

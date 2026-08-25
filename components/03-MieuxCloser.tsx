@@ -1,35 +1,53 @@
 export function MieuxCloser() {
   return (
     <section id="mieux-closer" className="w-full px-6 py-8 md:px-[30px] md:py-[14px]">
-      <div className="relative overflow-hidden rounded-xl bg-wisteria px-6 py-12 md:min-h-[580px] md:px-[122px] md:py-[127px]">
-        <div
-          className="absolute inset-0 mix-blend-soft-light"
-          style={{
-            backgroundImage: "url(/decor/motif-03-mieux-closer.webp)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
+      {/* Carte 1380×580 (get_metadata du calque "BACKGROUND" Figma) : à 1440px
+          de page avec le padding md:px-[30px] ci-dessus, la carte fait déjà
+          1380px de large — aspect-ratio verrouillé pour garder exactement
+          ce rapport 1380:580 à toute largeur, plutôt qu'une min-height fixe
+          qui décale les % au redimensionnement. */}
+      <div className="relative md:aspect-[1380/580]">
+        <div className="absolute inset-0 overflow-hidden rounded-xl bg-wisteria">
+          <div
+            className="absolute inset-0 mix-blend-soft-light"
+            style={{
+              backgroundImage: "url(/decor/motif-03-mieux-closer.webp)",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
+        </div>
+
+        {/* Pétales noires : calque Figma "Group 55" à x=947.386 y=984 (page),
+            carte à x=31 y=1009 (get_metadata) → relatif à la carte :
+            gauche 916.386/1380=66.4%, haut -25/580=-4.31%, largeur
+            332.393/1380=24.09%, hauteur 624/580=107.6% — dépasse
+            volontairement les bords haut/bas de la carte (comme dans
+            Figma), donc rendues hors du conteneur overflow-hidden. */}
         <img
           src="/decor/mieux-closer-blobs.svg"
           alt=""
-          className="pointer-events-none absolute right-6 top-0 hidden h-[70%] w-auto opacity-90 md:right-[60px] md:block"
+          className="pointer-events-none absolute left-[66.4%] top-[-4.31%] hidden h-[107.6%] w-[24.09%] md:block"
         />
 
-        <div className="relative md:max-w-[30%]">
-          <h2 className="font-asap text-3xl font-bold italic leading-tight text-white md:text-[43.6px]">
+        <div className="relative px-6 py-12 md:px-[122px] md:py-[127px]">
+          <h2 className="font-asap text-3xl font-bold italic leading-tight text-white md:max-w-[46%] md:text-[43.6px]">
             Pour mieux closer, apprenez à l’<span className="text-onyx">ouvrir</span>
           </h2>
+          {/* Texte en onyx (pas blanc) et DM Sans Medium — confirmé via
+              get_design_context sur le nœud du paragraphe (132:5102) :
+              text-[color:var(--onyx,#12130f)], font-['DM_Sans:Medium'],
+              texte uniforme (aucun mot en gras dans l'export Figma). */}
+          <p className="mt-6 max-w-[420px] font-dm-sans text-base font-medium leading-7 text-onyx md:mt-[60px] md:max-w-[45%] md:text-[20px] md:leading-[28px]">
+            Les meilleurs commerciaux ne sont pas ceux qui parlent le plus. Ce
+            sont ceux qui questionnent, confrontent et font réfléchir. Chez
+            Kwala, nous vous apprenons à mener des rendez-vous de vente plus
+            impactants, à traiter les objections avec confiance et à
+            transformer les conversations commerciales en décisions. Parce
+            qu’un bon closing ne commence pas au moment de signer. Il commence
+            dès la première question.
+          </p>
         </div>
-        <p className="relative mt-6 font-dm-sans text-base leading-7 text-white md:mt-[60px] md:max-w-[51%] md:text-[20px] md:leading-[28px]">
-          Les meilleurs commerciaux ne sont pas ceux qui parlent le plus. Ce
-          sont ceux qui questionnent, confrontent et font réfléchir. Chez
-          Kwala, nous vous apprenons à mener des rendez-vous de vente plus
-          impactants, à traiter les objections avec confiance et à
-          transformer les conversations commerciales en décisions. Parce
-          qu’un bon closing ne commence pas au moment de signer. Il commence
-          dès la première question.
-        </p>
       </div>
     </section>
   );

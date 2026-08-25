@@ -8,6 +8,7 @@ import { NosOffres } from "@/components/06-NosOffres";
 import { Resultats } from "@/components/07-Resultats";
 import { CoachingEnLigne } from "@/components/08-CoachingEnLigne";
 import { AvantLumpur } from "@/components/09-AvantLumpur";
+import { Contact } from "@/components/10-Contact";
 import { Footer } from "@/components/00-Footer";
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
         <Resultats />
         <CoachingEnLigne />
         <AvantLumpur />
+        <Contact />
       </main>
       <Footer />
     </>

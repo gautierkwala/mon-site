@@ -9,7 +9,7 @@ const LEGAL_LINKS = [
 
 export function Footer() {
   return (
-    <footer id="contact" className="relative w-full overflow-hidden bg-alabaster">
+    <footer className="relative w-full overflow-hidden bg-alabaster">
       <div
         className="absolute inset-0"
         style={{

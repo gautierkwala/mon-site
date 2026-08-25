@@ -17,22 +17,25 @@ const dmSans = DM_Sans({
 
 const SITE_URL = "https://kwala.fr";
 
+const TITLE = "Coaching commercial B2B à Lyon — Dirigeants & équipes | Kwala";
+const DESCRIPTION =
+  "Coaching commercial B2B à Lyon. Kwala forme dirigeants et équipes à mieux vendre, avec une approche humaine et concrète. Échangez avec un coach.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "TODO : titre à définir — Kwala",
-  description:
-    "TODO : description SEO à rédiger (150-160 caractères, reprend la proposition de valeur Kwala).",
+  title: TITLE,
+  description: DESCRIPTION,
   openGraph: {
-    title: "TODO : titre Open Graph",
-    description: "TODO : description Open Graph",
+    title: TITLE,
+    description: DESCRIPTION,
     url: SITE_URL,
     siteName: "Kwala",
     images: [
       {
-        url: "/TODO-og-image.jpg",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "TODO : texte alternatif image Open Graph",
+        alt: "Kwala — The place to biz",
       },
     ],
     locale: "fr_FR",
@@ -40,27 +43,35 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TODO : titre Twitter",
-    description: "TODO : description Twitter",
-    images: ["/TODO-og-image.jpg"],
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og-image.jpg"],
   },
 };
 
+// Bloc validé — doc de passation section 7. "logo" pointe vers le fichier
+// réel du dépôt (/logos/logo-kwala.svg) : le chemin du doc (/logos/kwala.svg)
+// ne correspond à aucun asset existant.
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
   name: "Kwala",
+  description: "Coaching commercial B2B pour dirigeants et équipes à Lyon.",
   url: SITE_URL,
-  sameAs: ["https://www.linkedin.com/company/kwala-app"],
+  logo: `${SITE_URL}/logos/logo-kwala.svg`,
+  image: `${SITE_URL}/og-image.jpg`,
+  telephone: "+33623130149",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "TODO",
-    postalCode: "TODO",
-    addressLocality: "TODO",
+    streetAddress: "12 rue Royale",
+    postalCode: "69001",
+    addressLocality: "Lyon",
     addressCountry: "FR",
   },
-  telephone: "TODO",
-  taxID: "TODO (SIRET)",
+  areaServed: { "@type": "City", name: "Lyon" },
+  sameAs: ["https://www.linkedin.com/company/kwala-app"],
+  identifier: "903154896",
+  priceRange: "$$",
 };
 
 export default function RootLayout({

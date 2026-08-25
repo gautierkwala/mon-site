@@ -32,7 +32,7 @@ export function OnCoacheToutesLesCases() {
       <div className="relative aspect-[4/3] w-full overflow-hidden md:absolute md:left-0 md:top-0 md:aspect-auto md:h-full md:w-[569px]">
         <Image
           src="/photos/section-05-salle@2x.webp"
-          alt="Coach Kwala animant une session devant un groupe de commerciaux"
+          alt="Session de coaching commercial collectif chez Kwala"
           fill
           className="object-cover"
         />

@@ -21,22 +21,31 @@ const PARTNERS = [
 
 export function Partenaires() {
   return (
-    <section id="partenaires" className="w-full py-16">
+    <section id="partenaires" className="w-full overflow-hidden py-0">
       <h2 className="px-6 font-asap text-2xl italic text-onyx md:px-[120px]">
         Nos partenaires
       </h2>
-      <div className="mt-[42px] flex gap-[90px] overflow-x-auto px-6 pb-2 [scrollbar-width:none] md:px-[120px] [&::-webkit-scrollbar]:hidden">
-        {PARTNERS.map((partner) => (
-          <div key={partner.alt} className="flex shrink-0 items-center">
-            <Image
-              src={partner.src}
-              alt={partner.alt}
-              width={partner.width}
-              height={partner.height}
-              className={partner.mixBlend ? "mix-blend-darken" : undefined}
-            />
-          </div>
-        ))}
+      {/* Carrousel en boucle infinie : la liste est dupliquée une fois et la
+          piste entière (200% de large) est translatée de -50%, soit
+          exactement la largeur d'une copie — la boucle est donc invisible. */}
+      <div className="mt-0 w-full [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
+        <div className="flex w-max animate-partners-scroll gap-[90px]">
+          {[...PARTNERS, ...PARTNERS].map((partner, i) => (
+            <div
+              key={`${partner.alt}-${i}`}
+              aria-hidden={i >= PARTNERS.length}
+              className="flex shrink-0 items-center"
+            >
+              <Image
+                src={partner.src}
+                alt={partner.alt}
+                width={partner.width}
+                height={partner.height}
+                className={partner.mixBlend ? "mix-blend-darken" : undefined}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
