@@ -61,10 +61,12 @@ function parseFile(fileName: string): BlogPostWithContent {
   const optionnel = (champ: string): string | undefined => {
     const valeur = champs[champ];
     if (valeur === undefined || valeur === null) return undefined;
-    if (typeof valeur !== "string" || valeur.trim() === "") {
-      throw new Error(`${ou} : frontmatter "${champ}" doit etre une chaine non vide.`);
+    if (typeof valeur !== "string") {
+      throw new Error(`${ou} : frontmatter "${champ}" doit etre une chaine.`);
     }
-    return valeur.trim();
+    // Un export de CMS ecrit volontiers `image: ""` plutot que d'omettre la
+    // cle : on traite la chaine vide comme une absence, pas comme une erreur.
+    return valeur.trim() === "" ? undefined : valeur.trim();
   };
 
   const date = requis("date");
