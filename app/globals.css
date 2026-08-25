@@ -34,16 +34,27 @@ body {
   }
 }
 
-/* Bord incurve des photos de la section "Nos offres" : masque SVG repris
-   tel quel du calque Figma "Photo" (node 132:3620), applique aux photos
-   des deux onglets. Desktop seulement — la maquette n'existe qu'en 1440. */
+/* Bord incurve des photos de la section "Nos offres". Deux masques repris
+   tels quels des calques Figma "Photo" : la courbe est toujours du cote du
+   texte, donc a gauche quand la photo est a droite (node 132:3620) et a
+   droite quand la photo est a gauche (node 132:5616). Desktop seulement —
+   la maquette n'existe qu'en 1440. */
 @media (min-width: 768px) {
-  .offres-photo-mask {
-    -webkit-mask-image: url(/decor/offres-photo-mask.svg);
-    mask-image: url(/decor/offres-photo-mask.svg);
+  .offres-photo-mask-droite,
+  .offres-photo-mask-gauche {
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
+  }
+
+  .offres-photo-mask-droite {
+    -webkit-mask-image: url(/decor/offres-photo-mask.svg);
+    mask-image: url(/decor/offres-photo-mask.svg);
+  }
+
+  .offres-photo-mask-gauche {
+    -webkit-mask-image: url(/decor/offres-photo-mask-gauche.svg);
+    mask-image: url(/decor/offres-photo-mask-gauche.svg);
   }
 }

@@ -57,9 +57,9 @@ const OFFERS: Record<
       src: "/photos/offres-equipe",
       alt: "Équipe commerciale Kwala en pleine session de coaching",
     },
-    // La maquette place la photo a droite (calque Figma "Photo",
-    // node 132:3620). Les deux onglets suivent la meme mise en page.
-    photoSide: "right",
+    // La maquette prevoit deux etats : photo a droite pour les dirigeants
+    // (calque Figma 132:3620) et a gauche pour les equipes (132:5616).
+    photoSide: "left",
   },
 };
 
@@ -68,7 +68,11 @@ export function NosOffres() {
   const offer = OFFERS[active];
 
   return (
-    <section id="offres" className="w-full px-6 py-16 md:px-[120px] md:py-[60px]">
+    <section id="offres" className="w-full px-6 py-16 md:px-[30px] md:py-[60px]">
+      {/* Dans le Figma la carte est quasi pleine largeur (x=32, 1381 de large
+          sur une page de 1440) tandis que le chapeau est indente a x=121.
+          D'ou 30px de marge sur la section et 90px de plus sur le chapeau. */}
+      <div className="md:px-[90px]">
       <p className="font-asap text-2xl italic text-onyx">Nos offres</p>
       <h2 className="mt-4 font-asap text-3xl font-bold italic leading-tight text-onyx md:text-[43.6px]">
         Pour <span className="text-wisteria-text">vous</span>. Pour{" "}
@@ -78,6 +82,7 @@ export function NosOffres() {
         Un parcours en deux temps : d’abord les fondamentaux, puis la
         performance dans la durée.
       </p>
+      </div>
 
       <div className="relative mt-10">
         {/* Coins à 12px (rx=12 sur les deux calques SVG Figma — la piste
@@ -121,10 +126,18 @@ export function NosOffres() {
               offer.photoSide === "left" ? "md:flex-row" : "md:flex-row-reverse"
             }`}
           >
-            {/* Bord gauche incurve : masque SVG du calque Figma "Photo"
-                (node 132:3620, 528.754x631 -> 38.3% de la carte de 1381).
-                Applique a partir de md, la maquette n'existant qu'en desktop. */}
-            <div className="offres-photo-mask relative aspect-[4/3] w-full md:aspect-auto md:min-h-[631px] md:w-[38%]">
+            {/* Bord incurve, toujours du cote du texte : masques SVG repris
+                des calques Figma "Photo" (132:3620 pour la photo a droite,
+                528.754x631 ; 132:5616 pour la photo a gauche, 523.976x630.27
+                — soit 38% de la carte de 1381 dans les deux cas). Appliques
+                a partir de md, la maquette n'existant qu'en desktop. */}
+            <div
+              className={`relative aspect-[4/3] w-full md:aspect-auto md:min-h-[631px] md:w-[38%] ${
+                offer.photoSide === "left"
+                  ? "offres-photo-mask-gauche"
+                  : "offres-photo-mask-droite"
+              }`}
+            >
               <Image
                 src={`${offer.photo.src}@2x.webp`}
                 alt={offer.photo.alt}
