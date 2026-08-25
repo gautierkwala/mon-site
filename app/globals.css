@@ -33,3 +33,17 @@ body {
     animation: none;
   }
 }
+
+/* Bord incurve des photos de la section "Nos offres" : masque SVG repris
+   tel quel du calque Figma "Photo" (node 132:3620), applique aux photos
+   des deux onglets. Desktop seulement — la maquette n'existe qu'en 1440. */
+@media (min-width: 768px) {
+  .offres-photo-mask {
+    -webkit-mask-image: url(/decor/offres-photo-mask.svg);
+    mask-image: url(/decor/offres-photo-mask.svg);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+}

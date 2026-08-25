@@ -57,7 +57,9 @@ const OFFERS: Record<
       src: "/photos/offres-equipe",
       alt: "Équipe commerciale Kwala en pleine session de coaching",
     },
-    photoSide: "left",
+    // La maquette place la photo a droite (calque Figma "Photo",
+    // node 132:3620). Les deux onglets suivent la meme mise en page.
+    photoSide: "right",
   },
 };
 
@@ -119,7 +121,10 @@ export function NosOffres() {
               offer.photoSide === "left" ? "md:flex-row" : "md:flex-row-reverse"
             }`}
           >
-            <div className="relative aspect-[4/3] w-full md:aspect-auto md:min-h-[631px] md:w-[38%]">
+            {/* Bord gauche incurve : masque SVG du calque Figma "Photo"
+                (node 132:3620, 528.754x631 -> 38.3% de la carte de 1381).
+                Applique a partir de md, la maquette n'existant qu'en desktop. */}
+            <div className="offres-photo-mask relative aspect-[4/3] w-full md:aspect-auto md:min-h-[631px] md:w-[38%]">
               <Image
                 src={`${offer.photo.src}@2x.webp`}
                 alt={offer.photo.alt}
