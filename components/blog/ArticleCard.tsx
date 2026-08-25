@@ -31,6 +31,9 @@ export function ArticleCard({ post, featured = false, headingLevel = "h3" }: Pro
             src={post.image}
             alt={post.imageAlt ?? ""}
             fill
+            // La carte en avant est le LCP de /blog : sans priority, elle
+            // part en lazy et le LCP grimpe (mesure a 4.2 s sans).
+            priority={featured}
             // La carte en avant occupe la moitie d'une page de 1200 ; les
             // autres un tiers. Sans ce `sizes`, next/image sert du 1200px
             // de large pour une vignette de 380.

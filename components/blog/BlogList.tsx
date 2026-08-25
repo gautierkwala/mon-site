@@ -89,7 +89,7 @@ export function BlogList({ posts, tags }: Props) {
               className={`h-10 min-w-10 rounded-lg border px-3 font-asap text-[15px] transition-colors duration-150 ${
                 n === pageCourante
                   ? "border-onyx bg-onyx text-white"
-                  : "border-onyx bg-dust text-onyx hover:bg-wisteria hover:text-white"
+                  : "border-onyx bg-dust text-onyx hover:bg-wisteria"
               }`}
             >
               {n}

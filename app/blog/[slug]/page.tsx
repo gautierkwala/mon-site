@@ -9,6 +9,8 @@ import { TagPill } from "@/components/blog/TagPill";
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/blog";
 import { formatDate } from "@/lib/format";
 
+const SITE_URL = "https://kwala.fr";
+
 // Les articles sont connus au build : tout est prerendu en statique et le
 // rendu a la demande est coupe, donc un slug inconnu renvoie un vrai 404.
 export function generateStaticParams() {
@@ -35,7 +37,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: post.description,
       url: `/blog/${slug}`,
       publishedTime: post.date,
-      ...(post.image ? { images: [{ url: post.image, alt: post.imageAlt ?? "" }] } : {}),
+      // Repli sur l'image OG du site : sans og:image, un partage LinkedIn
+      // sort sans aperçu. Un article sans couverture reste donc partageable.
+      images: post.image
+        ? [{ url: post.image, alt: post.imageAlt ?? "" }]
+        : [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Kwala" }],
     },
   };
 }
@@ -48,8 +54,33 @@ export default async function ArticlePage({ params }: PageProps) {
   const { default: Article } = await import(`@/content/blog/${post.fileName}.mdx`);
   const similaires = getRelatedPosts(slug);
 
+  // BlogPosting : donne aux moteurs et aux moteurs de reponse l'auteur, la
+  // date et l'illustration sans qu'ils aient a les deviner du HTML.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.date,
+    inLanguage: "fr-FR",
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/${slug}` },
+    author: { "@type": "Person", name: post.author ?? "Kwala" },
+    publisher: {
+      "@type": "Organization",
+      name: "Kwala",
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logos/logo-kwala.svg` },
+    },
+    ...(post.image ? { image: `${SITE_URL}${post.image}` } : {}),
+    ...(post.tag ? { keywords: post.tag } : {}),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <main className="bg-alabaster">
         <div className="mx-auto w-full max-w-[1200px] px-6 py-10 md:px-[30px]">

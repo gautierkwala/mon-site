@@ -3,7 +3,10 @@
 import Image from "next/image";
 import { useState } from "react";
 
-const NAV_LINKS = [{ href: "/#offres", label: "Nos offres" }];
+const NAV_LINKS = [
+  { href: "/#offres", label: "Nos offres" },
+  { href: "/blog", label: "Blog" },
+];
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -56,13 +59,16 @@ export function Header() {
           id="mobile-nav"
           className="mx-4 mb-4 flex flex-col gap-4 rounded-xl bg-dust p-4 md:hidden"
         >
-          <a
-            href="/#offres"
-            onClick={() => setOpen(false)}
-            className="font-asap text-[18px] italic font-medium text-onyx"
-          >
-            Nos offres
-          </a>
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="font-asap text-[18px] italic font-medium text-onyx"
+            >
+              {link.label}
+            </a>
+          ))}
           <a
             href="/#contact"
             onClick={() => setOpen(false)}
