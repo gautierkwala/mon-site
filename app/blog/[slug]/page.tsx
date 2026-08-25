@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/00-Header";
 import { Footer } from "@/components/00-Footer";
-import { formatDate, getAllPosts, getPost } from "@/lib/blog";
+import { formatDate, getAllPosts, getPostBySlug } from "@/lib/blog";
 
 // Les 39 articles sont connus au build : on prerend tout en statique et on
 // coupe le rendu a la demande, donc un slug inconnu renvoie un vrai 404
@@ -18,7 +18,7 @@ type PageProps = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = getPostBySlug(slug);
   if (!post) return {};
 
   return {
@@ -30,10 +30,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ArticlePage({ params }: PageProps) {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const { default: Article } = await import(`@/content/blog/${slug}.mdx`);
+  const { default: Article } = await import(`@/content/blog/${post.fileName}.mdx`);
 
   return (
     <>
