@@ -12,7 +12,7 @@ export function CoachingEnLigne() {
           mobile/tablette). */}
       <div className="relative overflow-hidden rounded-xl min-[1440px]:aspect-[1380/683]">
         <Image
-          src="/photos/section-08-bureau@2x.webp"
+          src="/photos/coaching-en-ligne-hotel-de-ville.webp"
           alt="Espace de coaching commercial en ligne Kwala"
           fill
           className="object-cover"

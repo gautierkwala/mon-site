@@ -60,7 +60,13 @@ export function OnCoacheToutesLesCases() {
           {TAGS.map((tag) => (
             <span
               key={tag}
-              className={`rounded-lg border px-[18px] py-[6px] font-asap text-base md:text-[19px] ${
+              // État survolé = état actif du Figma (node 132:4135, variable
+              // "wisteria-blue-(main)" = #8093f1 en fond ET en bordure) :
+              // le tag passe en aplat Wisteria, texte blanc. En Tailwind v4
+              // le variant `hover:` est déjà encapsulé dans
+              // `@media (hover: hover)`, donc l'état ne reste pas collé
+              // après un tap sur mobile.
+              className={`rounded-lg border px-[18px] py-[6px] font-asap text-base transition-colors duration-150 hover:border-wisteria hover:bg-wisteria hover:text-white md:text-[19px] ${
                 tag === "Coaching collectif"
                   ? "border-wisteria bg-wisteria text-white"
                   : "border-onyx bg-dust text-onyx"
