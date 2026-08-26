@@ -96,8 +96,7 @@ export function Contact() {
           </h2>
           <p className="mt-6 max-w-[440px] font-dm-sans text-lg leading-7 text-onyx">
             Envie de savoir si Kwala est fait pour vous ou vos équipes ?
-            Décrivez-nous votre contexte, on revient vers vous sous 24h
-            ouvrées.
+            Décrivez-nous votre contexte, on vous rappelle dans la journée.
           </p>
         </div>
 
@@ -120,7 +119,7 @@ export function Contact() {
                   Merci, c’est bien envoyé.
                 </h3>
                 <p className="mt-4 font-dm-sans text-[15px] leading-7 text-dust">
-                  On revient vers vous sous 24h ouvrées.
+                  On vous rappelle dans la journée.
                 </p>
               </div>
             ) : (

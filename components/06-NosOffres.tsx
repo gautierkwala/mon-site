@@ -46,7 +46,7 @@ const OFFERS: Record<
     headingHighlight: "chez vous",
     headingSuffix: ".",
     bullets: [
-      "Tout l’équipe formée à une même méthode de vente.",
+      "Toute l’équipe formée à une même méthode de vente.",
       "Des managers autonomes et rigoureux.",
       "Un suivi des performances, mois après mois.",
       "Une performance collective qui s’installe durablement.",
