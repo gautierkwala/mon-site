@@ -1,12 +1,21 @@
 import Image from "next/image";
 
-type Props = { titre: string; texte: string };
+type Props = {
+  titre: string;
+  texte: string;
+  /**
+   * Decor du bloc, repris tel quel de l'accueil pour ne pas introduire un
+   * vocabulaire visuel de plus : "petales" = colonne noire de la section 03,
+   * "formes" = vague alabaster de la section 09. Un seul a la fois — les
+   * empiler encombre le meme cote du bloc.
+   */
+  decor: "petales" | "formes";
+};
 
-/**
- * Bloc contraste, sur le modele de 09-AvantLumpur : aplat Wisteria plafonne
- * a 1440, motif en surimpression, titre Asap Bold Italic et corps en onyx.
- */
-export function BlocProbleme({ titre, texte }: Props) {
+/** Bloc contraste sur le modele de 09-AvantLumpur : aplat Wisteria, motif en
+ *  surimpression, titre Asap Bold Italic et corps en onyx. Le decor deborde
+ *  volontairement du bloc, qui le rogne. */
+export function BlocProbleme({ titre, texte, decor }: Props) {
   return (
     <section className="w-full bg-alabaster px-6 py-8 md:px-[30px] md:py-[40px]">
       <div className="relative mx-auto w-full max-w-[1440px] overflow-hidden rounded-xl bg-wisteria py-16 md:py-[96px]">
@@ -19,17 +28,26 @@ export function BlocProbleme({ titre, texte }: Props) {
             backgroundPosition: "center",
           }}
         />
-        {/* Petales du design system (KwalaNew_asset_07), meme role decoratif
-            que celles de la section 03 de l'accueil. Debordent volontairement
-            du bord droit, le conteneur les rogne. */}
-        <Image
-          src="/decor/kwala-petales-07.webp"
-          alt=""
-          width={826}
-          height={770}
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-16 -top-10 hidden w-[280px] opacity-90 md:block"
-        />
+
+        {decor === "petales" ? (
+          <Image
+            src="/decor/mieux-closer-blobs.svg"
+            alt=""
+            width={332}
+            height={624}
+            aria-hidden="true"
+            className="pointer-events-none absolute hidden md:left-[76%] md:top-[-10%] md:block md:h-[120%] md:w-[19%]"
+          />
+        ) : (
+          <Image
+            src="/decor/mode-isolation-lumpur.svg"
+            alt=""
+            width={1061}
+            height={1026}
+            aria-hidden="true"
+            className="pointer-events-none absolute hidden -rotate-90 md:left-[62%] md:top-[-24%] md:block md:h-[150%] md:w-[46%]"
+          />
+        )}
 
         <div className="relative px-6 md:max-w-[1158px] md:px-[60px]">
           <h2 className="font-asap text-3xl font-bold italic leading-tight text-onyx md:text-[43.6px]">

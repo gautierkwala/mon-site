@@ -82,6 +82,7 @@ export default function CoachingDirigeantsLyon() {
         />
 
         <BlocProbleme
+          decor="petales"
           titre="Ce n’est pas le produit qui bloque."
           texte="La plupart des dirigeants qui arrivent chez Kwala ont un bon produit, une vraie proposition de valeur, et la volonté de développer leur activité. Ce qui manque, c’est rarement l’envie — c’est la méthode, la régularité, et quelqu’un pour regarder comment ça se passe vraiment en rendez-vous. Prospecter sans routine, c’est remettre à demain. Aller en rendez-vous sans structure, c’est laisser le prospect mener la danse. Parler prix sans préparation, c’est souvent baisser d’emblée. Sans regard extérieur, on progresse lentement — et souvent on ne sait pas exactement pourquoi ça ne signe pas."
         />

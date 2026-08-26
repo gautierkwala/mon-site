@@ -79,6 +79,7 @@ export default function CoachingEquipeCommercialeLyon() {
         />
 
         <BlocProbleme
+          decor="formes"
           titre="Quand chacun vend à sa façon, rien ne se duplique."
           texte="Dans beaucoup d’équipes commerciales, les bons résultats dépendent d’une ou deux personnes. Les autres ont du potentiel, mais pas de méthode claire. Le manager fait ce qu’il peut entre le reporting, les urgences et les recrutements — il n’a pas vraiment le temps de coacher. Résultat : les performances stagnent, les process de vente ne s’améliorent pas, et quand quelqu’un part, le savoir-faire repart avec lui. Ce n’est pas un problème de motivation. C’est un problème de structure."
         />

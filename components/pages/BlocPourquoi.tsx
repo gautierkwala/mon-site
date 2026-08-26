@@ -50,6 +50,17 @@ export function BlocPourquoi({ titre, texte, puces, photo }: Props) {
             sizes="(min-width: 1024px) 520px, 100vw"
             className="object-cover"
           />
+          {/* Forme alabaster en surimpression, comme sur la carte
+              "Coaching en ligne" de l'accueil : elle mord sur un coin de la
+              photo et casse le rectangle. */}
+          <Image
+            src="/decor/coaching-en-ligne-blob.svg"
+            alt=""
+            width={253}
+            height={255}
+            aria-hidden="true"
+            className="pointer-events-none absolute -bottom-[12%] -left-[10%] h-[58%] w-[42%]"
+          />
         </div>
       </div>
     </section>
