@@ -32,7 +32,7 @@ const OFFERS: Record<
       "Un chiffre d’affaire en hausse, dès le court terme.",
     ],
     fineprint:
-      "Présentiel à Lyon • 6 à 12 mois • formation/action + coaching des managers",
+      "Présentiel à Lyon et partout en France • 3 à 12 mois • formation/action + coaching individuel",
     photo: {
       src: "/photos/offres-homme-telephone",
       alt: "Dirigeant en session de coaching commercial à distance",
@@ -52,7 +52,7 @@ const OFFERS: Record<
       "Une performance collective qui s’installe durablement.",
     ],
     fineprint:
-      "Présentiel à Lyon • 6 à 12 mois • formation/action collective + coaching des managers",
+      "Présentiel à Lyon et partout en France • 3 à 12 mois • formation/action collective + coaching des managers",
     photo: {
       src: "/photos/offres-equipe",
       alt: "Équipe commerciale Kwala en pleine session de coaching",

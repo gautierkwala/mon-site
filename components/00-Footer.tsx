@@ -38,13 +38,6 @@ export function Footer() {
             <p className="font-asap text-sm italic text-onyx">
               Finançable par les OPCO&nbsp;&nbsp;Aide aux financements
             </p>
-            <Image
-              src="/logos/qualiopi.png"
-              alt="Qualiopi — processus certifié"
-              width={147}
-              height={64}
-              className="mt-4"
-            />
           </div>
 
           <div>
