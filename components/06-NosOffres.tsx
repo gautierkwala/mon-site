@@ -68,7 +68,7 @@ export function NosOffres() {
   const offer = OFFERS[active];
 
   return (
-    <section id="offres" className="w-full px-6 py-16 md:px-[30px] md:py-[60px]">
+    <section id="offres" className="mx-auto w-full max-w-[1440px] px-6 py-16 md:px-[30px] md:py-[60px]">
       {/* Dans le Figma la carte est quasi pleine largeur (x=32, 1381 de large
           sur une page de 1440) tandis que le chapeau est indente a x=121.
           D'ou 30px de marge sur la section et 90px de plus sur le chapeau. */}

@@ -1,6 +1,6 @@
 export function MieuxCloser() {
   return (
-    <section id="mieux-closer" className="w-full px-6 py-8 md:px-[30px] md:py-[14px]">
+    <section id="mieux-closer" className="mx-auto w-full max-w-[1440px] px-6 py-8 md:px-[30px] md:py-[14px]">
       {/* Carte 1380×580 (get_metadata du calque "BACKGROUND" Figma) : à 1440px
           de page avec le padding md:px-[30px] ci-dessus, la carte fait déjà
           1380px de large — aspect-ratio verrouillé pour garder exactement
@@ -34,11 +34,16 @@ export function MieuxCloser() {
           <h2 className="font-asap text-3xl font-bold italic leading-tight text-white md:max-w-[46%] md:text-[43.6px]">
             Pour mieux closer, apprenez à l’<span className="text-onyx">ouvrir</span>
           </h2>
-          {/* Texte en onyx (pas blanc) et DM Sans Medium — confirmé via
+          {/* Largeur : le calque Figma (132:5102) fait 699px de large pour une
+              carte de 1380 avec 122px de padding, soit 61.5% de la boîte de
+              contenu (1136px) — et non 45%, qui ne donnait que 511px et
+              étirait le paragraphe sur 9 lignes au lieu de 6, d'où une carte
+              de 675px de haut au lieu des 580 de la maquette.
+              Texte en onyx (pas blanc) et DM Sans Medium — confirmé via
               get_design_context sur le nœud du paragraphe (132:5102) :
               text-[color:var(--onyx,#12130f)], font-['DM_Sans:Medium'],
               texte uniforme (aucun mot en gras dans l'export Figma). */}
-          <p className="mt-6 max-w-[420px] font-dm-sans text-base font-medium leading-7 text-onyx md:mt-[60px] md:max-w-[45%] md:text-[20px] md:leading-[28px]">
+          <p className="mt-6 max-w-[420px] font-dm-sans text-base font-medium leading-7 text-onyx md:mt-[60px] md:max-w-[61.5%] md:text-[20px] md:leading-[28px]">
             Les meilleurs commerciaux ne sont pas ceux qui parlent le plus. Ce
             sont ceux qui questionnent, confrontent et font réfléchir. Chez
             Kwala, nous vous apprenons à mener des rendez-vous de vente plus

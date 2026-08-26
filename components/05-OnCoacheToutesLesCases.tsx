@@ -18,7 +18,7 @@ export function OnCoacheToutesLesCases() {
   return (
     <section
       id="on-coache"
-      className="relative w-full overflow-hidden bg-alabaster md:min-h-[780px]"
+      className="relative mx-auto w-full max-w-[1440px] overflow-hidden bg-alabaster md:min-h-[780px]"
     >
       <div
         className="absolute inset-0 hidden md:block"

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function Vision() {
   return (
-    <section id="vision" className="w-full px-6 py-16 md:px-[120px] md:py-[60px]">
+    <section id="vision" className="mx-auto w-full max-w-[1440px] px-6 py-16 md:px-[120px] md:py-[60px]">
       <p className="font-asap text-2xl italic text-onyx">Notre vision</p>
       <h2 className="mt-4 max-w-3xl font-asap text-3xl font-bold italic leading-tight text-onyx md:mt-[15px] md:text-[42.145px] md:leading-[1.15] min-[1440px]:max-w-none min-[1440px]:whitespace-nowrap">
         L’<span className="text-wisteria-text">humain</span> et le{" "}

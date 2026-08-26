@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function CoachingEnLigne() {
   return (
-    <section id="coaching-en-ligne" className="w-full px-6 py-8 md:px-[30px] md:py-[14px]">
+    <section id="coaching-en-ligne" className="mx-auto w-full max-w-[1440px] px-6 py-8 md:px-[30px] md:py-[14px]">
       {/* Le calque Figma (encart noir 1080×428 dans une carte 1380×683, texte
           calé pour tenir sur 2 lignes à cette largeur précise) ne tient
           qu'à 1440px : en dessous, le texte a besoin de plus de lignes que

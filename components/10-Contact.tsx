@@ -59,7 +59,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="relative w-full overflow-hidden bg-alabaster px-6 py-16 md:px-20 md:py-[120px]"
+      className="relative mx-auto w-full max-w-[1440px] overflow-hidden bg-alabaster px-6 py-16 md:px-20 md:py-[120px]"
     >
       <div
         aria-hidden="true"

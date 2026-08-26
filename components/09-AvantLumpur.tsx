@@ -9,7 +9,11 @@ export function AvantLumpur() {
           largeur). L'effet de "vague" en bas vient uniquement des formes
           Alabaster ci-dessous qui débordent du rectangle, pas d'une courbe
           sur le fond lui-même. */}
-      <div className="relative w-full overflow-hidden bg-wisteria py-16 md:min-h-[800px] md:py-[116px]">
+      {/* Plafonne a 1440 comme la page Figma : les decors de cette section
+          sont positionnes en pourcentages du bloc (left-[20.49%], etc.).
+          Laisser le bloc filer bord a bord sur un ecran large les
+          disperserait, alors qu'ils sont cales sur un bloc de 1440. */}
+      <div className="relative mx-auto w-full max-w-[1440px] overflow-hidden bg-wisteria py-16 md:min-h-[800px] md:py-[116px]">
         <div
           className="absolute inset-0 mix-blend-soft-light"
           style={{
