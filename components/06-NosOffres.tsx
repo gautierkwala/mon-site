@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 type OfferKey = "dirigeants" | "equipes";
@@ -17,6 +18,8 @@ const OFFERS: Record<
     fineprint: string;
     photo: { src: string; alt: string };
     photoSide: "left" | "right";
+    /** Page dediee vers laquelle pointe le bouton de la carte. */
+    page: string;
   }
 > = {
   dirigeants: {
@@ -38,6 +41,7 @@ const OFFERS: Record<
       alt: "Dirigeant en session de coaching commercial à distance",
     },
     photoSide: "right",
+    page: "/coaching-dirigeants-lyon",
   },
   equipes: {
     tab: "Pour vos équipes",
@@ -60,6 +64,7 @@ const OFFERS: Record<
     // La maquette prevoit deux etats : photo a droite pour les dirigeants
     // (calque Figma 132:3620) et a gauche pour les equipes (132:5616).
     photoSide: "left",
+    page: "/coaching-equipe-commerciale-lyon",
   },
 };
 
@@ -166,12 +171,12 @@ export function NosOffres() {
               <p className="mt-6 font-dm-sans text-sm font-bold text-white">
                 {offer.fineprint}
               </p>
-              <a
-                href="#contact"
+              <Link
+                href={offer.page}
                 className="mt-6 w-fit rounded-sm bg-onyx px-4 py-2.5 font-asap text-[15px] font-medium text-white"
               >
-                Discuter avec un coach
-              </a>
+                Découvrir l’offre
+              </Link>
             </div>
           </div>
         </div>

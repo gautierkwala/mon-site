@@ -10,7 +10,19 @@ const WEB3FORMS_KEY = "0c9b516a-2bf1-48b4-b25f-f955ee4a2aef";
 
 type Etat = "repos" | "envoi" | "succes" | "erreur";
 
-export function Contact() {
+type Props = {
+  /** Titre de la colonne de gauche. Defaut : celui de la page d'accueil. */
+  titre?: React.ReactNode;
+  /** Texte de la colonne de gauche. Defaut : celui de la page d'accueil. */
+  texte?: React.ReactNode;
+  /**
+   * Valeur du champ cache `source` transmis a Web3Forms : permet de savoir
+   * depuis quelle page la demande a ete envoyee sans dupliquer le formulaire.
+   */
+  source?: string;
+};
+
+export function Contact({ titre, texte, source }: Props = {}) {
   const [etat, setEtat] = useState<Etat>("repos");
   const [erreur, setErreur] = useState<string>("");
   // Le message de confirmation prend la place du formulaire : on y deplace le
@@ -78,25 +90,29 @@ export function Contact() {
             Contact
           </p>
           <h2 className="mt-5 font-asap text-4xl font-bold italic leading-[1.05] text-onyx md:text-[64px]">
-            On en discute
-            <br />
-            de{" "}
-            <span className="relative inline-block px-1">
-              <span className="relative z-10">vive voix</span>
-              <Image
-                src="/decor/kwala-circle-04.svg"
-                alt=""
-                width={160}
-                height={72}
-                aria-hidden="true"
-                className="pointer-events-none absolute -inset-x-3 -inset-y-2 -z-0 h-[calc(100%+1rem)] w-[calc(100%+1.5rem)]"
-              />
-            </span>{" "}
-            ?
+            {titre ?? (
+              <>
+                On en discute
+                <br />
+                de{" "}
+                <span className="relative inline-block px-1">
+                  <span className="relative z-10">vive voix</span>
+                  <Image
+                    src="/decor/kwala-circle-04.svg"
+                    alt=""
+                    width={160}
+                    height={72}
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -inset-x-3 -inset-y-2 -z-0 h-[calc(100%+1rem)] w-[calc(100%+1.5rem)]"
+                  />
+                </span>{" "}
+                ?
+              </>
+            )}
           </h2>
           <p className="mt-6 max-w-[440px] font-dm-sans text-lg leading-7 text-onyx">
-            Envie de savoir si Kwala est fait pour vous ou vos équipes ?
-            Décrivez-nous votre contexte, on vous rappelle dans la journée.
+            {texte ??
+              "Envie de savoir si Kwala est fait pour vous ou vos équipes ? Décrivez-nous votre contexte, on vous rappelle dans la journée."}
           </p>
         </div>
 
@@ -136,6 +152,11 @@ export function Contact() {
               {/* Piege a robots de Web3Forms : invisible et non focusable pour
                   un humain, coche par les robots qui remplissent tout — la
                   soumission est alors rejetee cote serveur. */}
+              {/* Origine de la demande : renseignee sur les pages dediees,
+                  absente sur l'accueil. Web3Forms la fait remonter telle
+                  quelle dans l'email. */}
+              {source && <input type="hidden" name="source" value={source} />}
+
               <input
                 type="checkbox"
                 name="botcheck"

@@ -13,6 +13,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
+    // Pages de destination commerciales : priorite juste sous l'accueil,
+    // ce sont les cibles des requetes "coaching commercial Lyon".
+    {
+      url: `${SITE_URL}/coaching-dirigeants-lyon`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/coaching-equipe-commerciale-lyon`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
     {
       url: `${SITE_URL}/blog`,
       // La liste bouge a chaque publication : on date sur l'article le plus
