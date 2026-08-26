@@ -35,12 +35,6 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-10 md:mt-[34px] md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="font-asap text-sm italic text-onyx">
-              Finançable par les OPCO&nbsp;&nbsp;Aide aux financements
-            </p>
-          </div>
-
-          <div>
             <p className="font-asap text-sm italic text-onyx">Labels</p>
             <div className="mt-4 flex items-end gap-6">
               <Image

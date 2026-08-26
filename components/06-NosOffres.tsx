@@ -28,11 +28,11 @@ const OFFERS: Record<
     bullets: [
       "Plus de rendez-vous qualifiés, un meilleur taux de transformation.",
       "La prospection maîtrisée, jusqu’au closing.",
-      "Un coaching individuel, appliqué à vos vrais dossiers.",
+      "Un coaching individuel, appliqué à vos enjeux.",
       "Un chiffre d’affaire en hausse, dès le court terme.",
     ],
     fineprint:
-      "Présentiel à Lyon et partout en France • 3 à 12 mois • formation/action + coaching individuel",
+      "Présentiel à Lyon et partout en France • 3 à 12 mois • formation/action",
     photo: {
       src: "/photos/offres-homme-telephone",
       alt: "Dirigeant en session de coaching commercial à distance",
@@ -170,7 +170,7 @@ export function NosOffres() {
                 href="#contact"
                 className="mt-6 w-fit rounded-sm bg-onyx px-4 py-2.5 font-asap text-[15px] font-medium text-white"
               >
-                Voir plus
+                Discuter avec un coach
               </a>
             </div>
           </div>

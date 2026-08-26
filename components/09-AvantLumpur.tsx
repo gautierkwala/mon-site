@@ -69,7 +69,7 @@ export function AvantLumpur() {
             href="#contact"
             className="mt-8 inline-block rounded-sm bg-onyx px-4 py-2.5 font-asap text-[15px] font-medium text-alabaster"
           >
-            Prendre RDV avec un coach
+            Discuter avec un coach
           </a>
         </div>
       </div>

@@ -9,7 +9,6 @@ const TAGS = [
   "Écoute d’audio post RDV",
   "Sessions de prospection",
   "Coaching individuel",
-  "Financement OPCO",
   "Coaching collectif",
   "Suivi des performances",
 ];
