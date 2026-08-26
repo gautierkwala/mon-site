@@ -1,8 +1,61 @@
 "use client";
 
 import Image from "next/image";
+import { useRef, useState } from "react";
+
+// Cle publique Web3Forms : elle est faite pour vivre cote navigateur, c'est
+// le fonctionnement nominal du service. Elle n'ouvre aucun acces au compte,
+// elle ne fait qu'identifier la boite de reception destinataire.
+const WEB3FORMS_KEY = "0c9b516a-2bf1-48b4-b25f-f955ee4a2aef";
+
+type Etat = "repos" | "envoi" | "succes" | "erreur";
 
 export function Contact() {
+  const [etat, setEtat] = useState<Etat>("repos");
+  const [erreur, setErreur] = useState<string>("");
+  // Le message de confirmation prend la place du formulaire : on y deplace le
+  // focus pour que la reussite soit annoncee aussi au lecteur d'ecran.
+  const confirmation = useRef<HTMLDivElement>(null);
+
+  async function envoyer(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setEtat("envoi");
+    setErreur("");
+
+    const donnees = Object.fromEntries(new FormData(e.currentTarget));
+
+    try {
+      const reponse = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Nouvelle demande depuis kwala.fr — ${donnees.name || "sans nom"}`,
+          from_name: "Formulaire kwala.fr",
+          ...donnees,
+        }),
+      });
+
+      const resultat = await reponse.json().catch(() => null);
+
+      // Web3Forms repond 200 avec success:false quand il refuse l'envoi
+      // (cle invalide, botcheck coche...) : le statut HTTP ne suffit pas.
+      if (!reponse.ok || !resultat?.success) {
+        throw new Error(resultat?.message || `Erreur ${reponse.status}`);
+      }
+
+      setEtat("succes");
+      requestAnimationFrame(() => confirmation.current?.focus());
+    } catch (err) {
+      setEtat("erreur");
+      setErreur(
+        err instanceof Error && err.message
+          ? err.message
+          : "L’envoi n’a pas abouti."
+      );
+    }
+  }
+
   return (
     <section
       id="contact"
@@ -56,6 +109,22 @@ export function Contact() {
           />
 
           <div className="relative">
+            {etat === "succes" ? (
+              <div
+                ref={confirmation}
+                tabIndex={-1}
+                role="status"
+                className="py-6 focus:outline-none"
+              >
+                <h3 className="font-asap text-[28px] font-bold italic text-white">
+                  Merci, c’est bien envoyé.
+                </h3>
+                <p className="mt-4 font-dm-sans text-[15px] leading-7 text-dust">
+                  On revient vers vous sous 24h ouvrées.
+                </p>
+              </div>
+            ) : (
+              <>
             <h3 className="font-asap text-[28px] font-bold italic text-white">
               Prenons contact
             </h3>
@@ -64,7 +133,19 @@ export function Contact() {
               échange.
             </p>
 
-            <form onSubmit={(e) => e.preventDefault()} className="mt-8">
+            <form onSubmit={envoyer} className="mt-8" aria-busy={etat === "envoi"}>
+              {/* Piege a robots de Web3Forms : invisible et non focusable pour
+                  un humain, coche par les robots qui remplissent tout — la
+                  soumission est alors rejetee cote serveur. */}
+              <input
+                type="checkbox"
+                name="botcheck"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="hidden"
+                style={{ display: "none" }}
+              />
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
                   <label
@@ -153,17 +234,39 @@ export function Contact() {
                 />
               </div>
 
+              {etat === "erreur" && (
+                <p
+                  role="alert"
+                  className="mt-5 rounded-sm border border-white/25 bg-white/10 px-4 py-3 font-dm-sans text-[14px] leading-6 text-white"
+                >
+                  L’envoi n’a pas abouti ({erreur}). Vérifiez votre connexion
+                  et réessayez — vos réponses sont conservées. Si le problème
+                  persiste, écrivez-nous à{" "}
+                  <a href="mailto:team@kwala.fr" className="underline">
+                    team@kwala.fr
+                  </a>
+                  .
+                </p>
+              )}
+
               <button
                 type="submit"
-                className="mt-4 w-full rounded-sm bg-wisteria px-6 py-4 font-dm-sans text-[15px] font-medium text-onyx transition-colors hover:bg-[#97A6F5] active:scale-[0.98]"
+                disabled={etat === "envoi"}
+                className="mt-4 w-full rounded-sm bg-wisteria px-6 py-4 font-dm-sans text-[15px] font-medium text-onyx transition-colors hover:bg-[#97A6F5] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-wisteria"
               >
-                Envoyer ma demande
+                {etat === "envoi"
+                  ? "Envoi en cours…"
+                  : etat === "erreur"
+                    ? "Réessayer"
+                    : "Envoyer ma demande"}
               </button>
               <p className="mt-4 text-center font-dm-sans text-xs text-white/40">
                 En envoyant, vous acceptez d’être recontacté par l’équipe
                 Kwala.
               </p>
             </form>
+              </>
+            )}
           </div>
         </div>
       </div>
