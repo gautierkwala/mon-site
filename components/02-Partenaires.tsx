@@ -20,8 +20,12 @@ const PARTNERS = [
 ];
 
 export function Partenaires() {
+  // Plafonne a 1440 comme le reste de la page : sans cela le bandeau filait
+  // bord a bord sur un grand ecran, seul element a ne pas suivre la grille,
+  // et le titre "Nos partenaires" se retrouvait desaligne du contenu des
+  // autres sections.
   return (
-    <section id="partenaires" className="w-full overflow-hidden py-0">
+    <section id="partenaires" className="mx-auto w-full max-w-[1440px] overflow-hidden py-0">
       <h2 className="px-6 font-asap text-2xl italic text-onyx md:px-[120px]">
         Nos partenaires
       </h2>
