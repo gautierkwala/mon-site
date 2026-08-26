@@ -49,7 +49,11 @@ export function PageHero({ surtitre, titre, sousTitre, cta, photo }: Props) {
           </Link>
         </div>
 
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl lg:w-[46%]">
+        {/* Forme de feuille plutot qu'un encart rectangulaire : deux coins
+            opposes fortement arrondis, les deux autres presque droits. C'est
+            la signature du site — la photo du hero d'accueil est decoupee
+            ainsi, et le logo est fait de petales. */}
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[36%_6%_36%_6%] md:rounded-[46%_8%_46%_8%] lg:w-[46%]">
           <Image
             src={photo.src}
             alt={photo.alt}
