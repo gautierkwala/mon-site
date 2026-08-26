@@ -3,6 +3,7 @@ import { Header } from "@/components/00-Header";
 import { Footer } from "@/components/00-Footer";
 import { Contact } from "@/components/10-Contact";
 import { PageHero } from "@/components/pages/PageHero";
+import { MotCercle } from "@/components/pages/MotCercle";
 import { BlocProbleme } from "@/components/pages/BlocProbleme";
 import { BlocPourquoi } from "@/components/pages/BlocPourquoi";
 import { BlocResultats } from "@/components/pages/BlocResultats";
@@ -66,9 +67,18 @@ export default function CoachingDirigeantsLyon() {
       <main className="bg-alabaster">
         <PageHero
           surtitre="Coaching commercial B2B · Lyon"
-          titre="Coaching commercial à Lyon pour dirigeants et entrepreneurs"
+          titre={
+            <>
+              Coaching commercial à Lyon pour{" "}
+              <MotCercle>dirigeants</MotCercle> et entrepreneurs
+            </>
+          }
           sousTitre="Vous faites le commerce seul. Kwala vous accompagne pour structurer votre approche, décrocher plus de rendez-vous qualifiés et aller au bout de vos deals — avec méthode, et dans la durée."
           cta={{ libelle: "Prendre contact", href: "#contact" }}
+          photo={{
+            src: "/photos/pages/dirigeants-methode.webp",
+            alt: "Coach Kwala détaillant au tableau la construction d’un objectif commercial",
+          }}
         />
 
         <BlocProbleme
@@ -85,6 +95,10 @@ export default function CoachingDirigeantsLyon() {
             "Sessions de prospection collectives, animées par un coach",
             "Suivi régulier des indicateurs commerciaux",
           ]}
+          photo={{
+            src: "/photos/pages/dirigeants-cadrage.webp",
+            alt: "Point de cadrage individuel entre un dirigeant et une coach Kwala",
+          }}
         />
 
         <BlocResultats

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Props = { titre: string; texte: string };
 
 /**
@@ -17,6 +19,18 @@ export function BlocProbleme({ titre, texte }: Props) {
             backgroundPosition: "center",
           }}
         />
+        {/* Petales du design system (KwalaNew_asset_07), meme role decoratif
+            que celles de la section 03 de l'accueil. Debordent volontairement
+            du bord droit, le conteneur les rogne. */}
+        <Image
+          src="/decor/kwala-petales-07.webp"
+          alt=""
+          width={826}
+          height={770}
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-16 -top-10 hidden w-[280px] opacity-90 md:block"
+        />
+
         <div className="relative px-6 md:max-w-[1158px] md:px-[60px]">
           <h2 className="font-asap text-3xl font-bold italic leading-tight text-onyx md:text-[43.6px]">
             {titre}

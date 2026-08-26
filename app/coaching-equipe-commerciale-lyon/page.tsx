@@ -3,6 +3,7 @@ import { Header } from "@/components/00-Header";
 import { Footer } from "@/components/00-Footer";
 import { Contact } from "@/components/10-Contact";
 import { PageHero } from "@/components/pages/PageHero";
+import { MotCercle } from "@/components/pages/MotCercle";
 import { BlocProbleme } from "@/components/pages/BlocProbleme";
 import { BlocPourquoi } from "@/components/pages/BlocPourquoi";
 import { BlocResultats } from "@/components/pages/BlocResultats";
@@ -64,9 +65,17 @@ export default function CoachingEquipeCommercialeLyon() {
       <main className="bg-alabaster">
         <PageHero
           surtitre="Coaching commercial B2B · Lyon"
-          titre="Coaching commercial pour équipes à Lyon"
+          titre={
+            <>
+              Coaching commercial pour <MotCercle>équipes</MotCercle> à Lyon
+            </>
+          }
           sousTitre="Votre équipe a les clients, les produits, les arguments. Ce qui manque souvent, c’est une méthode commune, un process structuré, et quelqu’un pour faire progresser chacun dans la durée. C’est ce que fait Kwala, à Lyon."
           cta={{ libelle: "Discuter de votre projet", href: "#contact" }}
+          photo={{
+            src: "/photos/pages/equipe-collectif.webp",
+            alt: "Équipe commerciale réunie autour de la table lors d’une session Kwala",
+          }}
         />
 
         <BlocProbleme
@@ -84,6 +93,10 @@ export default function CoachingEquipeCommercialeLyon() {
             "Coaching dédié au manager en parallèle",
             "Un process de vente documenté et utilisable en autonomie",
           ]}
+          photo={{
+            src: "/photos/pages/equipe-echange.webp",
+            alt: "Échange entre commerciaux pendant un atelier collectif Kwala",
+          }}
         />
 
         <BlocResultats
