@@ -3,8 +3,12 @@
 import Image from "next/image";
 import { useState } from "react";
 
+// La navigation pointe vers de vraies URL et non vers une ancre : c'est le
+// principal levier pour que Google puisse composer des liens de site sous le
+// resultat de kwala.fr. Une ancre (#offres) ne constitue pas une page.
 const NAV_LINKS = [
-  { href: "/#offres", label: "Nos offres" },
+  { href: "/coaching-dirigeants-lyon", label: "Dirigeants" },
+  { href: "/coaching-equipe-commerciale-lyon", label: "Équipes" },
   { href: "/blog", label: "Blog" },
 ];
 

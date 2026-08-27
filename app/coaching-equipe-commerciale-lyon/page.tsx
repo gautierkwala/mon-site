@@ -81,12 +81,12 @@ export default function CoachingEquipeCommercialeLyon() {
         <BlocProbleme
           decor="formes"
           titre="Quand chacun vend à sa façon, rien ne se duplique."
-          texte="Dans beaucoup d’équipes commerciales, les bons résultats dépendent d’une ou deux personnes. Les autres ont du potentiel, mais pas de méthode claire. Le manager fait ce qu’il peut entre le reporting, les urgences et les recrutements — il n’a pas vraiment le temps de coacher. Résultat : les performances stagnent, les process de vente ne s’améliorent pas, et quand quelqu’un part, le savoir-faire repart avec lui. Ce n’est pas un problème de motivation. C’est un problème de structure."
+          texte="Dans beaucoup d’équipes commerciales, les bons résultats dépendent d’une ou deux personnes. Les autres ont du potentiel, mais pas de méthode claire. Le manager fait ce qu’il peut entre le reporting, les urgences et les recrutements. Il n’a pas vraiment le temps de coacher. Résultat : les performances stagnent, les process de vente ne s’améliorent pas, et quand quelqu’un part, le savoir-faire repart avec lui. Ce n’est pas un problème de motivation. C’est un problème de structure."
         />
 
         <BlocPourquoi
           titre="Un coaching ancré dans le réel."
-          texte="Une formation en salle avec des slides, ça crée des prises de conscience. Ce qui ancre vraiment les comportements, c’est ce qui se passe après : les simulations, les appels passés en conditions réelles, les rendez-vous réécoutés et décortiqués ensemble. Kwala travaille sur deux niveaux en parallèle : les compétences de l’équipe (prospection, conduite de rendez-vous, closing) et la capacité du manager à faire progresser et piloter dans la durée. L’objectif n’est pas de créer une dépendance à un coach externe — c’est de rendre l’équipe autonome."
+          texte="Une formation en salle avec des slides, ça crée des prises de conscience. Ce qui ancre vraiment les comportements, c’est ce qui se passe après : les simulations, les appels passés en conditions réelles, les rendez-vous réécoutés et décortiqués ensemble. Kwala travaille sur deux niveaux en parallèle : les compétences de l’équipe (prospection, conduite de rendez-vous, closing) et la capacité du manager à faire progresser et piloter dans la durée. L’objectif n’est pas de créer une dépendance à un coach externe. C’est de rendre l’équipe autonome."
           puces={[
             "Séances en présentiel, à Lyon",
             "Entraînement sur des situations réelles : appels, rendez-vous, objections, négociation",
@@ -111,7 +111,7 @@ export default function CoachingEquipeCommercialeLyon() {
 
         <Contact
           titre="Un premier échange pour cadrer votre projet."
-          texte="Chaque accompagnement commence par un point de cadrage avec le manager ou le dirigeant : la situation de l’équipe, les objectifs, ce qui bloque. C’est ce qui permet de construire quelque chose d’adapté — pas une formation standard."
+          texte="Chaque accompagnement commence par un point de cadrage avec le manager ou le dirigeant : la situation de l’équipe, les objectifs, ce qui bloque. C’est ce qui permet de construire quelque chose d’adapté, pas une formation standard."
           source="equipe"
         />
 

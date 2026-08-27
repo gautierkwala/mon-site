@@ -63,7 +63,7 @@ export function Hero() {
 
             <p className="mt-6 max-w-[653px] font-dm-sans text-[20px] leading-7 tracking-[0.2px] text-onyx">
               Kwala entraine dirigeants et commerciaux à générer plus
-              d’opportunités et à closer – concrètement, sur le terrain.
+              d’opportunités et à closer, concrètement, sur le terrain.
             </p>
 
             <a
@@ -78,17 +78,7 @@ export function Hero() {
               (pas de largeur figée) et vient jusqu'au bord droit de la section
               — dans Figma la photo va jusqu'au bord du frame, sans marge. */}
           <div className="relative w-full px-6 lg:w-auto lg:flex-1 lg:px-0">
-            {/* Flèche : décoration liée à la photo, pointe vers elle depuis l'espace texte/photo */}
-            <Image
-              src="/decor/kwala-arrow-03.svg"
-              alt=""
-              width={65}
-              height={150}
-              aria-hidden="true"
-              className="pointer-events-none absolute -left-8 bottom-[10%] z-20 hidden h-28 w-auto rotate-180 lg:block"
-            />
-
-            {/* Photo déjà découpée + masquée côté Figma (export du calque "Photo",
+                        {/* Photo déjà découpée + masquée côté Figma (export du calque "Photo",
                 alpha transparent hors de la forme) : évite de ré-implémenter le
                 crop en CSS, dont le mask-position/mask-size ne reproduisait pas
                 le cadrage réel (le fill Figma applique son propre recadrage

@@ -3,7 +3,9 @@ import Script from "next/script";
 export function Resultats() {
   return (
     <section id="resultats" className="mx-auto w-full max-w-[1440px] px-6 py-16 md:px-[120px] md:py-[60px]">
-      <h2 className="font-asap text-2xl italic text-onyx">Résultats</h2>
+      <h2 className="font-asap text-2xl italic text-onyx">
+        Des résultats concrets et rapides
+      </h2>
 
       <div className="mt-8">
         <a

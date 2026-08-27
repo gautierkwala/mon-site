@@ -17,7 +17,7 @@ const dmSans = DM_Sans({
 
 const SITE_URL = "https://kwala.fr";
 
-const TITLE = "Coaching commercial B2B à Lyon — Dirigeants & équipes | Kwala";
+const TITLE = "Coaching commercial B2B à Lyon : dirigeants et équipes | Kwala";
 const DESCRIPTION =
   "Coaching commercial B2B à Lyon. Kwala forme dirigeants et équipes à mieux vendre, avec une approche humaine et concrète. Échangez avec un coach.";
 
@@ -74,6 +74,20 @@ const organizationJsonLd = {
   priceRange: "$$",
 };
 
+// Google genere les liens de site ("sitelinks") automatiquement, on ne peut
+// pas les declarer. Ce bloc WebSite ne fait qu'affermir le nom du site tel
+// qu'il s'affiche dans les resultats ; les vrais leviers sont ailleurs :
+// des URL distinctes et bien nommees, liees depuis la navigation.
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Kwala",
+  alternateName: "Kwala — Coaching commercial B2B",
+  url: SITE_URL,
+  inLanguage: "fr-FR",
+  publisher: { "@type": "Organization", name: "Kwala", url: SITE_URL },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -85,6 +99,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         {children}
       </body>

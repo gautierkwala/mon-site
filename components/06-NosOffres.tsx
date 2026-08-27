@@ -157,8 +157,12 @@ export function NosOffres() {
               </p>
               <h3 className="mt-3 font-asap text-2xl font-bold italic leading-tight text-onyx md:text-[30px]">
                 {offer.headingPrefix}
-                <span className="text-white">{offer.headingHighlight}</span>
-                {offer.headingSuffix}
+                {/* La ponctuation finale suit la couleur du segment mis en
+                    avant : un "?" noir apres un groupe blanc detonait. */}
+                <span className="text-white">
+                  {offer.headingHighlight}
+                  {offer.headingSuffix}
+                </span>
               </h3>
               <ul className="mt-6 space-y-3 font-dm-sans text-base leading-7 text-onyx md:text-[20px]">
                 {offer.bullets.map((bullet) => (

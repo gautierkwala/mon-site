@@ -6,7 +6,7 @@ const TAGS = [
   "Négociations et Closing",
   "Recrutement",
   "Mental & confiance",
-  "Écoute d’audio post RDV",
+  "Écoute d’audio post rendez-vous",
   "Sessions de prospection",
   "Coaching individuel",
   "Coaching collectif",

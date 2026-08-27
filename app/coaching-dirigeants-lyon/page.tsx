@@ -73,7 +73,7 @@ export default function CoachingDirigeantsLyon() {
               <MotCercle>dirigeants</MotCercle> et entrepreneurs
             </>
           }
-          sousTitre="Vous faites le commerce seul. Kwala vous accompagne pour structurer votre approche, décrocher plus de rendez-vous qualifiés et aller au bout de vos deals — avec méthode, et dans la durée."
+          sousTitre="Vous faites le commerce seul. Kwala vous accompagne pour structurer votre approche, décrocher plus de rendez-vous qualifiés et aller au bout de vos deals, avec méthode et dans la durée."
           cta={{ libelle: "Prendre contact", href: "#contact" }}
           photo={{
             src: "/photos/pages/dirigeants-methode.webp",
@@ -84,12 +84,12 @@ export default function CoachingDirigeantsLyon() {
         <BlocProbleme
           decor="petales"
           titre="Ce n’est pas le produit qui bloque."
-          texte="La plupart des dirigeants qui arrivent chez Kwala ont un bon produit, une vraie proposition de valeur, et la volonté de développer leur activité. Ce qui manque, c’est rarement l’envie — c’est la méthode, la régularité, et quelqu’un pour regarder comment ça se passe vraiment en rendez-vous. Prospecter sans routine, c’est remettre à demain. Aller en rendez-vous sans structure, c’est laisser le prospect mener la danse. Parler prix sans préparation, c’est souvent baisser d’emblée. Sans regard extérieur, on progresse lentement — et souvent on ne sait pas exactement pourquoi ça ne signe pas."
+          texte="La plupart des dirigeants qui arrivent chez Kwala ont un bon produit, une vraie proposition de valeur, et la volonté de développer leur activité. Ce qui manque, c’est rarement l’envie. C’est la méthode, la régularité, et quelqu’un pour regarder comment ça se passe vraiment en rendez-vous. Prospecter sans routine, c’est remettre à demain. Aller en rendez-vous sans structure, c’est laisser le prospect mener la danse. Parler prix sans préparation, c’est souvent baisser d’emblée. Sans regard extérieur, on progresse lentement, et souvent on ne sait pas exactement pourquoi ça ne signe pas."
         />
 
         <BlocPourquoi
           titre="Un coaching qui se passe en vrai."
-          texte="Les formations en ligne apportent des connaissances. Ce qui change une posture commerciale, c’est autre chose : une correction en temps réel, un appel passé en live devant un coach, un rendez-vous réécouté et analysé ensemble. Chez Kwala, le travail se fait en salle, avec d’autres entrepreneurs, face à des situations concrètes. Ce n’est pas un cours — c’est de l’entraînement."
+          texte="Les formations en ligne apportent des connaissances. Ce qui change une posture commerciale, c’est autre chose : une correction en temps réel, un appel passé en live devant un coach, un rendez-vous réécouté et analysé ensemble. Chez Kwala, le travail se fait en salle, avec d’autres entrepreneurs, face à des situations concrètes. Ce n’est pas un cours. C’est de l’entraînement."
           puces={[
             "Séances en présentiel : pitch, schéma d’appel, objections, négociation, closing",
             "Écoute et analyse de vos vrais rendez-vous",

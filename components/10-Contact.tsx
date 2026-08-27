@@ -42,7 +42,7 @@ export function Contact({ titre, texte, source }: Props = {}) {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject: `Nouvelle demande depuis kwala.fr — ${donnees.name || "sans nom"}`,
+          subject: `Nouvelle demande depuis kwala.fr : ${donnees.name || "sans nom"}`,
           from_name: "Formulaire kwala.fr",
           ...donnees,
         }),
@@ -225,13 +225,14 @@ export function Contact({ titre, texte, source }: Props = {}) {
                   htmlFor="contact-phone"
                   className="mb-2 block font-dm-sans text-[13px] font-medium tracking-[0.2px] text-dust"
                 >
-                  Téléphone (facultatif)
+                  Téléphone
                 </label>
                 <input
                   id="contact-phone"
                   name="phone"
                   type="tel"
                   autoComplete="tel"
+                  required
                   placeholder="06 12 34 56 78"
                   className="w-full rounded-sm border border-white/15 bg-white/5 px-4 py-3.5 font-dm-sans text-[15px] text-white placeholder:text-white/35 focus:border-wisteria focus:bg-white/10 focus:outline-none"
                 />
@@ -260,7 +261,7 @@ export function Contact({ titre, texte, source }: Props = {}) {
                   className="mt-5 rounded-sm border border-white/25 bg-white/10 px-4 py-3 font-dm-sans text-[14px] leading-6 text-white"
                 >
                   L’envoi n’a pas abouti ({erreur}). Vérifiez votre connexion
-                  et réessayez — vos réponses sont conservées. Si le problème
+                  et réessayez, vos réponses sont conservées. Si le problème
                   persiste, écrivez-nous à{" "}
                   <a href="mailto:team@kwala.fr" className="underline">
                     team@kwala.fr
