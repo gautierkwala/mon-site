@@ -67,7 +67,8 @@ export default function CoachingEquipeCommercialeLyon() {
           surtitre="Coaching commercial B2B · Lyon"
           titre={
             <>
-              Coaching commercial pour <MotCercle>équipes</MotCercle> à Lyon
+              Coaching commercial pour <MotCercle>vos équipes</MotCercle> à
+              Lyon
             </>
           }
           sousTitre="Votre équipe a les clients, les produits, les arguments. Ce qui manque souvent, c’est une méthode commune, un process structuré, et quelqu’un pour faire progresser chacun dans la durée. C’est ce que fait Kwala, à Lyon."
@@ -85,8 +86,8 @@ export default function CoachingEquipeCommercialeLyon() {
         />
 
         <BlocPourquoi
-          titre="Un coaching ancré dans le réel."
-          texte="Une formation en salle avec des slides, ça crée des prises de conscience. Ce qui ancre vraiment les comportements, c’est ce qui se passe après : les simulations, les appels passés en conditions réelles, les rendez-vous réécoutés et décortiqués ensemble. Kwala travaille sur deux niveaux en parallèle : les compétences de l’équipe (prospection, conduite de rendez-vous, closing) et la capacité du manager à faire progresser et piloter dans la durée. L’objectif n’est pas de créer une dépendance à un coach externe. C’est de rendre l’équipe autonome."
+          titre="Un coaching à Lyon."
+          texte="Une formation commerciale en salle avec des slides, ça crée des prises de conscience. Ce qui ancre vraiment les comportements, c’est ce qui se passe après : les simulations, les appels passés en conditions réelles, les rendez-vous réécoutés et décortiqués ensemble. Kwala travaille sur deux niveaux en parallèle : les compétences de l’équipe (prospection, conduite de rendez-vous, closing) et la capacité du manager à faire progresser et piloter dans la durée. L’objectif n’est pas de créer une dépendance à un coach externe. C’est de rendre l’équipe autonome."
           puces={[
             "Séances en présentiel, à Lyon",
             "Entraînement sur des situations réelles : appels, rendez-vous, objections, négociation",
@@ -111,7 +112,7 @@ export default function CoachingEquipeCommercialeLyon() {
 
         <Contact
           titre="Un premier échange pour cadrer votre projet."
-          texte="Chaque accompagnement commence par un point de cadrage avec le manager ou le dirigeant : la situation de l’équipe, les objectifs, ce qui bloque. C’est ce qui permet de construire quelque chose d’adapté, pas une formation standard."
+          texte="Chaque accompagnement commence par un point de cadrage avec le manager ou le dirigeant : la situation de l’équipe, les objectifs, ce qui bloque. C’est ce qui permet de construire quelque chose d’adapté, pas une formation commerciale standard."
           source="equipe"
         />
 

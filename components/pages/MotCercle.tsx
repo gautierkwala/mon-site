@@ -16,7 +16,9 @@ export function MotCercle({ children }: { children: ReactNode }) {
       <span className="relative z-10">{children}</span>
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -inset-x-3 -inset-y-2 z-0"
+        // Debordement reduit sur petit ecran : a 390px le mot touche le bord
+        // de la colonne et le trace se faisait rogner a gauche.
+        className="pointer-events-none absolute -inset-x-1 -inset-y-1 z-0 md:-inset-x-3 md:-inset-y-2"
         style={{
           backgroundImage: "url(/decor/kwala-circle-01.webp)",
           backgroundSize: "100% 100%",
