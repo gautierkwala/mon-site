@@ -2,11 +2,8 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
+import { WEB3FORMS_ENDPOINT, WEB3FORMS_KEY } from "@/lib/web3forms";
 
-// Cle publique Web3Forms : elle est faite pour vivre cote navigateur, c'est
-// le fonctionnement nominal du service. Elle n'ouvre aucun acces au compte,
-// elle ne fait qu'identifier la boite de reception destinataire.
-const WEB3FORMS_KEY = "0c9b516a-2bf1-48b4-b25f-f955ee4a2aef";
 
 type Etat = "repos" | "envoi" | "succes" | "erreur";
 
@@ -37,7 +34,7 @@ export function Contact({ titre, texte, source }: Props = {}) {
     const donnees = Object.fromEntries(new FormData(e.currentTarget));
 
     try {
-      const reponse = await fetch("https://api.web3forms.com/submit", {
+      const reponse = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
