@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { WEB3FORMS_ENDPOINT, WEB3FORMS_KEY } from "@/lib/web3forms";
+import { BoutonCalendrier } from "@/components/pages/BoutonCalendrier";
 
 type Etat = "repos" | "envoi" | "succes" | "erreur";
 
@@ -64,6 +65,7 @@ export function FormulaireEvenement() {
           Votre réponse est bien enregistrée. On vous attend aux Woraces à
           partir de 18h30.
         </p>
+        <BoutonCalendrier className="mt-8" />
       </div>
     );
   }
@@ -169,6 +171,8 @@ export function FormulaireEvenement() {
         >
           {etat === "envoi" ? "Envoi en cours…" : etat === "erreur" ? "Réessayer" : "Envoyer"}
         </button>
+
+        <BoutonCalendrier className="mt-3" />
       </form>
     </div>
   );
