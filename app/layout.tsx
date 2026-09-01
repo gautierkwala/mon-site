@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Asap, DM_Sans } from "next/font/google";
 import "./globals.css";
-import { SITE_URL } from "@/lib/site";
+import { ADRESSE, SITE_URL, TELEPHONE } from "@/lib/site";
 
 const asap = Asap({
   variable: "--font-asap",
@@ -61,16 +61,17 @@ const organizationJsonLd = {
   url: SITE_URL,
   logo: `${SITE_URL}/logos/logo-kwala.svg`,
   image: `${SITE_URL}/og-image.jpg`,
-  telephone: "+33623130149",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "12 rue Royale",
-    postalCode: "69001",
-    addressLocality: "Lyon",
-    addressCountry: "FR",
-  },
+  telephone: TELEPHONE,
+  address: ADRESSE,
   areaServed: { "@type": "City", name: "Lyon" },
-  sameAs: ["https://www.linkedin.com/company/kwala-app"],
+  // Profils tiers officiels. Ils aident les moteurs et les assistants a
+  // rattacher entre elles les mentions de Kwala dispersees sur le web.
+  // Volontairement PAS de bloc aggregateRating ici : Google interdit le
+  // balisage d'avis portant sur soi-meme sur son propre site.
+  sameAs: [
+    "https://www.linkedin.com/company/kwala-app",
+    "https://trustfolio.co/profil/kwala-sdJEBF2Ciw1",
+  ],
   identifier: "903154896",
   priceRange: "$$",
 };

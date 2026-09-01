@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -9,7 +10,7 @@ import { TagPill } from "@/components/blog/TagPill";
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/blog";
 import { formatDate } from "@/lib/format";
 
-const SITE_URL = "https://kwala.fr";
+
 
 // Les articles sont connus au build : tout est prerendu en statique et le
 // rendu a la demande est coupe, donc un slug inconnu renvoie un vrai 404.

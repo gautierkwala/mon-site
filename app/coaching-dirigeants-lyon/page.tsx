@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ADRESSE, SITE_URL, TELEPHONE } from "@/lib/site";
 import { Header } from "@/components/00-Header";
 import { Footer } from "@/components/00-Footer";
 import { Contact } from "@/components/10-Contact";
@@ -9,7 +10,7 @@ import { BlocPourquoi } from "@/components/pages/BlocPourquoi";
 import { BlocResultats } from "@/components/pages/BlocResultats";
 import { LienPageSoeur } from "@/components/pages/LienPageSoeur";
 
-const SITE_URL = "https://kwala.fr";
+
 const CHEMIN = "/coaching-dirigeants-lyon";
 
 export const metadata: Metadata = {
@@ -41,14 +42,8 @@ const jsonLd = {
     "@type": "ProfessionalService",
     name: "Kwala",
     url: SITE_URL,
-    telephone: "+33623130149",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "12 rue Royale",
-      postalCode: "69001",
-      addressLocality: "Lyon",
-      addressCountry: "FR",
-    },
+    telephone: TELEPHONE,
+    address: ADRESSE,
   },
   areaServed: { "@type": "City", name: "Lyon" },
   audience: { "@type": "Audience", audienceType: "Dirigeants et entrepreneurs" },
