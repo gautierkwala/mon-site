@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+// Planche de controle du design system, utile en interne mais sans valeur pour
+// un visiteur : elle repondait 200 et rien n'empechait son indexation.
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
+
 const colors = [
   { name: "onyx", hex: "#12130f", className: "bg-onyx" },
   { name: "white", hex: "#ffffff", className: "bg-white" },

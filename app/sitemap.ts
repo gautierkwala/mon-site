@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = "https://kwala.fr";
+
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();

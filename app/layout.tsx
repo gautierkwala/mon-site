@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Asap, DM_Sans } from "next/font/google";
 import "./globals.css";
+import { SITE_URL } from "@/lib/site";
 
 const asap = Asap({
   variable: "--font-asap",
@@ -15,7 +16,7 @@ const dmSans = DM_Sans({
   weight: ["400", "500"],
 });
 
-const SITE_URL = "https://kwala.fr";
+
 
 const TITLE = "Coaching commercial B2B à Lyon : dirigeants et équipes | Kwala";
 const DESCRIPTION =

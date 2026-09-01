@@ -40,11 +40,16 @@ export function Hero() {
               1440, alignée sur le repère du fond à motif) — pas un % de la
               largeur de la ligne, sinon le texte revient à la ligne en trop. */}
           <div className="w-full px-6 lg:w-auto lg:shrink-0 lg:basis-[773px] lg:pl-[120px] lg:pr-0">
-            <p className="font-asap text-[16px] font-bold italic tracking-[0.16px] text-wisteria-text">
-              Coaching commercial B2B • Lyon
-            </p>
-
-            <h1 className="mt-4 font-asap text-[56px] font-bold italic leading-[0.95] text-onyx sm:text-[72px] lg:text-[96px]">
+            {/* Le h1 englobe la ligne descriptive ET la signature de marque.
+                "The place to biz" seul ne dit a un moteur ni le metier, ni la
+                ville : c'etait le titre le plus important de la page, et il
+                etait muet. Les deux lignes restent visibles a l'ecran, aux
+                memes tailles qu'avant — rien n'est masque, rien ne bouge. */}
+            <h1>
+              <span className="block font-asap text-[16px] font-bold italic tracking-[0.16px] text-wisteria-text">
+                Coaching commercial B2B à Lyon
+              </span>
+              <span className="mt-4 block font-asap text-[56px] font-bold italic leading-[0.95] text-onyx sm:text-[72px] lg:text-[96px]">
               The place
               <br />
               to{" "}
@@ -58,6 +63,7 @@ export function Hero() {
                   aria-hidden="true"
                   className="pointer-events-none absolute -inset-x-2 -inset-y-3 -z-0 h-[calc(100%+1.5rem)] w-[calc(100%+1rem)]"
                 />
+                </span>
               </span>
             </h1>
 
