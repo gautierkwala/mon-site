@@ -1,10 +1,13 @@
 import Image from "next/image";
+import { ADRESSE_LISIBLE, EMAIL, TELEPHONE, TELEPHONE_LISIBLE } from "@/lib/site";
 
+// Les trois pages legales n'existent pas encore dans ce depot : leur lien
+// reste inerte, il n'y a nulle part ou pointer. Le blog, lui, existe.
 const LEGAL_LINKS = [
-  "Mentions légales",
-  "Politique de confidentialité",
-  "CGV",
-  "Blog",
+  { label: "Mentions légales", href: "#" },
+  { label: "Politique de confidentialité", href: "#" },
+  { label: "CGV", href: "#" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export function Footer() {
@@ -35,6 +38,21 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-10 md:mt-[34px] md:flex-row md:items-end md:justify-between">
           <div>
+            <p className="font-asap text-sm italic text-onyx">Nous trouver</p>
+            <address className="mt-4 font-dm-sans text-[15px] not-italic leading-7 text-onyx">
+              {ADRESSE_LISIBLE}
+              <br />
+              <a href={`tel:${TELEPHONE}`} className="hover:underline">
+                {TELEPHONE_LISIBLE}
+              </a>
+              {" · "}
+              <a href={`mailto:${EMAIL}`} className="hover:underline">
+                {EMAIL}
+              </a>
+            </address>
+          </div>
+
+          <div>
             <p className="font-asap text-sm italic text-onyx">Labels</p>
             <div className="mt-4 flex items-end gap-6">
               <Image
@@ -54,8 +72,8 @@ export function Footer() {
 
           <div className="flex flex-col items-start gap-4 md:items-end">
             <nav className="flex flex-col gap-1 text-left font-asap text-base italic text-onyx md:text-right">
-              {LEGAL_LINKS.map((label) => (
-                <a key={label} href="#">
+              {LEGAL_LINKS.map(({ label, href }) => (
+                <a key={label} href={href}>
                   {label}
                 </a>
               ))}

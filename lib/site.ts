@@ -9,14 +9,18 @@ export const SITE_URL = "https://www.kwala.fr";
 // annuaires. Google les recoupe pour juger de la fiabilite d'un etablissement
 // local ; une divergence, meme minime, affaiblit le referencement local.
 //
-// A ce jour elles divergent : la fiche Google indique 11 rue Alsace Lorraine,
-// le site 12 rue Royale. A trancher, puis a corriger ICI uniquement.
+// Valeur alignee sur la fiche Google Business Profile.
 export const TELEPHONE = "+33623130149";
 
 export const ADRESSE = {
   "@type": "PostalAddress",
-  streetAddress: "12 rue Royale",
+  streetAddress: "11 rue Alsace Lorraine",
   postalCode: "69001",
   addressLocality: "Lyon",
   addressCountry: "FR",
 };
+
+// Affichage humain, derive des memes champs que le balisage ci-dessus.
+export const ADRESSE_LISIBLE = `${ADRESSE.streetAddress}, ${ADRESSE.postalCode} ${ADRESSE.addressLocality}`;
+export const TELEPHONE_LISIBLE = "06 23 13 01 49";
+export const EMAIL = "team@kwala.fr";
