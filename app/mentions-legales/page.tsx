@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageLegale } from "@/components/pages/PageLegale";
-import { ADRESSE_LISIBLE, EMAIL, TELEPHONE, TELEPHONE_LISIBLE } from "@/lib/site";
+import { ADRESSE_LISIBLE, EMAIL, SIEGE_SOCIAL, TELEPHONE, TELEPHONE_LISIBLE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Mentions légales | Kwala",
@@ -18,14 +18,17 @@ export default function MentionsLegales() {
     >
       <h2>Éditeur du site</h2>
       <p>
-        Le site kwala.fr est édité par Kwala, [FORME JURIDIQUE À COMPLÉTER] au
-        capital de [MONTANT À COMPLÉTER] euros.
+        Le site kwala.fr est édité par Kwala, société par actions simplifiée
+        au capital de 10 200 euros.
       </p>
       <ul>
-        <li>Siège social : {ADRESSE_LISIBLE}</li>
+        <li>Siège social : {SIEGE_SOCIAL}</li>
+        <li>Adresse d’accueil : {ADRESSE_LISIBLE}</li>
         <li>SIREN : 903 154 896</li>
-        <li>RCS Lyon : 903 154 896</li>
-        <li>Numéro de TVA intracommunautaire : FR75 903154896</li>
+        <li>SIRET du siège : 903 154 896 00026</li>
+        <li>Immatriculée au RCS de Lyon sous le numéro 903 154 896</li>
+        <li>Numéro de TVA intracommunautaire : FR75903154896</li>
+        <li>Code APE : 70.22Z, conseil pour les affaires et autres conseils de gestion</li>
         <li>
           Téléphone : <a href={`tel:${TELEPHONE}`}>{TELEPHONE_LISIBLE}</a>
         </li>
@@ -35,13 +38,16 @@ export default function MentionsLegales() {
       </ul>
 
       <h2>Directeur de la publication</h2>
-      <p>[NOM DU DIRIGEANT À CONFIRMER], en qualité de représentant légal de Kwala.</p>
+      <p>Gautier Colson, président de Kwala.</p>
 
       <h2>Hébergeur</h2>
       <p>
         Le site est hébergé par Vercel Inc., société de droit américain dont le
-        siège est situé [ADRESSE DE VERCEL À COMPLÉTER], États-Unis.
-        Site : <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">vercel.com</a>.
+        siège est situé à San Francisco, en Californie, aux États-Unis. Site :{" "}
+        <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">
+          vercel.com
+        </a>
+        .
       </p>
 
       <h2>Propriété intellectuelle</h2>

@@ -24,3 +24,10 @@ export const ADRESSE = {
 export const ADRESSE_LISIBLE = `${ADRESSE.streetAddress}, ${ADRESSE.postalCode} ${ADRESSE.addressLocality}`;
 export const TELEPHONE_LISIBLE = "06 23 13 01 49";
 export const EMAIL = "team@kwala.fr";
+
+// Adresse du siege social telle qu'immatriculee au RCS de Lyon. Elle DIFFERE
+// volontairement de l'adresse ci-dessus : les mentions legales doivent citer
+// le siege declare, tandis que la fiche Google et le pied de page indiquent
+// l'adresse ou l'on recoit reellement. Les deux sont exactes, chacune dans
+// son contexte.
+export const SIEGE_SOCIAL = "12 rue Royale, 69001 Lyon";

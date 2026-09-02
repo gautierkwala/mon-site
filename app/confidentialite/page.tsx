@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageLegale } from "@/components/pages/PageLegale";
-import { ADRESSE_LISIBLE, EMAIL } from "@/lib/site";
+import { EMAIL, SIEGE_SOCIAL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité | Kwala",
@@ -18,8 +18,9 @@ export default function Confidentialite() {
     >
       <h2>Qui est responsable de vos données</h2>
       <p>
-        Kwala, dont le siège est situé {ADRESSE_LISIBLE}, est responsable des
-        traitements décrits ci-dessous. Pour toute question, écrivez à{" "}
+        Kwala, société par actions simplifiée dont le siège social est situé
+        {SIEGE_SOCIAL}, immatriculée au RCS de Lyon sous le numéro 903 154 896,
+        est responsable des traitements décrits ci-dessous. Pour toute question, écrivez à{" "}
         <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.
       </p>
 
