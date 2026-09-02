@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { ADRESSE_LISIBLE, EMAIL, TELEPHONE, TELEPHONE_LISIBLE } from "@/lib/site";
 
-// Les trois pages legales n'existent pas encore dans ce depot : leur lien
-// reste inerte, il n'y a nulle part ou pointer. Le blog, lui, existe.
+// Les CGV n'existent pas encore : leur lien reste inerte faute de page ou
+// pointer. Les trois autres sont en place.
 const LEGAL_LINKS = [
-  { label: "Mentions légales", href: "#" },
-  { label: "Politique de confidentialité", href: "#" },
+  { label: "Mentions légales", href: "/mentions-legales" },
+  { label: "Politique de confidentialité", href: "/confidentialite" },
   { label: "CGV", href: "#" },
   { label: "Blog", href: "/blog" },
 ];

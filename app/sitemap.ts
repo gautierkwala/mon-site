@@ -36,6 +36,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    // Pages legales : indexables mais sans enjeu de positionnement.
+    ...["/mentions-legales", "/confidentialite"].map((chemin) => ({
+      url: `${SITE_URL}${chemin}`,
+      lastModified: new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    })),
     ...posts.map((post) => ({
       url: `${SITE_URL}/blog/${post.slug}`,
       lastModified: new Date(`${post.date}T12:00:00Z`),
