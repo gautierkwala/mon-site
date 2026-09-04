@@ -9,8 +9,7 @@ const ANCIENNES_URL_BLOG = [
   { source: "/blog/hello-world-fwzre", destination: "/blog/regularite-plus-forte-que-motivation", permanent: true },
   { source: "/blog/hello-world-hosea", destination: "/blog/commerciaux-parlent-trop-vendent-moins", permanent: true },
   { source: "/blog/hello-world-karaf", destination: "/blog/confondre-activite-et-performance-commerciale", permanent: true },
-  { source: "/blog/hello-world-nhefg", destination: "/blog/formation-commerciale-parler-moins-vendre-plus", permanent: true },
-  { source: "/blog/hello-world-rqlrs", destination: "/blog/commerciaux-manquent-de-methode", permanent: true },
+    { source: "/blog/hello-world-rqlrs", destination: "/blog/commerciaux-manquent-de-methode", permanent: true },
   { source: "/blog/hello-world-tixcl", destination: "/blog/devenir-proactif-developpement-commercial", permanent: true },
   { source: "/blog/hello-world-tlncj", destination: "/blog/qualifier-ses-prospects-en-b2b", permanent: true },
   { source: "/blog/hello-world-twifq", destination: "/blog/objection-prix-vrai-probleme", permanent: true },
@@ -22,10 +21,15 @@ const ANCIENNES_URL_BLOG = [
   { source: "/blog/commerciale", destination: "/blog/signaux-besoin-formation-commerciale", permanent: true },
   { source: "/blog/formation-commerciale-bassk", destination: "/blog/formation-ponctuelle-ou-systeme-qui-performe", permanent: true },
   { source: "/blog/formation-commerciale-nkjbb", destination: "/blog/3-erreurs-developpement-commercial-entrepreneurs", permanent: true },
-  { source: "/blog/formation-commerciale-slout", destination: "/blog/appliquer-ce-quon-apprend-en-formation", permanent: true },
-  { source: "/blog/formation-commerciale-zwnep", destination: "/blog/entrepreneurs-qui-naiment-pas-vendre", permanent: true },
+    { source: "/blog/formation-commerciale-zwnep", destination: "/blog/entrepreneurs-qui-naiment-pas-vendre", permanent: true },
   { source: "/blog/formation-commerciale-pourquoi-vos-commerciaux-nosent-pas-disqualifier-leurs-prospects", destination: "/blog/disqualifier-ses-prospects", permanent: true },
-  { source: "/blog/pourquoi-vos-commerciaux-ne-prospectent-plus-et-pourquoi-ce-nest-pas-juste-un-probleme-de-motivation", destination: "/blog/commerciaux-qui-ne-prospectent-plus", permanent: true }
+  { source: "/blog/pourquoi-vos-commerciaux-ne-prospectent-plus-et-pourquoi-ce-nest-pas-juste-un-probleme-de-motivation", destination: "/blog/commerciaux-qui-ne-prospectent-plus", permanent: true },
+  // Doublons fusionnes : deux paires d'articles traitaient le meme sujet.
+  { source: "/blog/formation-commerciale-parler-moins-vendre-plus", destination: "/blog/commerciaux-parlent-trop-vendent-moins", permanent: true },
+  { source: "/blog/appliquer-ce-quon-apprend-en-formation", destination: "/blog/equipes-nappliquent-pas-apres-formation", permanent: true },
+  // Anciennes URL de ces deux memes articles, avant renommage.
+  { source: "/blog/hello-world-nhefg", destination: "/blog/commerciaux-parlent-trop-vendent-moins", permanent: true },
+  { source: "/blog/formation-commerciale-slout", destination: "/blog/equipes-nappliquent-pas-apres-formation", permanent: true },
 ];
 
 const nextConfig: NextConfig = {

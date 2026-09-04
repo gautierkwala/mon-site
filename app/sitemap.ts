@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
+import { AUTEURS } from "@/lib/auteurs";
 import { SITE_URL } from "@/lib/site";
 
 
@@ -36,6 +37,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    // Pages auteurs : elles portent le signal d'expertise rattache aux
+    // articles, elles ont vocation a etre explorees.
+    ...AUTEURS.map((a) => ({
+      url: `${SITE_URL}/blog/auteurs/${a.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.4,
+    })),
     // Pages legales : indexables mais sans enjeu de positionnement.
     ...["/mentions-legales", "/confidentialite"].map((chemin) => ({
       url: `${SITE_URL}${chemin}`,

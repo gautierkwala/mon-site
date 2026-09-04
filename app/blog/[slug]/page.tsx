@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/site";
+import { getAuteur } from "@/lib/auteurs";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -54,6 +55,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const { default: Article } = await import(`@/content/blog/${post.fileName}.mdx`);
   const similaires = getRelatedPosts(slug);
+  const auteur = getAuteur(post.author ?? "");
 
   // BlogPosting : donne aux moteurs et aux moteurs de reponse l'auteur, la
   // date et l'illustration sans qu'ils aient a les deviner du HTML.
@@ -66,7 +68,15 @@ export default async function ArticlePage({ params }: PageProps) {
     dateModified: post.date,
     inLanguage: "fr-FR",
     mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/${slug}` },
-    author: { "@type": "Person", name: post.author ?? "Kwala" },
+    author: auteur
+      ? {
+          "@type": "Person",
+          name: auteur.nom,
+          jobTitle: auteur.role,
+          url: `${SITE_URL}/blog/auteurs/${auteur.slug}`,
+          sameAs: [auteur.linkedin],
+        }
+      : { "@type": "Person", name: post.author ?? "Kwala" },
     publisher: {
       "@type": "Organization",
       name: "Kwala",
@@ -120,7 +130,21 @@ export default async function ArticlePage({ params }: PageProps) {
             </p>
             <p className="mt-4 font-dm-sans text-sm text-onyx/70">
               <time dateTime={post.date}>{formatDate(post.date)}</time>
-              {post.author && <> · {post.author}</>}
+              {post.author && (
+                <>
+                  {" · "}
+                  {auteur ? (
+                    <Link
+                      href={`/blog/auteurs/${auteur.slug}`}
+                      className="underline decoration-wisteria-text underline-offset-2"
+                    >
+                      {post.author}
+                    </Link>
+                  ) : (
+                    post.author
+                  )}
+                </>
+              )}
             </p>
           </header>
 
