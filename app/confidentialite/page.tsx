@@ -13,7 +13,7 @@ export default function Confidentialite() {
   return (
     <PageLegale
       titre="Politique de confidentialité"
-      chapeau="Ce site ne dépose aucun cookie et n’utilise aucun outil de mesure d’audience. Les seules données que nous recevons sont celles que vous nous transmettez volontairement, en remplissant un formulaire."
+      chapeau="Ce site ne dépose aucun cookie et ne vous suit pas d’un site à l’autre. Les seules données personnelles que nous recevons sont celles que vous nous transmettez volontairement, en remplissant un formulaire."
       miseAJour="2 septembre 2026"
     >
       <h2>Qui est responsable de vos données</h2>
@@ -81,6 +81,10 @@ export default function Confidentialite() {
           service au moment de l’envoi.
         </li>
         <li>
+          Vercel Web Analytics mesure la fréquentation, sans cookie et sans
+          identifiant persistant.
+        </li>
+        <li>
           Trustfolio fournit le module d’affichage des témoignages présent sur
           la page d’accueil. Ce module est chargé depuis les serveurs de
           Trustfolio et, à ce titre, votre navigateur les contacte lors de
@@ -101,9 +105,27 @@ export default function Confidentialite() {
       <h2>Cookies et mesure d’audience</h2>
       <p>
         Ce site ne dépose aucun cookie, ni de mesure d’audience, ni publicitaire,
-        ni de préférence. Il n’utilise ni Google Analytics, ni aucun outil de
-        suivi comparable. C’est la raison pour laquelle aucune bannière de
-        consentement ne vous est présentée : il n’y a rien à consentir.
+        ni de préférence. Il n’utilise pas Google Analytics.
+      </p>
+      <p>
+        Nous mesurons la fréquentation du site avec Vercel Web Analytics, l’outil
+        de notre hébergeur. Il compte les pages consultées et enregistre des
+        informations générales sur la visite, comme le type d’appareil, le
+        navigateur, le pays et la page qui vous a amené jusqu’ici. Il ne dépose
+        aucun cookie, ne crée aucun identifiant permanent, et ne permet donc ni
+        de vous reconnaître d’une visite à l’autre, ni de vous suivre sur
+        d’autres sites. Nous ne voyons que des totaux, jamais des individus.
+      </p>
+      <p>
+        C’est parce qu’aucun cookie n’est déposé et qu’aucun profil n’est
+        constitué qu’aucune bannière de consentement ne vous est présentée :
+        il n’y a rien à consentir.
+      </p>
+      <p>
+        Nous consultons également la Google Search Console, qui nous indique
+        les mots-clés ayant mené à notre site et le nombre de clics obtenus.
+        Ces statistiques sont agrégées par Google et ne nous permettent
+        d’identifier personne.
       </p>
       <p>
         Les polices de caractères sont servies depuis notre propre serveur et

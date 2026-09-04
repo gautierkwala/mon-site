@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Asap, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { ADRESSE, SITE_URL, TELEPHONE } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next";
 
 const asap = Asap({
   variable: "--font-asap",
@@ -107,6 +108,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         {children}
+        {/* Mesure d'audience Vercel : sans cookie et sans identifiant
+            persistant, donc sans banniere de consentement a afficher. Elle
+            ne fonctionne que si l'option Web Analytics est activee sur le
+            projet Vercel ; sans cela le script ne remonte rien. */}
+        <Analytics />
       </body>
     </html>
   );
