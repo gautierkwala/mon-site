@@ -14,8 +14,8 @@ export type Auteur = {
 // un profil externe verifiable qui en fait une personne identifiee.
 export const AUTEURS: Auteur[] = [
   {
-    slug: "mathilde-dugardin",
-    nom: "Mathilde Dugardin",
+    slug: "mathilde-du-gardin",
+    nom: "Mathilde Du Gardin",
     role: "Coach Sales",
     linkedin: "https://www.linkedin.com/in/mathilde-du-gardin-b38b5686/",
     intro:
