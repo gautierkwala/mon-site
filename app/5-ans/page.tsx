@@ -5,7 +5,7 @@ import { Footer } from "@/components/00-Footer";
 import { FormulaireEvenement } from "@/components/pages/FormulaireEvenement";
 
 export const metadata: Metadata = {
-  title: "5 ans de Kwala — Jeudi 15 octobre | Kwala",
+  title: "5 ans de Kwala : jeudi 15 octobre | Kwala",
   description:
     "Kwala fête ses 5 ans le 15 octobre aux Woraces, à Lyon. Confirmez votre présence.",
   // Page d'invitation : elle n'a pas vocation a etre trouvee dans les

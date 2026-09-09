@@ -6,7 +6,7 @@ import { BlogList } from "@/components/blog/BlogList";
 import { getAllPosts, getAllTags } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Blog — Coaching commercial B2B | Kwala",
+  title: "Blog : coaching commercial B2B à Lyon | Kwala",
   description:
     "Prospection, closing, management commercial : les articles des coachs Kwala pour faire progresser vos ventes.",
   alternates: { canonical: "/blog" },

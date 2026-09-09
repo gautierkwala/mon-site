@@ -3,7 +3,7 @@ import { PageLegale } from "@/components/pages/PageLegale";
 import { EMAIL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Confidentialité — Extension LinkedIn vers Kwal'App | Kwala",
+  title: "Confidentialité : extension LinkedIn vers Kwal'App | Kwala",
   description:
     "Quelles données l'extension Chrome interne de Kwala lit sur LinkedIn, où elles sont envoyées et ce qui n'est jamais collecté.",
   alternates: { canonical: "/extension-linkedin-confidentialite" },
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ConfidentialiteExtension() {
   return (
     <PageLegale
-      titre="Politique de confidentialité — Extension LinkedIn vers Kwal'App"
+      titre="Politique de confidentialité : extension LinkedIn vers Kwal'App"
       chapeau="Cette extension Chrome est un outil interne de Kwala, réservé à son équipe de coachs. Elle copie les coordonnées professionnelles affichées sur une fiche LinkedIn vers la base Airtable de Kwala, sur action explicite de l'utilisateur."
       miseAJour="2 septembre 2026"
     >
