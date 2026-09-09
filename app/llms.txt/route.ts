@@ -35,6 +35,7 @@ export function GET() {
 
 - [Coaching commercial à Lyon pour dirigeants](${SITE_URL}/coaching-dirigeants-lyon) : accompagnement des dirigeants et entrepreneurs qui portent eux-mêmes le développement commercial
 - [Coaching commercial d'équipe à Lyon](${SITE_URL}/coaching-equipe-commerciale-lyon) : accompagnement des équipes commerciales B2B
+- [Formation commerciale à Lyon](${SITE_URL}/formation-commerciale-lyon) : formation en présentiel de 3 à 6 mois, groupes de 5 à 15 personnes, 4 000 à 15 000 euros HT, finançable par OPCO via PKF Arsilon Academy
 - [Blog](${SITE_URL}/blog) : ${posts.length} articles sur la vente B2B, la prospection et le management commercial
 
 ## Questions fréquentes

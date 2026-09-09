@@ -9,6 +9,7 @@ import { useState } from "react";
 const NAV_LINKS = [
   { href: "/coaching-dirigeants-lyon", label: "Dirigeants" },
   { href: "/coaching-equipe-commerciale-lyon", label: "Équipes" },
+  { href: "/formation-commerciale-lyon", label: "Formation" },
   { href: "/blog", label: "Blog" },
 ];
 
