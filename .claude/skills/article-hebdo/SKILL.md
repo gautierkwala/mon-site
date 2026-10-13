@@ -8,6 +8,19 @@ description: Rédige et publie l'article de blog hebdomadaire de kwala.fr à par
 Tu rédiges et tu publies l'article de la semaine. Va au bout : un article écrit,
 commité et poussé en production.
 
+## Communication avec Gautier : par email
+
+Gautier lit ses mails, pas les notifications. Utilise le connecteur Gmail pour
+lui écrire à **gautier@kwala.fr** :
+
+- **À la fin de chaque exécution**, objet « Blog Kwala — <titre> » : le titre
+  publié, l'auteur, l'URL, les mots-clés visés, et l'URL à demander à
+  l'indexation dans la Search Console.
+- **Dès qu'un arbitrage est nécessaire ou que quelque chose bloque** (build
+  cassé, push refusé, pile de sujets vide, doute éditorial sérieux), objet
+  préfixé « [Action requise] », trois lignes : ce qui bloque et ce que tu
+  attends de lui. Sans attendre la fin du run.
+
 ## Où sont les choses
 
 - Le site : `/Users/gautiercolson/Projets/Actifs/mon-site`. Next.js App Router,
@@ -81,10 +94,11 @@ répartition : compte les `author:` de `content/blog/*.mdx` et, à compétence
    figure dans `https://www.kwala.fr/sitemap.xml`.
 
 Si le build échoue, corrige et recommence. Si le push est refusé, ne force
-rien : laisse le commit en local et dis-le.
+rien : laisse le commit en local, envoie l'email « [Action requise] » et dis-le.
 
 ## Compte rendu
 
-Termine par un message court : le titre publié, l'auteur, l'URL, les mots-clés
-visés, et l'URL à coller dans la Search Console pour demander l'indexation.
-Signale tout ce qui a bloqué.
+Termine par un message court dans la session, et envoie le même contenu par
+email à gautier@kwala.fr (voir plus haut) : le titre publié, l'auteur, l'URL,
+les mots-clés visés, et l'URL à coller dans la Search Console pour demander
+l'indexation. Signale tout ce qui a bloqué.
