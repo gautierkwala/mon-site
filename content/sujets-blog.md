@@ -12,8 +12,8 @@ tout moment — la tâche suit l'ordre du fichier.
   (Alexis Mignard) → `debut-rendez-vous-commercial`
 - [x] 2026-10-08 — La liste de prospection B2B (Mathilde Du Gardin) →
   `liste-prospection-b2b`
-- [ ] Faire émerger les contradictions du prospect : la question qui révèle le
-  vrai problème — source : « les contradictions en RDV » — Gautier Colson
+- [x] 2026-10-13 — Faire émerger les contradictions du prospect (Gautier
+  Colson) → `contradictions-prospect-rendez-vous`
 - [ ] La sales story : construire un discours commercial qui tient en trois
   minutes — source : « design ta sales story » — Alexis Mignard
 - [ ] L'appel de prospection : vous vendez le rendez-vous, pas la solution —
