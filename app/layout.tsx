@@ -3,6 +3,7 @@ import { Asap, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { ADRESSE, SITE_URL, TELEPHONE } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const asap = Asap({
   variable: "--font-asap",
@@ -113,6 +114,9 @@ export default function RootLayout({
             ne fonctionne que si l'option Web Analytics est activee sur le
             projet Vercel ; sans cela le script ne remonte rien. */}
         <Analytics />
+        {/* Core Web Vitals mesures chez les vrais visiteurs (LCP, CLS, INP),
+            la ou les mesures en laboratoire ne montrent qu'une machine. */}
+        <SpeedInsights />
       </body>
     </html>
   );

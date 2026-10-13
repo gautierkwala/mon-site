@@ -1,4 +1,4 @@
-import Script from "next/script";
+import { WidgetTrustfolio } from "./pages/WidgetTrustfolio";
 
 const PROFIL_TRUSTFOLIO = "https://trustfolio.co/profil/kwala-sdJEBF2Ciw1";
 
@@ -15,21 +15,9 @@ export function Resultats() {
           large QUELLE QUE SOIT la largeur du conteneur (mesure a 342, 390,
           480 et 600px : toujours 689). Sur un telephone elles ne peuvent donc
           pas tenir et le texte est coupe des deux cotes.
-          Le widget n'est affiche qu'a partir de 768px ; en dessous, un renvoi
-          vers le profil public prend le relais. */}
-      <div className="mt-8 hidden md:block">
-        <a
-          className="trustfolio-widget"
-          data-config-id="dBOT4lIRnc2"
-          data-lazyload="true"
-          data-initial-height="500"
-          target="_blank"
-          rel="noopener noreferrer"
-          href={PROFIL_TRUSTFOLIO}
-        >
-          Découvrez les témoignages de nos clients
-        </a>
-      </div>
+          Le widget n'est donc monte qu'a partir de 768px ; en dessous, le
+          renvoi vers le profil public prend le relais. */}
+      <WidgetTrustfolio profil={PROFIL_TRUSTFOLIO} />
 
       {/* Repli mobile. */}
       <div className="mt-8 md:hidden">
@@ -45,17 +33,6 @@ export function Resultats() {
           Lire les avis authentifiés par Trustfolio
         </a>
       </div>
-
-      {/* lazyOnload : le script (1,9 Mo) ne se charge qu'à l'idle du
-          navigateur, jamais en concurrence avec le LCP. Le widget a en plus
-          son propre data-lazyload="true" qui ne rend son contenu qu'au
-          scroll. L'attribut data-mode a ete retire : embed-v2.js ne lit que
-          data-config-id, data-initial-height et data-lazyload, il etait
-          donc sans effet. */}
-      <Script
-        src="https://share.trustfolio.co/scripts/embed-v2.js"
-        strategy="lazyOnload"
-      />
     </section>
   );
 }
