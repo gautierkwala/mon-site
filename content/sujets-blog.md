@@ -14,8 +14,8 @@ tout moment — la tâche suit l'ordre du fichier.
   `liste-prospection-b2b`
 - [x] 2026-10-13 — Faire émerger les contradictions du prospect (Gautier
   Colson) → `contradictions-prospect-rendez-vous`
-- [ ] La sales story : construire un discours commercial qui tient en trois
-  minutes — source : « design ta sales story » — Alexis Mignard
+- [x] 2026-10-20 — La sales story : construire un discours commercial qui
+  tient en trois minutes (Alexis Mignard) → `sales-story-discours-commercial`
 - [ ] L'appel de prospection : vous vendez le rendez-vous, pas la solution —
   sources : « le warm-up de l'appel », « workbook l'appel parfait », AIDA —
   Mathilde Du Gardin
