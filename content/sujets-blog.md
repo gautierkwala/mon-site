@@ -16,9 +16,8 @@ tout moment — la tâche suit l'ordre du fichier.
   Colson) → `contradictions-prospect-rendez-vous`
 - [x] 2026-10-20 — La sales story : construire un discours commercial qui
   tient en trois minutes (Alexis Mignard) → `sales-story-discours-commercial`
-- [ ] L'appel de prospection : vous vendez le rendez-vous, pas la solution —
-  sources : « le warm-up de l'appel », « workbook l'appel parfait », AIDA —
-  Mathilde Du Gardin
+- [x] 2026-10-29 — L'appel de prospection : vous vendez le rendez-vous, pas la
+  solution (Mathilde Du Gardin) → `appel-de-prospection-vendre-le-rendez-vous`
 - [ ] Construire la confiance en rendez-vous : les jauges à remplir avant de
   parler de prix — source : « construire la confiance en RDV » — Jenny Tordjman
 - [ ] La scorecard de qualification : ce qu'il faut savoir avant d'envoyer une
