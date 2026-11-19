@@ -18,8 +18,9 @@ tout moment — la tâche suit l'ordre du fichier.
   tient en trois minutes (Alexis Mignard) → `sales-story-discours-commercial`
 - [x] 2026-10-29 — L'appel de prospection : vous vendez le rendez-vous, pas la
   solution (Mathilde Du Gardin) → `appel-de-prospection-vendre-le-rendez-vous`
-- [ ] Construire la confiance en rendez-vous : les jauges à remplir avant de
-  parler de prix — source : « construire la confiance en RDV » — Jenny Tordjman
+- [x] 2026-11-19 — Construire la confiance en rendez-vous : les jauges à
+  remplir avant de parler de prix (Jenny Tordjman) →
+  `confiance-rendez-vous-commercial`
 - [ ] La scorecard de qualification : ce qu'il faut savoir avant d'envoyer une
   proposition — source : « la scorecard de qualification » — Mathilde Du Gardin
 - [ ] Le process de vente en quatre étapes : savoir à tout moment où en est un
