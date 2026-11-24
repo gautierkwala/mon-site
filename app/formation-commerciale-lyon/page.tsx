@@ -65,9 +65,9 @@ const jsonLd = {
 
 const REPERES = [
   { intitule: "Durée", valeur: "42 heures en présentiel, en 6 modules de 7 heures répartis sur environ 3 mois, plus un point individuel par mois." },
-  { intitule: "Groupe", valeur: "De 5 à 15 participants, pour que chacun passe réellement à l’exercice." },
+  { intitule: "Groupe", valeur: "De 5 à 15 participants selon le format retenu. Nos deux formations déclarées accueillent jusqu’à 8 participants en inter-entreprises, et jusqu’à 12 en intra-entreprise." },
   { intitule: "Format", valeur: "En présentiel, à Lyon. Pas de module en ligne à regarder seul." },
-  { intitule: "Tarifs", valeur: "3 000 euros HT par participant en inter-entreprises. Tarifs intra-entreprise détaillés dans le programme." },
+  { intitule: "Tarifs", valeur: "Détaillés dans le programme de formation, en libre accès." },
 ];
 
 export default function FormationCommercialeLyon() {
