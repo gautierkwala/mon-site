@@ -25,17 +25,17 @@ const OFFERS: Record<
   dirigeants: {
     tab: "Pour les dirigeants",
     kicker: "Pour les dirigeants",
-    headingPrefix: "Vous préférez un coaching gratuit ou un ",
-    headingHighlight: "coaching qui paye",
-    headingSuffix: " ?",
+    headingPrefix: "Pour apprendre à closer, ",
+    headingHighlight: "apprenez à l’ouvrir",
+    headingSuffix: ".",
     bullets: [
-      "Plus de rendez-vous qualifiés, un meilleur taux de transformation.",
-      "La prospection maîtrisée, jusqu’au closing.",
-      "Un coaching individuel, appliqué à vos enjeux.",
-      "Un chiffre d’affaire en hausse, dès le court terme.",
+      "Une offre et un pitch clarifiés : quoi dire, à qui, et à quel prix.",
+      "De la prospection en direct : des rendez-vous décrochés pendant les sessions.",
+      "Des rodages chronométrés et vos rendez-vous réécoutés avec un coach.",
+      "Un coaching individuel et un tableau de bord pour suivre les progrès.",
     ],
     fineprint:
-      "Présentiel à Lyon et partout en France • 3 à 12 mois • formation/action",
+      "Présentiel à Lyon et partout en France • 3 à 12 mois • formation-action",
     photo: {
       src: "/photos/offres-homme-telephone",
       alt: "Dirigeant en session de coaching commercial à distance",
@@ -51,12 +51,12 @@ const OFFERS: Record<
     headingSuffix: ".",
     bullets: [
       "Toute l’équipe formée à une même méthode de vente.",
-      "Des managers autonomes et rigoureux.",
-      "Un suivi des performances, mois après mois.",
-      "Une performance collective qui s’installe durablement.",
+      "Un challenge de prospection ou de closing pour remettre l’équipe en mouvement.",
+      "Des managers formés à coacher plutôt qu’à reporter.",
+      "Les bons indicateurs, suivis chaque semaine.",
     ],
     fineprint:
-      "Présentiel à Lyon et partout en France • 3 à 12 mois • formation/action collective + coaching des managers",
+      "Présentiel à Lyon et partout en France • 3 à 12 mois • formation-action collective + coaching des managers",
     photo: {
       src: "/photos/offres-equipe",
       alt: "Équipe commerciale Kwala en pleine session de coaching",

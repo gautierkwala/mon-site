@@ -8,6 +8,10 @@ const LEGAL_LINKS = [
   { label: "Politique de confidentialité", href: "/confidentialite" },
   { label: "CGV", href: "#" },
   { label: "Blog", href: "/blog" },
+  // Acces public aux programmes de formation, requis par l'indicateur 1 du
+  // referentiel qualite. La page est en noindex : le lien est discret mais
+  // doit exister sur l'ensemble du site.
+  { label: "Programmes de formation", href: "/programmes" },
 ];
 
 export function Footer() {

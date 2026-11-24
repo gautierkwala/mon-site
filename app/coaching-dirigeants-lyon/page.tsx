@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ADRESSE, SITE_URL, TELEPHONE } from "@/lib/site";
+import { CONVICTION, QUATRE_TEMPS } from "@/lib/methode";
 import { Header } from "@/components/00-Header";
 import { Footer } from "@/components/00-Footer";
 import { Contact } from "@/components/10-Contact";
@@ -7,7 +8,9 @@ import { PageHero } from "@/components/pages/PageHero";
 import { MotCercle } from "@/components/pages/MotCercle";
 import { BlocProbleme } from "@/components/pages/BlocProbleme";
 import { BlocPourquoi } from "@/components/pages/BlocPourquoi";
+import { BlocActions } from "@/components/pages/BlocActions";
 import { BlocResultats } from "@/components/pages/BlocResultats";
+import { BlocTemoignages } from "@/components/pages/BlocTemoignages";
 import { LienPageSoeur } from "@/components/pages/LienPageSoeur";
 
 
@@ -16,26 +19,28 @@ const CHEMIN = "/coaching-dirigeants-lyon";
 export const metadata: Metadata = {
   title: "Coaching commercial à Lyon pour dirigeants | Kwala",
   description:
-    "Vous prospectez seul ? Kwala structure votre approche commerciale à Lyon : plus de rendez-vous qualifiés, un closing maîtrisé. 1er échange gratuit.",
+    "Formation-action pour les dirigeants qui portent le développement commercial de leur entreprise. Ateliers, entraînement et coaching individuel, à Lyon.",
   alternates: { canonical: CHEMIN },
   openGraph: {
     type: "website",
     title: "Coaching commercial à Lyon pour dirigeants | Kwala",
     description:
-      "Kwala structure votre approche commerciale à Lyon : plus de rendez-vous qualifiés, un closing maîtrisé.",
+      "Formation-action pour les dirigeants qui portent le développement commercial : ateliers, entraînement et coaching individuel, à Lyon.",
     url: CHEMIN,
   },
 };
 
 // Service rattache au ProfessionalService declare dans le layout : meme
 // @id d'organisation, pour que les deux blocs decrivent bien la meme entite.
+// Pas de bloc offers : les tarifs ne doivent pas ressortir dans les resultats
+// de recherche, ils ne figurent que dans les programmes PDF.
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Coaching commercial pour dirigeants",
   serviceType: "Coaching commercial",
   description:
-    "Accompagnement des dirigeants et entrepreneurs pour structurer leur approche commerciale : prospection, conduite de rendez-vous, négociation et closing.",
+    "Formation-action pour les dirigeants et entrepreneurs qui portent le développement commercial : ateliers de vente, entraînement à la prospection, conduite de rendez-vous, closing et coaching individuel.",
   url: `${SITE_URL}${CHEMIN}`,
   inLanguage: "fr-FR",
   provider: {
@@ -49,6 +54,71 @@ const jsonLd = {
   audience: { "@type": "Audience", audienceType: "Dirigeants et entrepreneurs" },
 };
 
+const VOLETS = [
+  {
+    titre: "Les fondamentaux",
+    actions: [
+      {
+        titre: "Ateliers de vente",
+        texte:
+          "En petit groupe de dirigeants, nous travaillons l’offre, le pitch, la prospection, la conduite de rendez-vous et le closing.",
+      },
+      {
+        titre: "Une offre et un pitch clarifiés",
+        texte:
+          "Vous repartez en sachant quoi dire, à qui vous adresser et à quel prix vous positionner.",
+      },
+    ],
+  },
+  {
+    titre: "L’entraînement",
+    actions: [
+      {
+        titre: "Prospection en direct",
+        texte:
+          "On apprend le matin, on prospecte l’après-midi. Les rendez-vous se décrochent pendant la journée, pas après.",
+      },
+      {
+        titre: "Rodages et écoute de rendez-vous",
+        texte:
+          "Des simulations chronométrées, puis vos propres appels réécoutés et analysés avec un coach.",
+      },
+    ],
+  },
+  {
+    titre: "Le pilotage",
+    actions: [
+      {
+        titre: "Coaching individuel du dirigeant",
+        texte:
+          "Des points réguliers, en tête à tête, pour suivre vos indicateurs et vos progrès.",
+      },
+      {
+        titre: "Tableau de bord",
+        texte:
+          "Un suivi chiffré de l’impact de l’accompagnement, challengé avec votre coach à chaque point.",
+      },
+    ],
+  },
+];
+
+const TEMOIGNAGES = [
+  {
+    nom: "Guillaume Blanchard",
+    fonction: "fondateur d’Enerkaya",
+    chiffre: "×6 clients en 1 an",
+    citation:
+      "J’étais indépendant, j’avais un seul client, j’étais seul face à mon défi de croissance et sans méthode. […] Je suis passé d’1 client à 6 clients en 1 an, j’ai pris une vraie casquette de commercial, avec plaisir.",
+  },
+  {
+    nom: "Renaud Durier",
+    fonction: "co-fondateur de Pégase Digital",
+    chiffre: "Des rendez-vous générés chaque jeudi",
+    citation:
+      "Le format « on apprend le matin, on applique l’après-midi » change tout : on repart chaque jeudi avec des rendez-vous générés et des opportunités qui avancent, au lieu de remettre la prospection à plus tard.",
+  },
+];
+
 export default function CoachingDirigeantsLyon() {
   return (
     <>
@@ -61,14 +131,20 @@ export default function CoachingDirigeantsLyon() {
           declarer son fond. On le pose une fois ici. */}
       <main className="bg-alabaster">
         <PageHero
-          surtitre="Coaching commercial B2B · Lyon"
+          surtitre="Formation-action · Dirigeants · Lyon"
+          /* Le H1 porte l'accroche ET la requete visee. Deplacer « coaching
+             commercial Lyon » hors du H1 aurait fragilise le seul
+             positionnement acquis du site. */
           titre={
             <>
-              Coaching commercial à Lyon pour{" "}
-              <MotCercle>dirigeants</MotCercle> et entrepreneurs
+              Pour apprendre à closer,{" "}
+              <MotCercle>apprenez à l’ouvrir</MotCercle>
+              <span className="mt-4 block font-asap text-2xl font-bold italic leading-tight text-onyx md:text-[28px]">
+                Coaching commercial à Lyon pour dirigeants et entrepreneurs
+              </span>
             </>
           }
-          sousTitre="Vous faites le commerce seul. Kwala vous accompagne pour structurer votre approche, décrocher plus de rendez-vous qualifiés et aller au bout de vos deals, avec méthode et dans la durée."
+          sousTitre="Kwala propose de la formation-action aux dirigeants qui portent eux-mêmes le développement commercial de leur entreprise : on apprend, on s’entraîne, et on décroche des rendez-vous pendant les sessions."
           cta={{ libelle: "Prendre contact", href: "#contact" }}
           photo={{
             src: "/photos/pages/dirigeants-methode.webp",
@@ -78,37 +154,40 @@ export default function CoachingDirigeantsLyon() {
 
         <BlocProbleme
           decor="petales"
-          titre="Ce n’est pas le produit qui bloque."
-          texte="La plupart des dirigeants qui arrivent chez Kwala ont un bon produit, une vraie proposition de valeur, et la volonté de développer leur activité. Ce qui manque, c’est rarement l’envie. C’est la formation, la régularité, et quelqu’un pour regarder comment ça se passe vraiment en rendez-vous. Prospecter sans routine, c’est remettre à demain. Aller en rendez-vous sans structure, c’est laisser le prospect mener la danse. Parler prix sans préparation, c’est souvent baisser d’emblée. Sans regard extérieur, on progresse lentement, et souvent on ne sait pas exactement pourquoi ça ne signe pas."
+          titre="Les blocages que rencontrent les dirigeants"
+          texte="Vous êtes seul face au développement commercial, sans méthode claire ni regard extérieur sur ce que vous faites. La prospection passe après le reste, si bien que le chiffre d’affaires dépend encore largement du réseau et du bouche-à-oreille. En rendez-vous, le discours reste centré sur le produit plutôt que sur les problèmes du client. Et le manque de confiance dans son offre et dans son prix finit par freiner le passage à l’action."
         />
 
         <BlocPourquoi
-          titre="Un coaching à Lyon."
-          texte="Les formations en ligne apportent des connaissances. Ce qui change une posture commerciale, c’est autre chose : une correction en temps réel, un appel passé en live devant un coach, un rendez-vous réécouté et analysé ensemble. Chez Kwala, le travail se fait en salle, avec d’autres entrepreneurs, face à des situations concrètes. Ce n’est pas un cours. C’est de l’entraînement."
-          puces={[
-            "Séances en présentiel : pitch, schéma d’appel, objections, négociation, closing",
-            "Écoute et analyse de vos rendez-vous",
-            "Sessions de prospection collectives, animées par un coach",
-            "Suivi régulier des indicateurs commerciaux",
-          ]}
+          titre="Notre conviction, notre méthode"
+          texte={`${CONVICTION} C’est pourquoi l’accompagnement Kwala ne se joue pas en salle de cours, mais en quatre temps qui se répètent tout au long du parcours.`}
+          puces={QUATRE_TEMPS}
           photo={{
             src: "/photos/pages/dirigeants-cadrage.webp",
             alt: "Point de cadrage individuel entre un dirigeant et une coach Kwala",
           }}
         />
 
+        <BlocActions titre="Ce que nous faisons ensemble" volets={VOLETS} />
+
         <BlocResultats
-          titre="Ce que ça change, concrètement."
+          titre="Les résultats déjà obtenus"
           stats={[
-            "+20% de taux de conversion en rendez-vous en moyenne",
-            "+6 rendez-vous par mois avec des décideurs",
-            "Un accompagnement rentabilisé en deux mois en moyenne",
+            "Plus de rendez-vous",
+            "Plus de clients",
+            "Une méthode duplicable",
+            "De la confiance",
           ]}
         />
 
+        <BlocTemoignages
+          titre="Ce qu’en disent les dirigeants accompagnés"
+          temoignages={TEMOIGNAGES}
+        />
+
         <Contact
-          titre="Un premier échange pour voir si c’est fait pour vous."
-          texte="Chaque formation commerciale commence par un point de cadrage individuel : vos objectifs, votre situation actuelle, ce qui bloque, et les résultats que vous souhaitez atteindre."
+          titre="Un premier échange pour voir si c’est fait pour vous"
+          texte="Chaque accompagnement commence par un point de cadrage individuel avec Gautier Colson, fondateur et coach sales : vos objectifs, votre situation actuelle, ce qui bloque, et les résultats que vous visez. Par téléphone au 06 23 13 01 49, ou via le formulaire."
           source="dirigeant"
         />
 
@@ -116,6 +195,12 @@ export default function CoachingDirigeantsLyon() {
           question="Vous encadrez une équipe commerciale ?"
           libelle="Voir la page dédiée aux équipes"
           href="/coaching-equipe-commerciale-lyon"
+        />
+
+        <LienPageSoeur
+          question="Prérequis, objectifs, durée, modalités et accessibilité :"
+          libelle="programme détaillé de la formation"
+          href="/programmes"
         />
       </main>
       <Footer />

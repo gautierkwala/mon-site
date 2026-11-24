@@ -15,14 +15,14 @@ export const QUESTIONS = [
       "Une formation transmet des connaissances, souvent en ligne et en groupe. Un coaching commercial travaille la pratique : un appel passé en direct devant un coach, un rendez-vous réécouté et analysé ensemble, une correction sur le moment. Chez Kwala, l’accompagnement est une formation-action : on s’entraîne sur vos dossiers réels, pas sur des cas d’école.",
   },
   {
-    question: "Le coaching commercial de Kwala est-il finançable par un OPCO ?",
+    question: "Kwala est-il un organisme de formation déclaré ?",
     reponse:
-      "Oui. Kwala est porté par un organisme de formation, ce qui permet de mobiliser un budget OPCO pour financer l’accompagnement. Kwala n’est pas certifié Qualiopi en propre : la certification est celle de l’organisme porteur. Le montant pris en charge dépend de votre OPCO et de votre branche, nous le regardons ensemble lors du premier échange.",
+      "Oui. La déclaration d’activité de Kwala est enregistrée sous le numéro 84 69 27356 69 auprès du préfet de la région Auvergne-Rhône-Alpes ; cet enregistrement ne vaut pas agrément de l’État. Nos deux programmes de formation sont consultables librement sur le site, avec leurs objectifs, prérequis, durée, modalités d’accès, tarifs et conditions d’accessibilité. Ce sont des formations non certifiantes, non éligibles au CPF.",
   },
   {
     question: "Combien de temps dure un accompagnement ?",
     reponse:
-      "De 3 à 12 mois, selon l’objectif visé et la taille de l’équipe. Le rythme est celui d’une formation-action : des sessions régulières entrecoupées de mise en pratique sur le terrain, entre deux séances.",
+      "De 3 à 12 mois pour un accompagnement de coaching, selon l’objectif visé et la taille de l’équipe. Nos deux formations déclarées ont, elles, un format fixe : 42 heures en présentiel, en 6 modules de 7 heures répartis sur environ 3 mois. Dans les deux cas le rythme est celui d’une formation-action : des sessions régulières entrecoupées de mise en pratique sur le terrain.",
   },
   {
     question: "Intervenez-vous ailleurs qu’à Lyon ?",
