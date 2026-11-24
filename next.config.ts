@@ -38,6 +38,24 @@ const nextConfig: NextConfig = {
   async redirects() {
     return ANCIENNES_URL_BLOG;
   },
+  // Les programmes PDF contiennent les tarifs : ils doivent rester
+  // librement accessibles (indicateur 1 du referentiel qualite) mais ne pas
+  // etre indexes. L'en-tete X-Robots-Tag est le seul moyen de poser un
+  // noindex sur un fichier non HTML.
+  //
+  // Volontairement PAS de Disallow dans robots.txt : un blocage empecherait
+  // Google de lire cet en-tete, et l'URL pourrait rester indexee sans que
+  // l'on puisse l'en faire sortir.
+  async headers() {
+    return [
+      {
+        source: "/programmes/:fichier(.*\\.pdf)",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        ],
+      },
+    ];
+  },
 };
 
 const withMDX = createMDX({

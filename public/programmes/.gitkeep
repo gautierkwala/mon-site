@@ -1,0 +1,9 @@
+Les programmes de formation (PDF) se deposent ici.
+
+Noms attendus par app/programmes/page.tsx :
+  kwala-f1-prospection-commerciale-b2b.pdf
+  kwala-f2-performer-en-rendez-vous.pdf
+
+Tant qu'un fichier est absent, la page affiche « programme disponible sur
+demande » au lieu d'un lien mort. Les noms ne contiennent pas « tarif », et
+next.config.ts sert ces fichiers avec X-Robots-Tag: noindex, nofollow.

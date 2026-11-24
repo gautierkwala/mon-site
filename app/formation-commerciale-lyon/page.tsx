@@ -53,20 +53,9 @@ const jsonLd = {
       address: ADRESSE,
     },
   },
-  offers: {
-    "@type": "Offer",
-    category: "Formation professionnelle",
-    priceCurrency: "EUR",
-    priceSpecification: {
-      "@type": "PriceSpecification",
-      minPrice: 4000,
-      maxPrice: 15000,
-      priceCurrency: "EUR",
-      valueAddedTaxIncluded: false,
-    },
-    availability: "https://schema.org/InStock",
-    url: `${SITE_URL}${CHEMIN}`,
-  },
+  // Pas de bloc offers : un prix declare ici remonterait dans les resultats
+  // de recherche. Les tarifs ne figurent que dans les programmes PDF, qui
+  // sont servis en noindex.
   audience: {
     "@type": "Audience",
     audienceType: "Dirigeants, entrepreneurs et équipes commerciales B2B",
@@ -77,7 +66,7 @@ const REPERES = [
   { intitule: "Durée", valeur: "De 3 à 6 mois, en séances espacées pour laisser le temps de pratiquer entre deux." },
   { intitule: "Groupe", valeur: "De 5 à 15 participants, pour que chacun passe réellement à l’exercice." },
   { intitule: "Format", valeur: "En présentiel, à Lyon. Pas de module en ligne à regarder seul." },
-  { intitule: "Budget", valeur: "De 4 000 à 15 000 euros HT selon la durée et la taille du groupe." },
+  { intitule: "Tarifs", valeur: "Détaillés dans le programme de formation, avec les modalités de financement OPCO." },
 ];
 
 export default function FormationCommercialeLyon() {

@@ -1,11 +1,16 @@
-import Script from "next/script";
+import { WidgetTrustfolio } from "./WidgetTrustfolio";
 
 type Props = { titre: string; stats: string[] };
 
+const PROFIL_TRUSTFOLIO = "https://trustfolio.co/profil/kwala-sdJEBF2Ciw1";
+
 /**
- * Trois chiffres cles puis le widget Trustfolio — meme snippet et meme
- * strategie de chargement que 07-Resultats sur l'accueil (lazyOnload : le
- * script fait 1,9 Mo et ne doit jamais concurrencer le LCP).
+ * Les resultats de l'accompagnement, puis le widget Trustfolio.
+ *
+ * Le widget passe par WidgetTrustfolio, qui ne le monte qu'au-dessus de
+ * 768px : ses ~3,2 Mo (HTML, script et photos) etaient jusqu'ici telecharges
+ * par les visiteurs mobiles pour un bloc que leur ecran ne peut pas afficher.
+ * Meme traitement que sur l'accueil.
  */
 export function BlocResultats({ titre, stats }: Props) {
   return (
@@ -14,7 +19,7 @@ export function BlocResultats({ titre, stats }: Props) {
         {titre}
       </h2>
 
-      <ul className="mt-10 grid gap-6 md:grid-cols-3">
+      <ul className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => (
           <li
             key={stat}
@@ -25,25 +30,19 @@ export function BlocResultats({ titre, stats }: Props) {
         ))}
       </ul>
 
-      <div className="mt-12">
+      <WidgetTrustfolio profil={PROFIL_TRUSTFOLIO} />
+
+      {/* Repli mobile : le widget n'est pas monte sous 768px. */}
+      <div className="mt-8 md:hidden">
         <a
-          className="trustfolio-widget"
-          data-config-id="dBOT4lIRnc2"
-          data-mode="default"
-          data-lazyload="true"
-          data-initial-height="500"
+          href={PROFIL_TRUSTFOLIO}
           target="_blank"
           rel="noopener noreferrer"
-          href="https://trustfolio.co/profil/kwala-sdJEBF2Ciw1"
+          className="inline-flex items-center rounded-sm bg-onyx px-4 py-2.5 font-asap text-[15px] font-medium text-white transition-opacity hover:opacity-90"
         >
-          Découvrez les témoignages de nos clients
+          Lire les avis authentifiés par Trustfolio
         </a>
       </div>
-
-      <Script
-        src="https://share.trustfolio.co/scripts/embed-v2.js"
-        strategy="lazyOnload"
-      />
     </section>
   );
 }
