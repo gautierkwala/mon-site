@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ADRESSE, SITE_URL, TELEPHONE } from "@/lib/site";
 import { Header } from "@/components/00-Header";
 import { Footer } from "@/components/00-Footer";
@@ -12,15 +13,15 @@ import { LienPageSoeur } from "@/components/pages/LienPageSoeur";
 const CHEMIN = "/formation-commerciale-lyon";
 
 export const metadata: Metadata = {
-  title: "Formation commerciale à Lyon, finançable par votre OPCO | Kwala",
+  title: "Formation commerciale à Lyon pour dirigeants et équipes B2B | Kwala",
   description:
-    "Formation commerciale à Lyon en présentiel, de 3 à 6 mois, pour des groupes de 5 à 15 personnes. Entraînement sur vos dossiers réels. Financement OPCO possible.",
+    "Formation commerciale à Lyon en présentiel : 42 heures en 6 modules, pour des groupes de 5 à 15 personnes. Entraînement sur vos dossiers réels.",
   alternates: { canonical: CHEMIN },
   openGraph: {
     type: "website",
-    title: "Formation commerciale à Lyon, finançable par votre OPCO | Kwala",
+    title: "Formation commerciale à Lyon pour dirigeants et équipes B2B | Kwala",
     description:
-      "Une formation commerciale en présentiel à Lyon, construite comme un entraînement sur vos dossiers réels. Financement OPCO possible.",
+      "Une formation commerciale en présentiel à Lyon, construite comme un entraînement sur vos dossiers réels.",
     url: CHEMIN,
   },
 };
@@ -63,10 +64,10 @@ const jsonLd = {
 };
 
 const REPERES = [
-  { intitule: "Durée", valeur: "De 3 à 6 mois, en séances espacées pour laisser le temps de pratiquer entre deux." },
+  { intitule: "Durée", valeur: "42 heures en présentiel, en 6 modules de 7 heures répartis sur environ 3 mois, plus un point individuel par mois." },
   { intitule: "Groupe", valeur: "De 5 à 15 participants, pour que chacun passe réellement à l’exercice." },
   { intitule: "Format", valeur: "En présentiel, à Lyon. Pas de module en ligne à regarder seul." },
-  { intitule: "Tarifs", valeur: "Détaillés dans le programme de formation, avec les modalités de financement OPCO." },
+  { intitule: "Tarifs", valeur: "3 000 euros HT par participant en inter-entreprises. Tarifs intra-entreprise détaillés dans le programme." },
 ];
 
 export default function FormationCommercialeLyon() {
@@ -85,7 +86,7 @@ export default function FormationCommercialeLyon() {
               Formation commerciale à <MotCercle>Lyon</MotCercle>
             </>
           }
-          sousTitre="Une formation commerciale qui ne se regarde pas, qui se pratique. Trois à six mois d’entraînement en présentiel à Lyon, sur vos dossiers réels, avec un financement OPCO possible."
+          sousTitre="Une formation commerciale qui ne se regarde pas, qui se pratique. Quarante-deux heures d’entraînement en présentiel à Lyon, sur vos dossiers réels, vos vrais prospects et vos vraies objections."
           cta={{ libelle: "Discuter de votre projet", href: "#contact" }}
           photo={{
             src: "/photos/pages/formation-collectif.webp",
@@ -138,34 +139,39 @@ export default function FormationCommercialeLyon() {
           }}
         />
 
-        {/* Financement : premiere question posee sur cette requete. La
-            formulation distingue explicitement Kwala de l'organisme porteur,
-            Kwala n'etant pas certifie Qualiopi en propre. */}
+        {/* Ce bloc portait une promesse de financement OPCO et presentait la
+            formation comme portee par un organisme certifie Qualiopi. Les
+            programmes v8 indiquent l'inverse : formation non certifiante, non
+            eligible au CPF, et la certification de Kwala n'est pas encore
+            acquise. Il est remplace par la seule mention exacte : le numero de
+            declaration d'activite, repris tel quel des programmes. */}
         <section className="w-full bg-alabaster">
           <div className="mx-auto w-full max-w-[1440px] px-6 pb-16 md:px-[120px] md:pb-[80px]">
             <div className="max-w-[900px] rounded-xl bg-dust px-6 py-10 md:px-12 md:py-12">
               <h2 className="font-asap text-2xl font-bold italic leading-tight text-onyx md:text-[30px]">
-                Financer la formation avec votre OPCO.
+                Un organisme de formation déclaré.
               </h2>
               <div className="mt-5 space-y-4 font-dm-sans text-[17px] leading-8 text-onyx/85">
                 <p>
-                  Une formation ne peut ouvrir droit à un financement que si
-                  elle est portée par un organisme certifié Qualiopi. Kwala ne
-                  l’est pas en propre. Nos actions de formation sont déposées
-                  par PKF Arsilon Academy, notre organisme partenaire, qui en
-                  assure l’enregistrement et le suivi administratif.
+                  Kwala est un organisme de formation dont la déclaration
+                  d’activité est enregistrée sous le numéro 84 69 27356 69
+                  auprès du préfet de la région Auvergne-Rhône-Alpes. Cet
+                  enregistrement ne vaut pas agrément de l’État.
                 </p>
                 <p>
-                  Concrètement, cela vous permet de solliciter une prise en
-                  charge auprès de votre OPCO, comme pour n’importe quelle
-                  formation professionnelle. Le montant accordé dépend de votre
-                  branche, de votre effectif et du budget restant sur votre
-                  exercice. Nous regardons ensemble ce qui est mobilisable dès
-                  le premier échange, avant que vous ne vous engagiez.
+                  Les programmes détaillent les objectifs, les prérequis, la
+                  durée, les modalités et délais d’accès, les méthodes
+                  mobilisées, les modalités d’évaluation, les tarifs et les
+                  conditions d’accessibilité. Ils sont en libre accès, sans
+                  inscription.
                 </p>
                 <p>
-                  Nous nous chargeons du dossier et des documents à fournir.
-                  Vous n’avez pas de démarche administrative à mener seul.
+                  <Link
+                    href="/programmes"
+                    className="font-medium text-wisteria-text underline underline-offset-2 hover:no-underline"
+                  >
+                    Consulter les programmes de formation
+                  </Link>
                 </p>
               </div>
             </div>
@@ -174,7 +180,7 @@ export default function FormationCommercialeLyon() {
 
         <Contact
           titre="Un premier échange pour cadrer votre formation."
-          texte="Chaque formation commence par un point de cadrage : votre situation commerciale, le niveau des participants, ce que vous voulez qu’ils sachent faire à la fin. C’est ce qui permet de construire un programme adapté, et de vérifier ce que votre OPCO peut prendre en charge."
+          texte="Chaque formation commence par un point de cadrage : votre situation commerciale, le niveau des participants, ce que vous voulez qu’ils sachent faire à la fin. C’est ce qui permet de construire un parcours adapté plutôt qu’un programme standard."
           source="formation"
         />
 
