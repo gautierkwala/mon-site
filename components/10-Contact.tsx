@@ -7,11 +7,33 @@ import { WEB3FORMS_ENDPOINT, WEB3FORMS_KEY } from "@/lib/web3forms";
 
 type Etat = "repos" | "envoi" | "succes" | "erreur";
 
+/**
+ * Surcharges de la carte formulaire. Toutes facultatives : sans elles, le
+ * formulaire reste exactement celui de l'accueil. Elles existent pour qu'une
+ * page dediee puisse adapter le vocabulaire sans dupliquer le formulaire, et
+ * donc sans dupliquer la logique d'envoi Web3Forms.
+ */
+type Formulaire = {
+  /** Deux champs prenom et nom au lieu d'un seul champ « Nom ». */
+  prenomEtNomSepares?: boolean;
+  societeLabel?: string;
+  societePlaceholder?: string;
+  messageLabel?: string;
+  messagePlaceholder?: string;
+  titre?: string;
+  sousTitre?: string;
+  bouton?: string;
+  confirmationTitre?: string;
+  confirmationTexte?: string;
+};
+
 type Props = {
   /** Titre de la colonne de gauche. Defaut : celui de la page d'accueil. */
   titre?: React.ReactNode;
   /** Texte de la colonne de gauche. Defaut : celui de la page d'accueil. */
   texte?: React.ReactNode;
+  /** Adaptations du formulaire pour une page dediee. */
+  formulaire?: Formulaire;
   /**
    * Valeur du champ cache `source` transmis a Web3Forms : permet de savoir
    * depuis quelle page la demande a ete envoyee sans dupliquer le formulaire.
@@ -19,7 +41,7 @@ type Props = {
   source?: string;
 };
 
-export function Contact({ titre, texte, source }: Props = {}) {
+export function Contact({ titre, texte, source, formulaire }: Props = {}) {
   const [etat, setEtat] = useState<Etat>("repos");
   const [erreur, setErreur] = useState<string>("");
   // Le message de confirmation prend la place du formulaire : on y deplace le
@@ -39,7 +61,10 @@ export function Contact({ titre, texte, source }: Props = {}) {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject: `Nouvelle demande depuis kwala.fr : ${donnees.name || "sans nom"}`,
+          subject: `Nouvelle demande depuis kwala.fr : ${
+            [donnees.firstname, donnees.name].filter(Boolean).join(" ") ||
+            "sans nom"
+          }`,
           from_name: "Formulaire kwala.fr",
           ...donnees,
         }),
@@ -129,20 +154,21 @@ export function Contact({ titre, texte, source }: Props = {}) {
                 className="py-6 focus:outline-none"
               >
                 <h3 className="font-asap text-[28px] font-bold italic text-white">
-                  Merci, c’est bien envoyé.
+                  {formulaire?.confirmationTitre ?? "Merci, c’est bien envoyé."}
                 </h3>
                 <p className="mt-4 font-dm-sans text-[15px] leading-7 text-dust">
-                  On vous rappelle dans la journée.
+                  {formulaire?.confirmationTexte ??
+                    "On vous rappelle dans la journée."}
                 </p>
               </div>
             ) : (
               <>
             <h3 className="font-asap text-[28px] font-bold italic text-white">
-              Prenons contact
+              {formulaire?.titre ?? "Prenons contact"}
             </h3>
             <p className="mt-2 font-dm-sans text-[15px] text-dust">
-              Tous les champs sont nécessaires pour bien préparer notre
-              échange.
+              {formulaire?.sousTitre ??
+                "Tous les champs sont nécessaires pour bien préparer notre échange."}
             </p>
 
             <form onSubmit={envoyer} className="mt-8" aria-busy={etat === "envoi"}>
@@ -164,6 +190,22 @@ export function Contact({ titre, texte, source }: Props = {}) {
                 style={{ display: "none" }}
               />
               <div className="grid gap-4 sm:grid-cols-2">
+                {formulaire?.prenomEtNomSepares && (
+                  <div>
+                    <label htmlFor="contact-firstname" className="mb-2 block font-dm-sans text-[13px] font-medium tracking-[0.2px] text-dust">
+                      Prénom
+                    </label>
+                    <input
+                      id="contact-firstname"
+                      name="firstname"
+                      type="text"
+                      autoComplete="given-name"
+                      required
+                      placeholder="Jeanne"
+                      className="w-full rounded-sm border border-white/15 bg-white/5 px-4 py-3.5 font-dm-sans text-[15px] text-white placeholder:text-white/35 focus:border-wisteria focus:bg-white/10 focus:outline-none"
+                    />
+                  </div>
+                )}
                 <div>
                   <label
                     htmlFor="contact-name"
@@ -175,9 +217,13 @@ export function Contact({ titre, texte, source }: Props = {}) {
                     id="contact-name"
                     name="name"
                     type="text"
-                    autoComplete="name"
+                    autoComplete={
+                      formulaire?.prenomEtNomSepares ? "family-name" : "name"
+                    }
                     required
-                    placeholder="Jeanne Martin"
+                    placeholder={
+                      formulaire?.prenomEtNomSepares ? "Martin" : "Jeanne Martin"
+                    }
                     className="w-full rounded-sm border border-white/15 bg-white/5 px-4 py-3.5 font-dm-sans text-[15px] text-white placeholder:text-white/35 focus:border-wisteria focus:bg-white/10 focus:outline-none"
                   />
                 </div>
@@ -186,14 +232,16 @@ export function Contact({ titre, texte, source }: Props = {}) {
                     htmlFor="contact-company"
                     className="mb-2 block font-dm-sans text-[13px] font-medium tracking-[0.2px] text-dust"
                   >
-                    Société
+                    {formulaire?.societeLabel ?? "Société"}
                   </label>
                   <input
                     id="contact-company"
                     name="company"
                     type="text"
                     autoComplete="organization"
-                    placeholder="Nom de votre entreprise"
+                    placeholder={
+                      formulaire?.societePlaceholder ?? "Nom de votre entreprise"
+                    }
                     className="w-full rounded-sm border border-white/15 bg-white/5 px-4 py-3.5 font-dm-sans text-[15px] text-white placeholder:text-white/35 focus:border-wisteria focus:bg-white/10 focus:outline-none"
                   />
                 </div>
@@ -240,14 +288,17 @@ export function Contact({ titre, texte, source }: Props = {}) {
                   htmlFor="contact-message"
                   className="mb-2 block font-dm-sans text-[13px] font-medium tracking-[0.2px] text-dust"
                 >
-                  Votre besoin
+                  {formulaire?.messageLabel ?? "Votre besoin"}
                 </label>
                 <textarea
                   id="contact-message"
                   name="message"
                   rows={4}
                   required
-                  placeholder="Dirigeant, équipe commerciale, effectif, objectifs…"
+                  placeholder={
+                    formulaire?.messagePlaceholder ??
+                    "Dirigeant, équipe commerciale, effectif, objectifs…"
+                  }
                   className="w-full min-h-[100px] resize-y rounded-sm border border-white/15 bg-white/5 px-4 py-3.5 font-dm-sans text-[15px] text-white placeholder:text-white/35 focus:border-wisteria focus:bg-white/10 focus:outline-none"
                 />
               </div>
@@ -276,7 +327,7 @@ export function Contact({ titre, texte, source }: Props = {}) {
                   ? "Envoi en cours…"
                   : etat === "erreur"
                     ? "Réessayer"
-                    : "Envoyer ma demande"}
+                    : (formulaire?.bouton ?? "Envoyer ma demande")}
               </button>
               <p className="mt-4 text-center font-dm-sans text-xs text-white/40">
                 En envoyant, vous acceptez d’être recontacté par l’équipe
