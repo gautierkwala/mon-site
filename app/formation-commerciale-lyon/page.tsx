@@ -194,8 +194,8 @@ export default function FormationCommercialeLyon() {
 
         <BlocTemoignages
           sombre
-          surtitre="Ils nous ont fait confiance"
-          titre="Ce qu’en disent les organismes et les entreprises"
+          surtitre="Ils ont formé leurs équipes"
+          titre="Ce qu’en disent les entreprises formées"
           temoignages={TEMOIGNAGES_FORMATION}
         />
 
