@@ -11,7 +11,7 @@ type Props = { titre: string; surtitre?: string; stats: string[] };
  */
 export function BlocResultats({ titre, surtitre, stats }: Props) {
   return (
-    <section className="bg-wisteria px-6 py-20 md:px-[120px] md:py-[100px]">
+    <section className="bg-wisteria px-6 py-16 md:px-[120px] md:py-24">
       <div className="mx-auto w-full max-w-[1280px]">
         {surtitre && (
           <p className="font-asap text-[15px] font-bold italic uppercase tracking-[0.12em] text-onyx/60">

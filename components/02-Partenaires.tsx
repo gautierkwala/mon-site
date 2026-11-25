@@ -25,7 +25,13 @@ export function Partenaires() {
   // et le titre "Nos partenaires" se retrouvait desaligne du contenu des
   // autres sections.
   return (
-    <section id="partenaires" className="mx-auto w-full max-w-[1440px] overflow-hidden py-0">
+    // Le bandeau partenaires prolonge le hero sur le meme fond alabaster :
+    // peu d'air au-dessus, le rythme complet en dessous avant la bande
+    // blanche suivante.
+    <section
+      id="partenaires"
+      className="mx-auto w-full max-w-[1440px] overflow-hidden pb-16 pt-8 md:pb-24 md:pt-10"
+    >
       <h2 className="px-6 font-asap text-2xl italic text-onyx md:px-[120px]">
         Nos partenaires
       </h2>

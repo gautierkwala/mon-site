@@ -1,6 +1,7 @@
 export function MieuxCloser() {
   return (
-    <section id="mieux-closer" className="mx-auto w-full max-w-[1440px] px-6 py-8 md:px-[30px] md:py-[14px]">
+    <section id="mieux-closer" className="w-full bg-white">
+      <div className="mx-auto w-full max-w-[1440px] px-6 py-12 md:px-[30px] md:py-16">
       {/* Carte 1380×580 (get_metadata du calque "BACKGROUND" Figma) : à 1440px
           de page avec le padding md:px-[30px] ci-dessus, la carte fait déjà
           1380px de large — aspect-ratio verrouillé pour garder exactement
@@ -52,6 +53,7 @@ export function MieuxCloser() {
             qu’un bon closing ne commence pas au moment de signer. Il commence
             dès la première question.
           </p>
+        </div>
         </div>
       </div>
     </section>

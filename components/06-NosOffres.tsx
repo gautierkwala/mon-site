@@ -223,10 +223,8 @@ function CarteOffre({ offre, numero }: { offre: Offre; numero: number }) {
  */
 export function NosOffres() {
   return (
-    <section
-      id="offres"
-      className="mx-auto w-full max-w-[1440px] px-6 py-16 md:px-[30px] md:py-[60px]"
-    >
+    <section id="offres" className="w-full bg-white">
+      <div className="mx-auto w-full max-w-[1440px] px-6 py-12 md:px-[30px] md:py-16">
       {/* Dans le Figma la carte est quasi pleine largeur (x=32, 1381 de large
           sur une page de 1440) tandis que le chapeau est indente a x=121.
           D'ou 30px de marge sur la section et 90px de plus sur le chapeau. */}
@@ -245,6 +243,7 @@ export function NosOffres() {
         {(Object.keys(OFFERS) as OfferKey[]).map((cle, index) => (
           <CarteOffre key={cle} offre={OFFERS[cle]} numero={index + 1} />
         ))}
+      </div>
       </div>
     </section>
   );

@@ -34,7 +34,6 @@ export type Temoignage = {
 
 export const PROFIL_TRUSTFOLIO = "https://trustfolio.co/profil/kwala-sdJEBF2Ciw1";
 export const NOTE_TRUSTFOLIO = "5/5";
-export const NOMBRE_AVIS = 40;
 
 const P = "/temoignages/portraits";
 

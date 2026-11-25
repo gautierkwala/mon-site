@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  NOMBRE_AVIS,
   NOTE_TRUSTFOLIO,
   PROFIL_TRUSTFOLIO,
   VISAGES_HERO,
@@ -128,7 +127,7 @@ export function Hero() {
                   rel="noopener noreferrer"
                   className="underline underline-offset-2 hover:no-underline"
                 >
-                  {NOMBRE_AVIS} avis clients authentifiés par Trustfolio
+                  avis clients authentifiés par Trustfolio
                 </a>
               </p>
             </div>

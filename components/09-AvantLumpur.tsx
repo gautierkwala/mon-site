@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function AvantLumpur() {
   return (
-    <section id="avant-lumpur" className="w-full bg-alabaster py-16 md:py-[107px]">
+    <section id="avant-lumpur" className="w-full bg-alabaster py-12 md:py-16">
       {/* Fond : rectangle plein #8093F1, coins droits — vérifié directement
           sur le SVG source Figma ("M1440 0H0V800H1440V0Z", pas de rx) et sur
           le rendu 1:1 (bord bas parfaitement droit à y=906 sur toute la

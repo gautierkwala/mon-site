@@ -1,6 +1,5 @@
 import Image from "next/image";
 import {
-  NOMBRE_AVIS,
   NOTE_TRUSTFOLIO,
   PROFIL_TRUSTFOLIO,
   type Temoignage,
@@ -42,7 +41,7 @@ export function BlocTemoignages({
   const accent = sombre ? "text-wisteria" : "text-wisteria-text";
 
   return (
-    <section className={`${fond} px-6 py-20 md:px-[120px] md:py-[100px]`}>
+    <section className={`${fond} px-6 py-16 md:px-[120px] md:py-24`}>
       <div className="mx-auto w-full max-w-[1280px]">
         {surtitre && (
           <p
@@ -110,8 +109,13 @@ export function BlocTemoignages({
           <span className={`font-asap text-[28px] font-bold italic ${accent}`}>
             {NOTE_TRUSTFOLIO}
           </span>
+          {/* Pas de nombre d'avis affiche : le compteur Trustfolio ne couvre
+              qu'une partie des clients accompagnes, et un chiffre partiel
+              dessert plus qu'il ne prouve. Ce qui compte est dit : chaque
+              avis cite ici a ete verifie par un tiers, et le profil est a un
+              clic pour qui veut compter lui-meme. */}
           <span>
-            {NOMBRE_AVIS} avis clients authentifiés par{" "}
+            Chaque avis de cette page est authentifié par{" "}
             <a
               href={PROFIL_TRUSTFOLIO}
               target="_blank"
@@ -129,7 +133,7 @@ export function BlocTemoignages({
               sombre ? "bg-wisteria text-onyx" : "bg-onyx text-white"
             }`}
           >
-            Lire les {NOMBRE_AVIS} avis
+            Lire tous les avis
           </a>
         </div>
       </div>

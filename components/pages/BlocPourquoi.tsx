@@ -15,7 +15,7 @@ type Props = {
  */
 export function BlocPourquoi({ titre, texte, puces, photo }: Props) {
   return (
-    <section className="mx-auto w-full max-w-[1440px] px-6 py-16 md:px-[120px] md:py-[60px]">
+    <section className="mx-auto w-full max-w-[1440px] px-6 py-16 md:px-[120px] md:py-24">
       <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
         <div className="lg:w-[56%]">
           <h2 className="font-asap text-3xl font-bold italic leading-tight text-onyx md:text-[43.6px]">

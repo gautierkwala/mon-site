@@ -17,7 +17,7 @@ type Props = {
  *  volontairement du bloc, qui le rogne. */
 export function BlocProbleme({ titre, texte, decor }: Props) {
   return (
-    <section className="w-full bg-alabaster px-6 py-8 md:px-[30px] md:py-[40px]">
+    <section className="w-full bg-alabaster px-6 py-12 md:px-[30px] md:py-16">
       <div className="relative mx-auto w-full max-w-[1440px] overflow-hidden rounded-xl bg-wisteria py-16 md:py-[96px]">
         <div
           aria-hidden="true"
