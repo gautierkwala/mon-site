@@ -99,10 +99,11 @@ export const TEMOIGNAGES_EQUIPES: Temoignage[] = [
   },
   {
     citation:
-      "Kwala nous a accompagnés pour mieux performer en rendez-vous et en prospection. La formation sur 2 jours nous a permis de réaliser des ateliers complets et concrets couplés à une méthodologie théorique adaptée à notre marché. Résultats positifs pour nos équipes de vente qui sont ressorties soudées, challengées et engagées dans une stratégie de performance commune !",
-    nom: "Océane Bouvard",
-    fonction: "Partner Innovation, iii Financements",
-    visuel: { src: "/temoignages/iii-financements.png", type: "logo" },
+      "Nous avions déjà quelques clients, mais avions du mal à identifier nos forces et répliquer les ventes. Nous avons fait appel à Kwala afin d’apprendre à vendre et avoir de meilleurs taux de conversion à chaque étape de la vente. Nous avons clairement amélioré nos taux de conversion et avons appris à vendre de manière beaucoup plus efficace et structurée.",
+    nom: "Romain Saint-Jean",
+    fonction: "Founder & CEO, Bacastages",
+    visuel: { src: "/temoignages/bacastages.png", type: "logo" },
+    chiffre: "Des taux de conversion en hausse",
   },
   {
     citation:
@@ -113,11 +114,10 @@ export const TEMOIGNAGES_EQUIPES: Temoignage[] = [
   },
   {
     citation:
-      "Nous souhaitions développer le marché BtoB, et avons fait appel à Kwala pour nous aider à former l’équipe commerciale à prospecter et entrer sur ce nouveau marché. Cela nous a permis de structurer les process en interne. […] Très vite, nous avons réussi à capter le marché de l’immobilier et signer de nouveaux contrats, qui n’auraient pas été signés sans une formation chez Kwala.",
-    nom: "Hannah Peters",
-    fonction: "Fondatrice et Dirigeante, Digi Atlas",
-    visuel: { src: "/temoignages/digi-atlas.jpg", type: "logo" },
-    chiffre: "Un nouveau marché capté",
+      "Accompagnement à la carte pour initier et faire vivre notre stratégie commerciale, avec un fort accent sur le passage à l’action. Les coachs Gautier et Mathilde sont toujours pertinents et à propos, et leur application nous permet de piloter nos performances. Précieux !",
+    nom: "Antoine Mauguy",
+    fonction: "Fondateur et CEO, Routes Numériques",
+    visuel: { src: "/temoignages/routes-numeriques.jpg", type: "logo" },
   },
   {
     citation:
@@ -132,26 +132,19 @@ export const TEMOIGNAGES_EQUIPES: Temoignage[] = [
 export const TEMOIGNAGES_FORMATION: Temoignage[] = [
   {
     citation:
-      "Nous avons fait appel à Kwala dans le cadre de nos programmes d’accompagnement au développement commercial, afin d’aider les créatrices d’entreprises à structurer leur plan d’action commercial, à poser les bases d’une prospection efficace et à mieux appréhender les entretiens avec leurs clients. Les retours de nos adhérentes sont très positifs. Les créatrices y voient plus clair sur les démarches à mettre en place pour conquérir de nouveaux clients.",
-    nom: "Caroline Kampf",
-    fonction: "Coordinatrice de programmes, Incubateur Les Premières AURA",
-    visuel: { src: "/temoignages/les-premieres.jpg", type: "logo" },
+      "Kwala nous a accompagnés pour mieux performer en rendez-vous et en prospection. La formation sur 2 jours nous a permis de réaliser des ateliers complets et concrets couplés à une méthodologie théorique adaptée à notre marché. Résultats positifs pour nos équipes de vente qui sont ressorties soudées, challengées et engagées dans une stratégie de performance commune !",
+    nom: "Océane Bouvard",
+    fonction: "Partner Innovation, iii Financements",
+    visuel: { src: "/temoignages/iii-financements.png", type: "logo" },
+    chiffre: "2 jours de formation",
   },
   {
     citation:
-      "Nous collaborons avec Kwala depuis plus de deux ans. L’équipe accompagne les start-up de H7 dans le cadre d’ateliers et d’événements au cours desquels ils mettent à disposition des méthodes et des outils. Le taux de satisfaction des start-up qui bénéficient de cette expertise est excellent.",
-    nom: "Julien Marbouty",
-    fonction: "Responsable des programmes, H7",
-    visuel: { src: "/temoignages/h7.jpg", type: "logo" },
-    chiffre: "Plus de 2 ans de collaboration",
-  },
-  {
-    citation:
-      "Les start-up que j’accompagne et moi avons beaucoup aimé le cycle de 5 ateliers de la prospection au closing, très pertinent, intense et concret.",
-    nom: "Alexandre Teston",
-    fonction: "Responsable incubateur, CELSE",
-    visuel: { src: "/temoignages/celse.png", type: "logo" },
-    chiffre: "5 ateliers, de la prospection au closing",
+      "Nous souhaitions développer le marché BtoB, et avons fait appel à Kwala pour nous aider à former l’équipe commerciale à prospecter et entrer sur ce nouveau marché. Cela nous a permis de structurer les process en interne. […] Très vite, nous avons réussi à capter le marché de l’immobilier et signer de nouveaux contrats, qui n’auraient pas été signés sans une formation chez Kwala.",
+    nom: "Hannah Peters",
+    fonction: "Fondatrice et Dirigeante, Digi Atlas",
+    visuel: { src: "/temoignages/digi-atlas.jpg", type: "logo" },
+    chiffre: "Un nouveau marché capté",
   },
   {
     citation:
@@ -162,17 +155,24 @@ export const TEMOIGNAGES_FORMATION: Temoignage[] = [
   },
   {
     citation:
-      "Alexis est intervenu au sein du studio [d+] pour accompagner et coacher nos startups sur la partie business. L’objectif était clair : booster les ventes et leur donner les clés pour avancer seuls ensuite. Les 3 startups accompagnées ont vraiment bénéficié des conseils d’Alexis. Elles ont toutes évolué et amélioré leur méthode et leur stratégie commerciale.",
-    nom: "Antoine Serouille",
-    fonction: "Responsable Startup Studio, TeamWork Corporate",
-    visuel: { src: "/temoignages/teamwork.jpg", type: "logo" },
+      "Nous avons fait appel à Gautier et son équipe chez Kwala pour nous accompagner dans le développement d’une des branches de notre activité. Leur accompagnement et leur méthode nous ont aidés à structurer notre approche commerciale, clarifier notre positionnement et développer cette nouvelle activité. […] Cela a apporté une vraie montée en confiance et une meilleure vision des opportunités de développement.",
+    nom: "Benjamin Events",
+    fonction: "Dirigeant associé, VSS Groupe",
+    visuel: { src: "/temoignages/vss-groupe.jpg", type: "logo" },
   },
   {
     citation:
-      "J’ai sollicité Kwala pour l’animation d’un atelier commercial au sein de mon espace de coworking. Nous sommes ressortis après l’atelier avec une vision plus claire des actions commerciales à mener et des pistes auxquelles réfléchir pour la suite.",
-    nom: "Alexandre Touron",
-    fonction: "Responsable de tiers-lieu, La Cordée",
-    visuel: { src: "/temoignages/la-cordee.jpg", type: "logo" },
+      "Nous avons travaillé sur la mise en relation et le développement de compétence de nos antennes et sociétés. […] D’un point de vue managérial, les équipes sont regonflées et ont une autre perspective, à la fois d’elles-mêmes et de leurs challenges.",
+    nom: "Lucas Sassot",
+    fonction: "Responsable écosystème & relation client, Bel Air Camp",
+    visuel: { src: "/temoignages/bel-air-camp.jpg", type: "logo" },
+  },
+  {
+    citation:
+      "Besoin d’uniformiser l’approche commerciale de l’équipe. Revisite des prérequis commerciaux pour une bonne accroche initiale.",
+    nom: "Guillaume Testa",
+    fonction: "Agent immobilier, efficity",
+    visuel: { src: "/temoignages/efficity.jpg", type: "logo" },
   },
 ];
 
