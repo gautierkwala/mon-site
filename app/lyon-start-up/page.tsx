@@ -132,24 +132,45 @@ const REPARTS_AVEC = [
   },
 ];
 
+/**
+ * Avis repris mot pour mot du profil Trustfolio, choisis pour parler a des
+ * fondateurs qui cherchent leurs premiers clients. Trustfolio ne stocke une
+ * photo de la personne que pour cinq de ses quarante avis : pour les autres
+ * on affiche le logo de l'entreprise, d'ou le champ `visuel` qui distingue
+ * les deux cas.
+ */
 const TEMOIGNAGES = [
   {
     citation:
-      "En quelques mois, la stratégie est établie, le discours est clair, les signatures tombent.",
-    nom: "Adrien Crespinée",
-    fonction: "Founding Sales, OOrion",
+      "Nous avons fait appel à Kwala dans le cadre du programme Lyon Start Up à destination des porteurs de projets innovants accompagnés. […] Les objectifs de prises de rdv ont largement été atteints avec par ailleurs un gain en compétences et confiance significatifs.",
+    nom: "Shaërazade Harzallah",
+    fonction: "Cheffe de projet Lyon Start Up",
+    image: "/temoignages/la-french-tech.png",
+    visuel: "logo" as const,
   },
   {
     citation:
-      "On apprend le matin, on applique l’après-midi : on repart chaque jeudi avec des rendez-vous générés.",
-    nom: "Renaud Durier",
-    fonction: "co-fondateur, Pégase Digital",
+      "Je construis un logiciel depuis quelques mois et je crée aujourd’hui une start-up pour le mettre sur le marché. Grâce à l’accompagnement de Kwala, j’ai pu comprendre l’intérêt de signer rapidement de premiers clients, d’entrer en contact avec mon marché pour le tester en parallèle du développement technique, afin de ne pas tomber dans le piège du perfectionnisme.",
+    nom: "Thomas Jebabli",
+    fonction: "Fondateur & Software Engineer, Gentica",
+    image: "/temoignages/gentica.png",
+    visuel: "logo" as const,
   },
   {
     citation:
-      "Ça m’a permis de passer d’une logique de consultante indépendante à celle de cheffe d’entreprise.",
+      "J’étais indépendant, j’avais un seul client, j’étais seul face à mon défi de croissance et sans méthode. Kwala a apporté l’écoute, la méthode, l’émulation et la régularité dans mon action commerciale. Je suis passé d’1 client à 6 clients en 1 an, j’ai pris une vraie casquette de commercial, avec plaisir.",
+    nom: "Guillaume Blanchard",
+    fonction: "Fondateur, Enerkaya",
+    image: "/temoignages/enerkaya.jpg",
+    visuel: "logo" as const,
+  },
+  {
+    citation:
+      "J’étais seule dans l’entreprise et un peu démunie sur le ciblage et la méthode commerciale. […] Ça m’a permis de passer d’une logique de consultante indépendante à celle de cheffe d’entreprise.",
     nom: "Axelle Sorret",
-    fonction: "fondatrice, Trinity",
+    fonction: "Fondatrice & Dirigeante, TRINITY",
+    image: "/temoignages/axelle-sorret.jpg",
+    visuel: "photo" as const,
   },
 ];
 
@@ -163,8 +184,9 @@ const RAISONS = [
     texte: "Savoir vendre reste acquis pour toute la suite de votre carrière.",
   },
   {
-    titre: "N’avoir aucun regret",
-    texte: "Tout donner à son projet, pour ne pas se demander après coup.",
+    titre: "Donner à votre projet ses vraies chances",
+    texte:
+      "Un bon produit qui ne trouve pas ses clients s’arrête quand même. Autant lever ce doute-là tout de suite.",
   },
 ];
 
@@ -592,7 +614,7 @@ export default function LyonStartUp() {
             <h2 className={`mt-4 ${TITRE_CLAIR}`}>
               Ce qu’en disent les fondateurs accompagnés
             </h2>
-            <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            <div className="mt-12 grid gap-5 md:grid-cols-2">
               {TEMOIGNAGES.map((t) => (
                 <figure
                   key={t.nom}
@@ -602,17 +624,33 @@ export default function LyonStartUp() {
                     aria-hidden="true"
                     className="font-asap text-[44px] font-bold italic leading-none text-wisteria"
                   >
-                    “
+                    &ldquo;
                   </span>
                   <blockquote className="mt-2 grow font-dm-sans text-[17px] leading-7 text-onyx">
                     {t.citation}
                   </blockquote>
-                  <figcaption className="mt-7 flex items-center gap-3">
+                  <figcaption className="mt-7 flex items-center gap-4">
+                    {/* Un portrait se recadre, un logo doit rester entier :
+                        d'ou object-cover dans un cercle pour l'un, un cadre
+                        blanc et object-contain pour l'autre. */}
                     <span
-                      aria-hidden="true"
-                      className="flex size-11 shrink-0 items-center justify-center rounded-full bg-onyx font-asap text-[14px] font-bold italic text-white"
+                      className={`relative flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-full ${
+                        t.visuel === "logo" ? "bg-white p-2" : ""
+                      }`}
                     >
-                      {initiales(t.nom)}
+                      <Image
+                        src={t.image}
+                        alt={t.visuel === "logo" ? t.fonction : t.nom}
+                        fill={t.visuel === "photo"}
+                        width={t.visuel === "logo" ? 56 : undefined}
+                        height={t.visuel === "logo" ? 56 : undefined}
+                        sizes="56px"
+                        className={
+                          t.visuel === "logo"
+                            ? "h-auto w-full object-contain"
+                            : "object-cover"
+                        }
+                      />
                     </span>
                     <span className="font-dm-sans text-[15px] leading-6 text-onyx">
                       <span className="font-medium">{t.nom}</span>
@@ -623,6 +661,7 @@ export default function LyonStartUp() {
                 </figure>
               ))}
             </div>
+
             <p className="mt-8 font-dm-sans text-[15px] leading-7 text-onyx/70">
               Avis vérifiés et recueillis par{" "}
               <a
@@ -712,11 +751,26 @@ export default function LyonStartUp() {
         {/* ---------- COACHS ---------- */}
         <section className={`bg-alabaster px-6 pt-20 md:px-[120px] md:pt-[100px]`}>
           <div className={LARGEUR}>
-            <p className={`${SURTITRE} text-wisteria-text`}>Vos coachs</p>
+            <p className={`${SURTITRE} text-wisteria-text`}>L’équipe</p>
             <h2 className={`mt-4 ${TITRE_CLAIR}`}>
               C’est avec nous que vous travaillerez
             </h2>
-            <div className="mt-10 grid gap-5 md:grid-cols-2 lg:max-w-[820px]">
+            <p className="mt-6 max-w-[760px] font-dm-sans text-[18px] leading-8 text-onyx">
+              Toute l’équipe Kwala intervient sur le programme. Gautier et
+              Alexis en sont vos interlocuteurs directs.
+            </p>
+
+            <div className="relative mt-10 aspect-[4/3] w-full overflow-hidden rounded-2xl md:aspect-[16/9] lg:max-w-[980px]">
+              <Image
+                src="/photos/equipe-kwala.jpeg"
+                alt="L’équipe de coachs Kwala"
+                fill
+                sizes="(max-width: 1024px) 100vw, 980px"
+                className="object-cover"
+              />
+            </div>
+
+            <div className="mt-8 grid gap-5 md:grid-cols-2 lg:max-w-[820px]">
               {COACHS.map((coach) => (
                 <div key={coach.prenom} className="rounded-2xl bg-dust px-7 py-8">
                   <p className="font-asap text-[24px] font-bold italic leading-none text-onyx">
