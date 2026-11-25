@@ -15,8 +15,9 @@ type Props = { titre: string; volets: Volet[] };
  */
 export function BlocActions({ titre, volets }: Props) {
   return (
-    <section className="mx-auto w-full max-w-[1440px] bg-alabaster px-6 py-16 md:px-[120px] md:py-[60px]">
-      <h2 className="max-w-[820px] font-asap text-3xl font-bold italic leading-tight text-onyx md:text-[43.6px]">
+    <section className="bg-dust px-6 py-20 md:px-[120px] md:py-[100px]">
+      <div className="mx-auto w-full max-w-[1280px]">
+      <h2 className="max-w-[860px] font-asap text-3xl font-bold italic leading-tight text-onyx md:text-[43.6px]">
         {titre}
       </h2>
       <Image
@@ -51,6 +52,7 @@ export function BlocActions({ titre, volets }: Props) {
             </ul>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );

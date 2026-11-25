@@ -1,96 +1,151 @@
 import Image from "next/image";
+import {
+  NOMBRE_AVIS,
+  NOTE_TRUSTFOLIO,
+  PROFIL_TRUSTFOLIO,
+  type Temoignage,
+} from "@/lib/temoignages";
 
-export type Temoignage = {
-  nom: string;
-  /** Fonction et societe, en une ligne : "fondateur d'Enerkaya". */
-  fonction: string;
-  /** Resultat mis en avant, tel qu'il figure sur l'avis. */
-  chiffre: string;
-  /** Verbatim du client, repris sans reformulation. */
-  citation: string;
+type Props = {
+  titre: string;
+  surtitre?: string;
+  temoignages: Temoignage[];
+  /** Fond sombre : la page alterne les bandes, le bloc doit suivre. */
+  sombre?: boolean;
 };
 
-type Props = { titre: string; temoignages: Temoignage[] };
-
-const PROFIL_TRUSTFOLIO = "https://trustfolio.co/profil/kwala-sdJEBF2Ciw1";
-
-/** Initiales de secours : aucune photo client n'est disponible dans le repo. */
-function initiales(nom: string) {
-  return nom
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((mot) => mot[0]?.toUpperCase() ?? "")
-    .join("");
-}
-
 /**
- * Temoignages clients en vrai texte HTML.
+ * Les avis clients, en texte lisible plutot que dans le carrousel Trustfolio.
  *
- * Le widget Trustfolio rend ses avis dans une iframe cross-origin : leur
- * contenu n'est lu ni par Google ni par les assistants. Les reprendre ici en
- * texte est le seul moyen qu'ils comptent pour le referencement. Le widget
- * reste par ailleurs en place, il apporte la preuve de verification.
+ * Deux raisons. Le widget rend ses avis dans une iframe cross-origin : ni
+ * Google ni les assistants n'en lisent un mot, alors que ces pages visent
+ * « coaching commercial Lyon » et « formation commerciale Lyon ». Et il
+ * defilait trop vite pour etre lu par un visiteur.
  *
- * Pas de balisage schema.org Review : Google interdit le balisage des avis
- * collectes par une entreprise sur elle-meme ("self-serving reviews"), et le
- * risque d'action manuelle depasse le gain.
+ * La preuve de verification reste entiere : la note, le nombre d'avis et le
+ * lien vers le profil Trustfolio sont affiches sous les cartes.
  */
-export function BlocTemoignages({ titre, temoignages }: Props) {
+export function BlocTemoignages({
+  titre,
+  surtitre,
+  temoignages,
+  sombre = false,
+}: Props) {
+  const fond = sombre ? "bg-onyx" : "bg-alabaster";
+  const carte = sombre ? "bg-white/[0.06]" : "bg-dust";
+  const texte = sombre ? "text-white" : "text-onyx";
+  const secondaire = sombre ? "text-dust/70" : "text-onyx/70";
+  const accent = sombre ? "text-wisteria" : "text-wisteria-text";
+
   return (
-    <section className="mx-auto w-full max-w-[1440px] px-6 py-16 md:px-[120px] md:py-[60px]">
-      <h2 className="max-w-[820px] font-asap text-3xl font-bold italic leading-tight text-onyx md:text-[43.6px]">
-        {titre}
-      </h2>
-      <Image
-        src="/decor/kwala-line-01.webp"
-        alt=""
-        width={675}
-        height={12}
-        aria-hidden="true"
-        className="mt-3 h-auto w-[180px]"
-      />
-
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
-        {temoignages.map((t) => (
-          <figure
-            key={t.nom}
-            className="flex flex-col rounded-xl bg-dust px-6 py-8"
+    <section
+      className={`${fond} px-6 py-20 md:px-[120px] md:py-[100px]`}
+    >
+      <div className="mx-auto w-full max-w-[1280px]">
+        {surtitre && (
+          <p
+            className={`font-asap text-[15px] font-bold italic uppercase tracking-[0.12em] ${accent}`}
           >
-            <p className="font-asap text-xl font-bold italic leading-tight text-wisteria-text md:text-[24px]">
-              {t.chiffre}
-            </p>
-            <blockquote className="mt-4 grow font-dm-sans text-base leading-7 text-onyx">
-              « {t.citation} »
-            </blockquote>
-            <figcaption className="mt-6 flex items-center gap-3">
-              <span
-                aria-hidden="true"
-                className="flex size-11 shrink-0 items-center justify-center rounded-full bg-onyx font-asap text-sm font-bold italic text-white"
-              >
-                {initiales(t.nom)}
-              </span>
-              <span className="font-dm-sans text-base leading-6 text-onyx">
-                <span className="font-medium">{t.nom}</span>
-                <br />
-                {t.fonction}
-              </span>
-            </figcaption>
-          </figure>
-        ))}
-      </div>
-
-      <p className="mt-8 font-dm-sans text-base leading-7 text-onyx">
-        Avis vérifiés et recueillis par{" "}
-        <a
-          href={PROFIL_TRUSTFOLIO}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-medium text-wisteria-text underline underline-offset-2 hover:no-underline"
+            {surtitre}
+          </p>
+        )}
+        <h2
+          className={`mt-4 max-w-[860px] font-asap text-[34px] font-bold italic leading-[1.08] md:text-[52px] ${texte}`}
         >
-          Trustfolio
-        </a>
-        .
-      </p>
+          {titre}
+        </h2>
+
+        <ul className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {temoignages.map((t) => (
+            <li key={t.nom}>
+              <figure
+                className={`flex h-full flex-col rounded-2xl px-7 py-8 ${carte}`}
+              >
+                {t.chiffre ? (
+                  <p
+                    className={`font-asap text-[20px] font-bold italic leading-tight ${accent}`}
+                  >
+                    {t.chiffre}
+                  </p>
+                ) : (
+                  <span
+                    aria-hidden="true"
+                    className={`font-asap text-[40px] font-bold italic leading-none ${accent}`}
+                  >
+                    &ldquo;
+                  </span>
+                )}
+
+                <blockquote
+                  className={`mt-4 grow font-dm-sans text-[16px] leading-7 ${
+                    sombre ? "text-dust" : "text-onyx"
+                  }`}
+                >
+                  {t.citation}
+                </blockquote>
+
+                <figcaption className="mt-7 flex items-center gap-4">
+                  {/* Un portrait se recadre, un logo doit rester entier. */}
+                  <span
+                    className={`relative flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ${
+                      t.visuel.type === "logo" ? "p-2" : ""
+                    }`}
+                  >
+                    <Image
+                      src={t.visuel.src}
+                      alt={t.visuel.type === "logo" ? t.fonction : t.nom}
+                      fill={t.visuel.type === "photo"}
+                      width={t.visuel.type === "logo" ? 56 : undefined}
+                      height={t.visuel.type === "logo" ? 56 : undefined}
+                      sizes="56px"
+                      className={
+                        t.visuel.type === "logo"
+                          ? "h-auto w-full object-contain"
+                          : "object-cover"
+                      }
+                    />
+                  </span>
+                  <span className={`font-dm-sans text-[15px] leading-6 ${texte}`}>
+                    <span className="font-medium">{t.nom}</span>
+                    <br />
+                    <span className={secondaire}>{t.fonction}</span>
+                  </span>
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+
+        {/* La preuve de verification, qui portait jusqu'ici sur le widget. */}
+        <div
+          className={`mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 font-dm-sans text-[16px] ${texte}`}
+        >
+          <span className={`font-asap text-[28px] font-bold italic ${accent}`}>
+            {NOTE_TRUSTFOLIO}
+          </span>
+          <span>
+            {NOMBRE_AVIS} avis clients authentifiés par{" "}
+            <a
+              href={PROFIL_TRUSTFOLIO}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium underline underline-offset-2 hover:no-underline"
+            >
+              Trustfolio
+            </a>
+          </span>
+          <a
+            href={PROFIL_TRUSTFOLIO}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`rounded-sm px-5 py-2.5 font-asap text-[15px] font-bold italic transition-opacity hover:opacity-90 ${
+              sombre ? "bg-wisteria text-onyx" : "bg-onyx text-white"
+            }`}
+          >
+            Lire les {NOMBRE_AVIS} avis
+          </a>
+        </div>
+      </div>
     </section>
   );
 }
