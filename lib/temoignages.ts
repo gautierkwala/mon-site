@@ -156,8 +156,8 @@ export const TEMOIGNAGES_FORMATION: Temoignage[] = [
   {
     citation:
       "Nous avons fait appel à Gautier et son équipe chez Kwala pour nous accompagner dans le développement d’une des branches de notre activité. Leur accompagnement et leur méthode nous ont aidés à structurer notre approche commerciale, clarifier notre positionnement et développer cette nouvelle activité. […] Cela a apporté une vraie montée en confiance et une meilleure vision des opportunités de développement.",
-    nom: "Benjamin Events",
-    fonction: "Dirigeant associé, VSS Groupe",
+    nom: "Benjamin Blanc",
+    fonction: "Business manager, VSS Groupe",
     visuel: { src: "/temoignages/vss-groupe.jpg", type: "logo" },
   },
   {
