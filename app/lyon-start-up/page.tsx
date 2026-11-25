@@ -133,29 +133,13 @@ const REPARTS_AVEC = [
 ];
 
 /**
- * Avis repris mot pour mot du profil Trustfolio, choisis pour parler a des
- * fondateurs qui cherchent leurs premiers clients. Trustfolio ne stocke une
+ * Avis repris mot pour mot du profil Trustfolio, choisis parmi des clients
+ * payants qui ont cherche puis trouve des clients. Trustfolio ne stocke une
  * photo de la personne que pour cinq de ses quarante avis : pour les autres
  * on affiche le logo de l'entreprise, d'ou le champ `visuel` qui distingue
  * les deux cas.
  */
 const TEMOIGNAGES = [
-  {
-    citation:
-      "Nous avons fait appel à Kwala dans le cadre du programme Lyon Start Up à destination des porteurs de projets innovants accompagnés. […] Les objectifs de prises de rdv ont largement été atteints avec par ailleurs un gain en compétences et confiance significatifs.",
-    nom: "Shaërazade Harzallah",
-    fonction: "Cheffe de projet Lyon Start Up",
-    image: "/temoignages/la-french-tech.png",
-    visuel: "logo" as const,
-  },
-  {
-    citation:
-      "Je construis un logiciel depuis quelques mois et je crée aujourd’hui une start-up pour le mettre sur le marché. Grâce à l’accompagnement de Kwala, j’ai pu comprendre l’intérêt de signer rapidement de premiers clients, d’entrer en contact avec mon marché pour le tester en parallèle du développement technique, afin de ne pas tomber dans le piège du perfectionnisme.",
-    nom: "Thomas Jebabli",
-    fonction: "Fondateur & Software Engineer, Gentica",
-    image: "/temoignages/gentica.png",
-    visuel: "logo" as const,
-  },
   {
     citation:
       "J’étais indépendant, j’avais un seul client, j’étais seul face à mon défi de croissance et sans méthode. Kwala a apporté l’écoute, la méthode, l’émulation et la régularité dans mon action commerciale. Je suis passé d’1 client à 6 clients en 1 an, j’ai pris une vraie casquette de commercial, avec plaisir.",
@@ -171,6 +155,22 @@ const TEMOIGNAGES = [
     fonction: "Fondatrice & Dirigeante, TRINITY",
     image: "/temoignages/axelle-sorret.jpg",
     visuel: "photo" as const,
+  },
+  {
+    citation:
+      "Nous souhaitions de l’accompagnement pour lancer une nouvelle offre B2B. Les attentes étaient principalement de structurer et tester l’offre en générant des leads, et convertir. L’accompagnement de Kwala a permis d’avoir une méthode efficace et très pertinente pour générer des leads rapidement. […] Je suis très satisfaite de l’accompagnement et le recommande à 100 %.",
+    nom: "Louise Leboucher",
+    fonction: "Co-fondatrice, Goodloop",
+    image: "/temoignages/goodloop.jpg",
+    visuel: "logo" as const,
+  },
+  {
+    citation:
+      "Nous souhaitions développer le marché BtoB, et avons fait appel à Kwala pour nous aider à former l’équipe commerciale à prospecter et entrer sur ce nouveau marché. […] Très vite, nous avons réussi à capter le marché de l’immobilier et signer de nouveaux contrats, qui n’auraient pas été signés sans une formation chez Kwala.",
+    nom: "Hannah Peters",
+    fonction: "Fondatrice et Dirigeante, Digi Atlas",
+    image: "/temoignages/digi-atlas.jpg",
+    visuel: "logo" as const,
   },
 ];
 
