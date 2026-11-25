@@ -8,7 +8,10 @@ import { PageHero } from "@/components/pages/PageHero";
 import { MotCercle } from "@/components/pages/MotCercle";
 import { BlocProbleme } from "@/components/pages/BlocProbleme";
 import { BlocPourquoi } from "@/components/pages/BlocPourquoi";
+import { BlocResultats } from "@/components/pages/BlocResultats";
+import { BlocTemoignages } from "@/components/pages/BlocTemoignages";
 import { LienPageSoeur } from "@/components/pages/LienPageSoeur";
+import { TEMOIGNAGES_FORMATION } from "@/lib/temoignages";
 
 const CHEMIN = "/formation-commerciale-lyon";
 
@@ -103,14 +106,14 @@ export default function FormationCommercialeLyon() {
         {/* Reperes pratiques : c'est ce que cherche quelqu'un qui tape
             "formation commerciale Lyon". Durée, taille du groupe, format et
             budget, avant tout argumentaire. */}
-        <section className="w-full bg-alabaster">
+        <section className="w-full bg-dust">
           <div className="mx-auto w-full max-w-[1440px] px-6 py-16 md:px-[120px] md:py-[80px]">
             <h2 className="max-w-[820px] font-asap text-3xl font-bold italic leading-tight text-onyx md:text-[43.6px]">
               Le format, en clair.
             </h2>
             <dl className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {REPERES.map(({ intitule, valeur }) => (
-                <div key={intitule} className="rounded-xl bg-dust px-6 py-6">
+                <div key={intitule} className="rounded-xl bg-alabaster px-6 py-6">
                   <dt className="font-asap text-[15px] font-bold italic text-wisteria-text">
                     {intitule}
                   </dt>
@@ -177,6 +180,24 @@ export default function FormationCommercialeLyon() {
             </div>
           </div>
         </section>
+
+        <BlocResultats
+          surtitre="Les résultats"
+          titre="Ce que les participants en retirent"
+          stats={[
+            "Une méthode commune",
+            "Plus de rendez-vous décrochés",
+            "Un discours clarifié",
+            "De la confiance en rendez-vous",
+          ]}
+        />
+
+        <BlocTemoignages
+          sombre
+          surtitre="Ils nous ont fait confiance"
+          titre="Ce qu’en disent les organismes et les entreprises"
+          temoignages={TEMOIGNAGES_FORMATION}
+        />
 
         <Contact
           titre="Un premier échange pour cadrer votre formation."

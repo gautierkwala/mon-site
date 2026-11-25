@@ -11,6 +11,7 @@ import { BlocPourquoi } from "@/components/pages/BlocPourquoi";
 import { BlocActions } from "@/components/pages/BlocActions";
 import { BlocResultats } from "@/components/pages/BlocResultats";
 import { BlocTemoignages } from "@/components/pages/BlocTemoignages";
+import { TEMOIGNAGES_DIRIGEANTS } from "@/lib/temoignages";
 import { LienPageSoeur } from "@/components/pages/LienPageSoeur";
 
 
@@ -102,22 +103,6 @@ const VOLETS = [
   },
 ];
 
-const TEMOIGNAGES = [
-  {
-    nom: "Guillaume Blanchard",
-    fonction: "fondateur d’Enerkaya",
-    chiffre: "×6 clients en 1 an",
-    citation:
-      "J’étais indépendant, j’avais un seul client, j’étais seul face à mon défi de croissance et sans méthode. […] Je suis passé d’1 client à 6 clients en 1 an, j’ai pris une vraie casquette de commercial, avec plaisir.",
-  },
-  {
-    nom: "Renaud Durier",
-    fonction: "co-fondateur de Pégase Digital",
-    chiffre: "Des rendez-vous générés chaque jeudi",
-    citation:
-      "Le format « on apprend le matin, on applique l’après-midi » change tout : on repart chaque jeudi avec des rendez-vous générés et des opportunités qui avancent, au lieu de remettre la prospection à plus tard.",
-  },
-];
 
 export default function CoachingDirigeantsLyon() {
   return (
@@ -171,6 +156,7 @@ export default function CoachingDirigeantsLyon() {
         <BlocActions titre="Ce que nous faisons ensemble" volets={VOLETS} />
 
         <BlocResultats
+          surtitre="Les résultats"
           titre="Les résultats déjà obtenus"
           stats={[
             "Plus de rendez-vous",
@@ -181,8 +167,10 @@ export default function CoachingDirigeantsLyon() {
         />
 
         <BlocTemoignages
+          sombre
+          surtitre="Ils l’ont fait"
           titre="Ce qu’en disent les dirigeants accompagnés"
-          temoignages={TEMOIGNAGES}
+          temoignages={TEMOIGNAGES_DIRIGEANTS}
         />
 
         <Contact

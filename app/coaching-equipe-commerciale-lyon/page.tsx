@@ -11,6 +11,7 @@ import { BlocPourquoi } from "@/components/pages/BlocPourquoi";
 import { BlocActions } from "@/components/pages/BlocActions";
 import { BlocResultats } from "@/components/pages/BlocResultats";
 import { BlocTemoignages } from "@/components/pages/BlocTemoignages";
+import { TEMOIGNAGES_EQUIPES } from "@/lib/temoignages";
 import { LienPageSoeur } from "@/components/pages/LienPageSoeur";
 
 
@@ -100,22 +101,6 @@ const VOLETS = [
   },
 ];
 
-const TEMOIGNAGES = [
-  {
-    nom: "Antonin Guy",
-    fonction: "CEO de WeCount",
-    chiffre: "91 rendez-vous pris en 2 mois",
-    citation:
-      "Formation de l’équipe aux méthodes de cold call pour gagner en performance, et organisation d’un challenge commercial pour mettre en mouvement l’équipe. […] Une équipe formée et motivée pour accélérer notre acquisition via le cold call.",
-  },
-  {
-    nom: "Florian Genisson",
-    fonction: "directeur commercial de Refectory",
-    chiffre: "+20 % de taux de closing",
-    citation:
-      "Nous avons sollicité Kwala dans le cadre du changement drastique de notre machine d’acquisition. […] Des équipes formées, des process en lien avec notre cycle de vente gravés dans le marbre et une adoption plus qu’acceptable sur l’ensemble de nos sites.",
-  },
-];
 
 export default function CoachingEquipeCommercialeLyon() {
   return (
@@ -168,6 +153,7 @@ export default function CoachingEquipeCommercialeLyon() {
         <BlocActions titre="Ce que nous faisons ensemble" volets={VOLETS} />
 
         <BlocResultats
+          surtitre="Les résultats"
           titre="Les résultats déjà obtenus"
           stats={[
             "Plus de rendez-vous",
@@ -178,8 +164,10 @@ export default function CoachingEquipeCommercialeLyon() {
         />
 
         <BlocTemoignages
+          sombre
+          surtitre="Ils l’ont fait"
           titre="Ce qu’en disent les équipes accompagnées"
-          temoignages={TEMOIGNAGES}
+          temoignages={TEMOIGNAGES_EQUIPES}
         />
 
         <Contact
