@@ -1,15 +1,11 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 type OfferKey = "dirigeants" | "equipes";
 
 const OFFERS: Record<
   OfferKey,
   {
-    tab: string;
     kicker: string;
     headingPrefix: string;
     headingHighlight: string;
@@ -23,7 +19,6 @@ const OFFERS: Record<
   }
 > = {
   dirigeants: {
-    tab: "Pour les dirigeants",
     kicker: "Pour les dirigeants",
     headingPrefix: "Pour apprendre à closer, ",
     headingHighlight: "apprenez à l’ouvrir",
@@ -44,7 +39,6 @@ const OFFERS: Record<
     page: "/coaching-dirigeants-lyon",
   },
   equipes: {
-    tab: "Pour vos équipes",
     kicker: "Pour vos équipes",
     headingPrefix: "Les meilleurs commerciaux sont déjà ",
     headingHighlight: "chez vous",
@@ -68,122 +62,121 @@ const OFFERS: Record<
   },
 };
 
-export function NosOffres() {
-  const [active, setActive] = useState<OfferKey>("dirigeants");
-  const offer = OFFERS[active];
+type Offre = (typeof OFFERS)[OfferKey];
 
+/**
+ * Une carte d'offre, reprise telle quelle de la maquette Figma : aplat
+ * wisteria, motif en surimpression, photo masquee d'un cote et texte de
+ * l'autre. Seul le cote de la photo change d'une carte a l'autre, ce qui
+ * donne le rythme quand elles s'enchainent.
+ */
+function CarteOffre({ offre }: { offre: Offre }) {
   return (
-    <section id="offres" className="mx-auto w-full max-w-[1440px] px-6 py-16 md:px-[30px] md:py-[60px]">
+    <div className="relative overflow-hidden rounded-[18px] bg-wisteria">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 mix-blend-soft-light"
+        style={{
+          backgroundImage: "url(/decor/motif-06-nos-offres.webp)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+
+      <div
+        className={`relative flex flex-col ${
+          offre.photoSide === "left" ? "md:flex-row" : "md:flex-row-reverse"
+        }`}
+      >
+        {/* Bord incurve, toujours du cote du texte : masques SVG repris des
+            calques Figma "Photo", soit 38% de la carte dans les deux cas.
+            Appliques a partir de md, la maquette n'existant qu'en desktop. */}
+        <div
+          className={`relative aspect-[4/3] w-full md:aspect-auto md:min-h-[631px] md:w-[38%] ${
+            offre.photoSide === "left"
+              ? "offres-photo-mask-gauche"
+              : "offres-photo-mask-droite"
+          }`}
+        >
+          <Image
+            src={`${offre.photo.src}@2x.webp`}
+            alt={offre.photo.alt}
+            fill
+            sizes="(max-width: 768px) 100vw, 38vw"
+            className="object-cover"
+          />
+        </div>
+
+        <div className="relative flex flex-1 flex-col px-6 py-10 md:justify-center md:px-[70px] md:py-[70px]">
+          <p className="font-asap text-lg font-semibold italic text-white">
+            {offre.kicker}
+          </p>
+          <h3 className="mt-3 font-asap text-2xl font-bold italic leading-tight text-onyx md:text-[30px]">
+            {offre.headingPrefix}
+            {/* La ponctuation finale suit la couleur du segment mis en avant :
+                un "?" noir apres un groupe blanc detonait. */}
+            <span className="text-white">
+              {offre.headingHighlight}
+              {offre.headingSuffix}
+            </span>
+          </h3>
+          <ul className="mt-6 space-y-3 font-dm-sans text-base leading-7 text-onyx md:text-[20px]">
+            {offre.bullets.map((bullet) => (
+              <li key={bullet}>
+                <span className="text-white">• </span>
+                {bullet}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 font-dm-sans text-sm font-bold text-white">
+            {offre.fineprint}
+          </p>
+          <Link
+            href={offre.page}
+            className="mt-6 w-fit rounded-sm bg-onyx px-5 py-3 font-asap text-[16px] font-bold italic text-white transition-opacity hover:opacity-90"
+          >
+            Découvrir l’offre
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Les deux offres, l'une sous l'autre.
+ *
+ * Elles etaient auparavant derriere deux onglets, et seul l'onglet actif
+ * etait rendu : l'offre equipes etait donc absente du HTML, invisible pour
+ * Google comme pour les assistants, et sa page ne recevait aucun lien depuis
+ * l'accueil. Les deux cartes sont desormais toujours la, ce qui supprime
+ * aussi le clic necessaire pour decouvrir la seconde offre.
+ */
+export function NosOffres() {
+  return (
+    <section
+      id="offres"
+      className="mx-auto w-full max-w-[1440px] px-6 py-16 md:px-[30px] md:py-[60px]"
+    >
       {/* Dans le Figma la carte est quasi pleine largeur (x=32, 1381 de large
           sur une page de 1440) tandis que le chapeau est indente a x=121.
           D'ou 30px de marge sur la section et 90px de plus sur le chapeau. */}
       <div className="md:px-[90px]">
-      <p className="font-asap text-2xl italic text-onyx">Nos offres</p>
-      <h2 className="mt-4 font-asap text-3xl font-bold italic leading-tight text-onyx md:text-[43.6px]">
-        Pour <span className="text-wisteria-text">vous</span>. Pour{" "}
-        <span className="text-wisteria-text">vos équipes</span>.
-      </h2>
-      <p className="mt-4 max-w-2xl font-dm-sans text-onyx">
-        Un parcours en deux temps : d’abord les fondamentaux, puis la
-        performance dans la durée.
-      </p>
+        <p className="font-asap text-2xl italic text-onyx">Nos offres</p>
+        <h2 className="mt-4 font-asap text-3xl font-bold italic leading-tight text-onyx md:text-[43.6px]">
+          Pour <span className="text-wisteria-text">vous</span>. Pour{" "}
+          <span className="text-wisteria-text">vos équipes</span>.
+        </h2>
+        <p className="mt-4 max-w-2xl font-dm-sans text-onyx">
+          Un parcours en deux temps : d’abord les fondamentaux, puis la
+          performance dans la durée.
+        </p>
       </div>
 
-      <div className="relative mt-10">
-        {/* Coins à 12px (rx=12 sur les deux calques SVG Figma — la piste
-            blanche pleine largeur et la pastille active, toutes deux
-            65px de haut) : pas une pilule "rounded-full", un arrondi
-            modéré cohérent avec le reste du site. */}
-        <div className="relative z-10 mx-auto flex w-full max-w-[1349px] rounded-xl bg-white p-1 shadow-sm md:-mb-[35px]">
-          <span
-            aria-hidden
-            className={`absolute inset-y-1 w-[calc(50%-4px)] rounded-xl bg-onyx transition-transform duration-300 ${
-              active === "equipes" ? "translate-x-[calc(100%+8px)]" : "translate-x-0"
-            }`}
-          />
-          {(Object.keys(OFFERS) as OfferKey[]).map((key) => (
-            <button
-              key={key}
-              type="button"
-              onClick={() => setActive(key)}
-              className={`relative z-10 flex-1 rounded-xl px-6 py-4 font-asap text-lg font-bold italic transition-colors md:text-[25px] ${
-                active === key ? "text-white" : "text-onyx"
-              }`}
-            >
-              {OFFERS[key].tab}
-            </button>
-          ))}
-        </div>
-
-        {/* Carte à 18px (rx=18 sur le rectangle de fond Figma, 1381×631) */}
-        <div className="relative overflow-hidden rounded-[18px] bg-wisteria">
-          <div
-            className="absolute inset-0 mix-blend-soft-light"
-            style={{
-              backgroundImage: "url(/decor/motif-06-nos-offres.webp)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
-
-          <div
-            className={`relative flex flex-col ${
-              offer.photoSide === "left" ? "md:flex-row" : "md:flex-row-reverse"
-            }`}
-          >
-            {/* Bord incurve, toujours du cote du texte : masques SVG repris
-                des calques Figma "Photo" (132:3620 pour la photo a droite,
-                528.754x631 ; 132:5616 pour la photo a gauche, 523.976x630.27
-                — soit 38% de la carte de 1381 dans les deux cas). Appliques
-                a partir de md, la maquette n'existant qu'en desktop. */}
-            <div
-              className={`relative aspect-[4/3] w-full md:aspect-auto md:min-h-[631px] md:w-[38%] ${
-                offer.photoSide === "left"
-                  ? "offres-photo-mask-gauche"
-                  : "offres-photo-mask-droite"
-              }`}
-            >
-              <Image
-                src={`${offer.photo.src}@2x.webp`}
-                alt={offer.photo.alt}
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            <div className="relative flex flex-1 flex-col px-6 py-10 md:justify-center md:px-[70px] md:py-[70px]">
-              <p className="font-asap text-lg font-semibold italic text-white">
-                {offer.kicker}
-              </p>
-              <h3 className="mt-3 font-asap text-2xl font-bold italic leading-tight text-onyx md:text-[30px]">
-                {offer.headingPrefix}
-                {/* La ponctuation finale suit la couleur du segment mis en
-                    avant : un "?" noir apres un groupe blanc detonait. */}
-                <span className="text-white">
-                  {offer.headingHighlight}
-                  {offer.headingSuffix}
-                </span>
-              </h3>
-              <ul className="mt-6 space-y-3 font-dm-sans text-base leading-7 text-onyx md:text-[20px]">
-                {offer.bullets.map((bullet) => (
-                  <li key={bullet}>
-                    <span className="text-white">• </span>
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-6 font-dm-sans text-sm font-bold text-white">
-                {offer.fineprint}
-              </p>
-              <Link
-                href={offer.page}
-                className="mt-6 w-fit rounded-sm bg-onyx px-4 py-2.5 font-asap text-[15px] font-medium text-white"
-              >
-                Découvrir l’offre
-              </Link>
-            </div>
-          </div>
-        </div>
+      <div className="mt-10 space-y-8 md:mt-12 md:space-y-10">
+        {(Object.keys(OFFERS) as OfferKey[]).map((cle) => (
+          <CarteOffre key={cle} offre={OFFERS[cle]} />
+        ))}
       </div>
     </section>
   );
