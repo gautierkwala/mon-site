@@ -17,10 +17,14 @@ type Props = {
 /**
  * Les avis clients, en texte lisible plutot que dans le carrousel Trustfolio.
  *
- * Deux raisons. Le widget rend ses avis dans une iframe cross-origin : ni
+ * Deux raisons. Le widget rendait ses avis dans une iframe cross-origin : ni
  * Google ni les assistants n'en lisent un mot, alors que ces pages visent
  * « coaching commercial Lyon » et « formation commerciale Lyon ». Et il
  * defilait trop vite pour etre lu par un visiteur.
+ *
+ * Chaque carte montre le visage de la personne qui parle, pas le logo de son
+ * entreprise : c'est un dirigeant qui recommande, pas une marque. Le nom de
+ * l'entreprise reste dans la ligne de fonction.
  *
  * La preuve de verification reste entiere : la note, le nombre d'avis et le
  * lien vers le profil Trustfolio sont affiches sous les cartes.
@@ -32,15 +36,13 @@ export function BlocTemoignages({
   sombre = false,
 }: Props) {
   const fond = sombre ? "bg-onyx" : "bg-alabaster";
-  const carte = sombre ? "bg-white/[0.06]" : "bg-dust";
+  const carte = sombre ? "bg-white/[0.06]" : "bg-white";
   const texte = sombre ? "text-white" : "text-onyx";
-  const secondaire = sombre ? "text-dust/70" : "text-onyx/70";
+  const secondaire = sombre ? "text-dust/70" : "text-onyx/60";
   const accent = sombre ? "text-wisteria" : "text-wisteria-text";
 
   return (
-    <section
-      className={`${fond} px-6 py-20 md:px-[120px] md:py-[100px]`}
-    >
+    <section className={`${fond} px-6 py-20 md:px-[120px] md:py-[100px]`}>
       <div className="mx-auto w-full max-w-[1280px]">
         {surtitre && (
           <p
@@ -59,50 +61,19 @@ export function BlocTemoignages({
           {temoignages.map((t) => (
             <li key={t.nom}>
               <figure
-                className={`flex h-full flex-col rounded-2xl px-7 py-8 ${carte}`}
+                className={`flex h-full flex-col rounded-2xl px-7 pb-8 pt-7 ${carte} ${
+                  sombre ? "" : "shadow-[0_1px_0_0_rgba(18,19,15,0.08)]"
+                }`}
               >
-                {t.chiffre ? (
-                  <p
-                    className={`font-asap text-[20px] font-bold italic leading-tight ${accent}`}
-                  >
-                    {t.chiffre}
-                  </p>
-                ) : (
-                  <span
-                    aria-hidden="true"
-                    className={`font-asap text-[40px] font-bold italic leading-none ${accent}`}
-                  >
-                    &ldquo;
-                  </span>
-                )}
-
-                <blockquote
-                  className={`mt-4 grow font-dm-sans text-[16px] leading-7 ${
-                    sombre ? "text-dust" : "text-onyx"
-                  }`}
-                >
-                  {t.citation}
-                </blockquote>
-
-                <figcaption className="mt-7 flex items-center gap-4">
-                  {/* Un portrait se recadre, un logo doit rester entier. */}
-                  <span
-                    className={`relative flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ${
-                      t.visuel.type === "logo" ? "p-2" : ""
-                    }`}
-                  >
+                {/* Le visage d'abord : c'est une personne qui recommande. */}
+                <figcaption className="flex items-center gap-4">
+                  <span className="relative size-16 shrink-0 overflow-hidden rounded-full ring-2 ring-wisteria ring-offset-2 ring-offset-transparent">
                     <Image
-                      src={t.visuel.src}
-                      alt={t.visuel.type === "logo" ? t.fonction : t.nom}
-                      fill={t.visuel.type === "photo"}
-                      width={t.visuel.type === "logo" ? 56 : undefined}
-                      height={t.visuel.type === "logo" ? 56 : undefined}
-                      sizes="56px"
-                      className={
-                        t.visuel.type === "logo"
-                          ? "h-auto w-full object-contain"
-                          : "object-cover"
-                      }
+                      src={t.photo}
+                      alt={t.nom}
+                      fill
+                      sizes="64px"
+                      className="object-cover"
                     />
                   </span>
                   <span className={`font-dm-sans text-[15px] leading-6 ${texte}`}>
@@ -111,6 +82,22 @@ export function BlocTemoignages({
                     <span className={secondaire}>{t.fonction}</span>
                   </span>
                 </figcaption>
+
+                {t.chiffre && (
+                  <p
+                    className={`mt-6 font-asap text-[19px] font-bold italic leading-tight ${accent}`}
+                  >
+                    {t.chiffre}
+                  </p>
+                )}
+
+                <blockquote
+                  className={`mt-4 grow font-dm-sans text-[16px] leading-7 ${
+                    sombre ? "text-dust" : "text-onyx/80"
+                  }`}
+                >
+                  {t.citation}
+                </blockquote>
               </figure>
             </li>
           ))}

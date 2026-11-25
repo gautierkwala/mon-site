@@ -3,23 +3,29 @@ import Link from "next/link";
 
 type OfferKey = "dirigeants" | "equipes";
 
-const OFFERS: Record<
-  OfferKey,
-  {
-    kicker: string;
-    headingPrefix: string;
-    headingHighlight: string;
-    headingSuffix: string;
-    bullets: string[];
-    fineprint: string;
-    photo: { src: string; alt: string };
-    photoSide: "left" | "right";
-    /** Page dediee vers laquelle pointe le bouton de la carte. */
-    page: string;
-  }
-> = {
+type Offre = {
+  /** Public vise, en toutes lettres : c'est l'etiquette du bandeau. */
+  public: string;
+  /** La phrase qui permet au visiteur de se reconnaitre en une seconde. */
+  pourQui: string;
+  headingPrefix: string;
+  headingHighlight: string;
+  headingSuffix: string;
+  bullets: string[];
+  fineprint: string;
+  photo: { src: string; alt: string };
+  photoSide: "left" | "right";
+  /** Les deux cartes n'ont pas la meme couleur : voir CarteOffre. */
+  ton: "wisteria" | "onyx";
+  /** Page dediee vers laquelle pointe le bouton de la carte. */
+  page: string;
+  libelleBouton: string;
+};
+
+const OFFERS: Record<OfferKey, Offre> = {
   dirigeants: {
-    kicker: "Pour les dirigeants",
+    public: "Dirigeants et indépendants",
+    pourQui: "Vous vendez vous-même, et vous êtes seul à le faire.",
     headingPrefix: "Pour apprendre à closer, ",
     headingHighlight: "apprenez à l’ouvrir",
     headingSuffix: ".",
@@ -36,10 +42,14 @@ const OFFERS: Record<
       alt: "Dirigeant en session de coaching commercial à distance",
     },
     photoSide: "right",
+    ton: "wisteria",
     page: "/coaching-dirigeants-lyon",
+    libelleBouton: "Découvrir le coaching dirigeants",
   },
   equipes: {
-    kicker: "Pour vos équipes",
+    public: "Équipes commerciales",
+    pourQui:
+      "Vous avez des commerciaux, et vous voulez qu’ils vendent mieux ensemble.",
     headingPrefix: "Les meilleurs commerciaux sont déjà ",
     headingHighlight: "chez vous",
     headingSuffix: ".",
@@ -58,24 +68,68 @@ const OFFERS: Record<
     // La maquette prevoit deux etats : photo a droite pour les dirigeants
     // (calque Figma 132:3620) et a gauche pour les equipes (132:5616).
     photoSide: "left",
+    ton: "onyx",
     page: "/coaching-equipe-commerciale-lyon",
+    libelleBouton: "Découvrir le coaching d’équipe",
   },
 };
 
-type Offre = (typeof OFFERS)[OfferKey];
+/**
+ * Les deux cartes n'ont pas la meme couleur.
+ *
+ * Empilees, deux aplats wisteria identiques se lisaient comme une seule
+ * offre qui continue. Un aplat clair puis un aplat sombre separe nettement
+ * les deux publics, et casse au passage l'alternance alabaster/blanc du
+ * reste de la page.
+ */
+const TONS = {
+  wisteria: {
+    fond: "bg-wisteria",
+    motif: "mix-blend-soft-light",
+    badge: "bg-onyx text-white",
+    pourQui: "text-white",
+    titre: "text-onyx",
+    accent: "text-white",
+    corps: "text-onyx",
+    puce: "text-white",
+    fineprint: "text-white",
+    bouton: "bg-onyx text-white",
+  },
+  onyx: {
+    fond: "bg-onyx",
+    // Le soft-light disparait sur un aplat sombre : le motif y passe en
+    // surimpression simple, tres peu marquee.
+    motif: "opacity-[0.14]",
+    badge: "bg-wisteria text-onyx",
+    pourQui: "text-wisteria",
+    titre: "text-white",
+    accent: "text-wisteria",
+    corps: "text-dust",
+    puce: "text-wisteria",
+    fineprint: "text-wisteria",
+    bouton: "bg-wisteria text-onyx",
+  },
+} as const;
 
 /**
- * Une carte d'offre, reprise telle quelle de la maquette Figma : aplat
- * wisteria, motif en surimpression, photo masquee d'un cote et texte de
- * l'autre. Seul le cote de la photo change d'une carte a l'autre, ce qui
+ * Une carte d'offre, reprise de la maquette Figma : grand aplat, motif en
+ * surimpression, photo masquee d'un cote et texte de l'autre. Le cote de la
+ * photo et la couleur de l'aplat changent d'une carte a l'autre, ce qui
  * donne le rythme quand elles s'enchainent.
+ *
+ * Le bandeau numerote en haut (« Offre 01 — Dirigeants ») et la ligne
+ * « pour qui » juste dessous existent pour une seule raison : empilees, les
+ * deux cartes doivent dire en une seconde a qui elles s'adressent, sans
+ * qu'il faille lire le titre pour le deviner.
  */
-function CarteOffre({ offre }: { offre: Offre }) {
+function CarteOffre({ offre, numero }: { offre: Offre; numero: number }) {
+  const t = TONS[offre.ton];
+
   return (
-    <div className="relative overflow-hidden rounded-[18px] bg-wisteria">
+    <article className={`relative overflow-hidden rounded-[18px] ${t.fond}`}>
       <div
         aria-hidden="true"
-        className="absolute inset-0 mix-blend-soft-light"
+        className={`absolute inset-0 ${t.motif}`}
         style={{
           backgroundImage: "url(/decor/motif-06-nos-offres.webp)",
           backgroundSize: "cover",
@@ -108,38 +162,53 @@ function CarteOffre({ offre }: { offre: Offre }) {
         </div>
 
         <div className="relative flex flex-1 flex-col px-6 py-10 md:justify-center md:px-[70px] md:py-[70px]">
-          <p className="font-asap text-lg font-semibold italic text-white">
-            {offre.kicker}
+          <p
+            className={`w-fit rounded-full px-4 py-1.5 font-asap text-[13px] font-bold uppercase tracking-[0.1em] ${t.badge}`}
+          >
+            Offre {String(numero).padStart(2, "0")} — {offre.public}
           </p>
-          <h3 className="mt-3 font-asap text-2xl font-bold italic leading-tight text-onyx md:text-[30px]">
+          <p
+            className={`mt-4 font-asap text-lg font-semibold italic md:text-[21px] ${t.pourQui}`}
+          >
+            {offre.pourQui}
+          </p>
+
+          <h3
+            className={`mt-5 font-asap text-2xl font-bold italic leading-tight md:text-[30px] ${t.titre}`}
+          >
             {offre.headingPrefix}
             {/* La ponctuation finale suit la couleur du segment mis en avant :
                 un "?" noir apres un groupe blanc detonait. */}
-            <span className="text-white">
+            <span className={t.accent}>
               {offre.headingHighlight}
               {offre.headingSuffix}
             </span>
           </h3>
-          <ul className="mt-6 space-y-3 font-dm-sans text-base leading-7 text-onyx md:text-[20px]">
+
+          <ul
+            className={`mt-6 space-y-3 font-dm-sans text-base leading-7 md:text-[20px] ${t.corps}`}
+          >
             {offre.bullets.map((bullet) => (
               <li key={bullet}>
-                <span className="text-white">• </span>
+                <span className={t.puce}>• </span>
                 {bullet}
               </li>
             ))}
           </ul>
-          <p className="mt-6 font-dm-sans text-sm font-bold text-white">
+
+          <p className={`mt-6 font-dm-sans text-sm font-bold ${t.fineprint}`}>
             {offre.fineprint}
           </p>
+
           <Link
             href={offre.page}
-            className="mt-6 w-fit rounded-sm bg-onyx px-5 py-3 font-asap text-[16px] font-bold italic text-white transition-opacity hover:opacity-90"
+            className={`mt-6 w-fit rounded-sm px-5 py-3 font-asap text-[16px] font-bold italic transition-opacity hover:opacity-90 ${t.bouton}`}
           >
-            Découvrir l’offre
+            {offre.libelleBouton}
           </Link>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -164,18 +233,17 @@ export function NosOffres() {
       <div className="md:px-[90px]">
         <p className="font-asap text-2xl italic text-onyx">Nos offres</p>
         <h2 className="mt-4 font-asap text-3xl font-bold italic leading-tight text-onyx md:text-[43.6px]">
-          Pour <span className="text-wisteria-text">vous</span>. Pour{" "}
-          <span className="text-wisteria-text">vos équipes</span>.
+          Deux offres, <span className="text-wisteria-text">deux publics</span>.
         </h2>
         <p className="mt-4 max-w-2xl font-dm-sans text-onyx">
-          Un parcours en deux temps : d’abord les fondamentaux, puis la
-          performance dans la durée.
+          La première pour le dirigeant qui vend lui-même. La seconde pour
+          l’équipe commerciale qu’il faut faire monter d’un cran.
         </p>
       </div>
 
       <div className="mt-10 space-y-8 md:mt-12 md:space-y-10">
-        {(Object.keys(OFFERS) as OfferKey[]).map((cle) => (
-          <CarteOffre key={cle} offre={OFFERS[cle]} />
+        {(Object.keys(OFFERS) as OfferKey[]).map((cle, index) => (
+          <CarteOffre key={cle} offre={OFFERS[cle]} numero={index + 1} />
         ))}
       </div>
     </section>

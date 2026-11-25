@@ -1,4 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
+import {
+  NOMBRE_AVIS,
+  NOTE_TRUSTFOLIO,
+  PROFIL_TRUSTFOLIO,
+  VISAGES_HERO,
+} from "@/lib/temoignages";
 
 export function Hero() {
   return (
@@ -6,7 +13,7 @@ export function Hero() {
       {/* Hauteur plafonnée en dur + overflow-hidden : tout ce qui dépasse
           (blobs, flèche, photo) est ROGNÉ net à ce bord, plutôt que de
           repousser "Nos partenaires" hors du premier écran à 1440×860. */}
-      <div className="relative mx-auto w-full max-w-[1440px] lg:max-h-[586px] lg:overflow-hidden">
+      <div className="relative mx-auto w-full max-w-[1440px] lg:max-h-[672px] lg:overflow-hidden">
         {/* Decorative layer: dot-pattern texture + 3 grey blobs. Purely visual —
             hidden on mobile where there is no matching Figma frame to reproduce. */}
         <div
@@ -72,12 +79,59 @@ export function Hero() {
               d’opportunités et à closer, concrètement, sur le terrain.
             </p>
 
-            <a
-              href="#contact"
-              className="mt-8 inline-flex items-center justify-center rounded-sm bg-onyx px-4 py-2.5 font-asap text-[15px] font-medium text-white transition-opacity hover:opacity-90"
-            >
-              Discuter avec un coach
-            </a>
+            {/* Deux chemins, pas un seul. Le visiteur qui n'est pas pret a
+                parler a quelqu'un n'avait nulle part ou aller depuis le
+                premier ecran : il repartait. */}
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center rounded-sm bg-onyx px-5 py-3 font-asap text-[16px] font-bold italic text-white transition-opacity hover:opacity-90"
+              >
+                Discuter avec un coach
+              </a>
+              <Link
+                href="/#offres"
+                className="inline-flex items-center justify-center rounded-sm border-2 border-onyx px-5 py-[10px] font-asap text-[16px] font-bold italic text-onyx transition-colors hover:bg-onyx hover:text-white"
+              >
+                Voir les offres
+              </Link>
+            </div>
+
+            {/* La preuve, des le premier ecran. Elle etait jusqu'ici a plus de
+                trois ecrans de defilement : un visiteur decidait de rester ou
+                de partir sans avoir vu qu'il y avait 40 avis a 5/5. */}
+            <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3">
+              <ul className="flex -space-x-3">
+                {VISAGES_HERO.map((visage) => (
+                  <li
+                    key={visage.photo}
+                    className="relative size-11 overflow-hidden rounded-full ring-2 ring-alabaster"
+                  >
+                    <Image
+                      src={visage.photo}
+                      alt={visage.nom}
+                      fill
+                      sizes="44px"
+                      className="object-cover"
+                    />
+                  </li>
+                ))}
+              </ul>
+              <p className="font-dm-sans text-[15px] leading-5 text-onyx">
+                <span className="font-asap text-[20px] font-bold italic text-wisteria-text">
+                  {NOTE_TRUSTFOLIO}
+                </span>{" "}
+                —{" "}
+                <a
+                  href={PROFIL_TRUSTFOLIO}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 hover:no-underline"
+                >
+                  {NOMBRE_AVIS} avis clients authentifiés par Trustfolio
+                </a>
+              </p>
+            </div>
           </div>
 
           {/* Colonne photo (droite) : remplit tout l'espace restant de la ligne
