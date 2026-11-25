@@ -190,22 +190,6 @@ const RAISONS = [
   },
 ];
 
-const COACHS = [
-  {
-    prenom: "Gautier",
-    role: "fondateur et coach sales",
-    tel: "+33623130149",
-    telLisible: "06 23 13 01 49",
-    email: "gautier@kwala.fr",
-  },
-  {
-    prenom: "Alexis",
-    role: "coach sales",
-    tel: "+33661446852",
-    telLisible: "06 61 44 68 52",
-    email: "alexis@kwala.fr",
-  },
-];
 
 /** Aucune photo de ces clients dans le depot : on affiche leurs initiales. */
 function initiales(nom: string) {
@@ -748,7 +732,7 @@ export default function LyonStartUp() {
           </div>
         </section>
 
-        {/* ---------- COACHS ---------- */}
+        {/* ---------- EQUIPE ---------- */}
         <section className={`bg-alabaster px-6 pt-20 md:px-[120px] md:pt-[100px]`}>
           <div className={LARGEUR}>
             <p className={`${SURTITRE} text-wisteria-text`}>L’équipe</p>
@@ -756,8 +740,8 @@ export default function LyonStartUp() {
               C’est avec nous que vous travaillerez
             </h2>
             <p className="mt-6 max-w-[760px] font-dm-sans text-[18px] leading-8 text-onyx">
-              Toute l’équipe Kwala intervient sur le programme. Gautier et
-              Alexis en sont vos interlocuteurs directs.
+              Toute l’équipe Kwala intervient sur le programme. Vous
+              rencontrerez vos coachs lors du rendez-vous d’information.
             </p>
 
             <div className="relative mt-10 aspect-[4/3] w-full overflow-hidden rounded-2xl md:aspect-[16/9] lg:max-w-[980px]">
@@ -770,27 +754,6 @@ export default function LyonStartUp() {
               />
             </div>
 
-            <div className="mt-8 grid gap-5 md:grid-cols-2 lg:max-w-[820px]">
-              {COACHS.map((coach) => (
-                <div key={coach.prenom} className="rounded-2xl bg-dust px-7 py-8">
-                  <p className="font-asap text-[24px] font-bold italic leading-none text-onyx">
-                    {coach.prenom}
-                  </p>
-                  <p className="mt-2 font-dm-sans text-[15px] text-onyx/70">
-                    {coach.role}
-                  </p>
-                  <p className="mt-4 font-dm-sans text-[16px] leading-7 text-onyx">
-                    <a href={`tel:${coach.tel}`} className="underline underline-offset-2 hover:no-underline">
-                      {coach.telLisible}
-                    </a>
-                    <br />
-                    <a href={`mailto:${coach.email}`} className="underline underline-offset-2 hover:no-underline">
-                      {coach.email}
-                    </a>
-                  </p>
-                </div>
-              ))}
-            </div>
             <p className="mt-10 font-asap text-[20px] font-bold italic text-onyx md:text-[24px]">
               8 places, et une signature à boucler avant le 20 décembre 2026.
             </p>
