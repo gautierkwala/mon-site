@@ -93,11 +93,11 @@ export function Contact({ titre, texte, source, formulaire }: Props = {}) {
   return (
     <section
       id="contact"
-      className="relative mx-auto w-full max-w-[1440px] overflow-hidden bg-alabaster px-6 py-16 md:px-20 md:py-[120px]"
+      className="relative mx-auto w-full max-w-[1440px] overflow-hidden bg-white px-6 py-16 md:px-20 md:py-24"
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 mix-blend-soft-light"
+        className="pointer-events-none absolute inset-0 opacity-30 mix-blend-multiply"
         style={{
           backgroundImage: "url(/decor/motif-01-hero.webp)",
           backgroundSize: "cover",

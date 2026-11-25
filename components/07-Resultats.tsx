@@ -9,8 +9,7 @@ import { TEMOIGNAGES_ACCUEIL } from "@/lib/temoignages";
  * le contenu n'etait lu ni par Google ni par les assistants ; ses cartes
  * faisaient 689px de large quelle que soit la largeur du conteneur, donc
  * illisibles sur telephone ; et il defilait trop vite. La verification
- * Trustfolio reste affichee, avec la note, le nombre d'avis et le lien vers
- * le profil.
+ * Trustfolio reste affichee, avec la note et le lien vers le profil.
  */
 export function Resultats() {
   return (
