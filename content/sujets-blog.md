@@ -21,8 +21,8 @@ tout moment — la tâche suit l'ordre du fichier.
 - [x] 2026-11-19 — Construire la confiance en rendez-vous : les jauges à
   remplir avant de parler de prix (Jenny Tordjman) →
   `confiance-rendez-vous-commercial`
-- [ ] La scorecard de qualification : ce qu'il faut savoir avant d'envoyer une
-  proposition — source : « la scorecard de qualification » — Mathilde Du Gardin
+- [x] 2026-11-26 — La scorecard de qualification : ce qu'il faut savoir avant
+  d'envoyer une proposition (Gautier Colson) → `scorecard-de-qualification`
 - [ ] Le process de vente en quatre étapes : savoir à tout moment où en est un
   deal — source : « le process de vente » — Gautier Colson
 - [ ] Créer l'urgence sans forcer : pourquoi « on en reparle en janvier » tue
