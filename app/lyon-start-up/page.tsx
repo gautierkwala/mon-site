@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 const CHIFFRES = [
   { valeur: "3 mois", libelle: "de janvier à mars 2027" },
-  { valeur: "8 projets", libelle: "et pas un de plus" },
+  { valeur: "8 projets", libelle: "accompagnés en collectif" },
   { valeur: "12 demi-journées", libelle: "d’atelier et de prospection" },
 ];
 
@@ -70,39 +70,90 @@ const OBJECTIFS = [
   "Prendre confiance dans son offre et son prix",
 ];
 
+/**
+ * Le deroule mois par mois.
+ *
+ * Les trois cartes repetaient "2 journees de formation-action" sans dire ce
+ * qu'on y apprend : trois fois la meme ligne, aucune envie d'y aller. Le
+ * champ `formation` sort donc du reste des etapes et porte le programme de
+ * ces deux journees.
+ */
 const MOIS = [
   {
     nom: "Janvier",
     accroche: "On cadre et on démarre",
-    etapes: [
-      "Cadrage des objectifs et des attentes",
-      "2 journées de formation-action",
-      "Rodages et débriefs de rendez-vous",
-    ],
+    formation: {
+      titre: "À qui vous parlez, et pourquoi ça vaut votre prix",
+      points: [
+        "Choisir sa cible et renoncer aux autres",
+        "Écrire un pitch qui donne envie de la suite",
+        "Construire son guide de la vente",
+      ],
+    },
+    ouverture: "Cadrage des objectifs et des attentes",
+    suite: "Rodages et débriefs de rendez-vous",
   },
   {
     nom: "Février",
     accroche: "On ajuste et on accélère",
-    etapes: [
-      "Suivi et adaptation du parcours",
-      "2 journées de formation-action",
-      "Rodages et débriefs de rendez-vous",
-    ],
+    formation: {
+      titre: "Mener le rendez-vous, pas le subir",
+      points: [
+        "Questionner et challenger son prospect",
+        "Faire réfléchir plutôt que présenter",
+        "Traiter les objections sans se défendre",
+      ],
+    },
+    ouverture: "Suivi et adaptation du parcours",
+    suite: "Rodages et débriefs de rendez-vous",
   },
   {
     nom: "Mars",
     accroche: "On consolide et on fait le bilan",
-    etapes: [
-      "Point final : débrief et bilan",
-      "2 journées de formation-action",
-      "Rodages et débriefs de rendez-vous",
+    formation: {
+      titre: "Parler d’argent et aller chercher la signature",
+      points: [
+        "Annoncer son prix sans s’excuser",
+        "Négocier sans brader son offre",
+        "Tenir sa posture et conclure",
+      ],
+    },
+    ouverture: "Point final : débrief et bilan",
+    suite: "Rodages et débriefs de rendez-vous",
+  },
+];
+
+/**
+ * Les douze demi-journees, detaillees.
+ *
+ * La liste INCLUS se contentait de "6 demi-journees d'entrainement et
+ * d'atelier" / "6 demi-journees de prospection collective" : le lecteur
+ * savait combien de temps il y passait, pas ce qu'il y faisait. Le decompte
+ * reste 6 + 6, chaque bloc dit maintenant a quoi servent ses demi-journees.
+ */
+const DEMI_JOURNEES = [
+  {
+    volume: "6 demi-journées",
+    titre: "Atelier et entraînement",
+    detail: [
+      "La méthode : votre cible, votre offre, votre pitch et votre guide de la vente, écrits noir sur blanc.",
+      "Le rendez-vous : la découverte, les questions qui font réfléchir, le traitement des objections, l’annonce du prix.",
+      "L’entraînement : des rodages chronométrés entre participants, et vos audios de rendez-vous réécoutés avec un coach.",
+    ],
+  },
+  {
+    volume: "6 demi-journées",
+    titre: "Prospection collective",
+    detail: [
+      "On prospecte ensemble, en salle : téléphone, LinkedIn, e-mail, avec un coach à côté de vous.",
+      "Des rendez-vous décrochés pendant la session, pas sur une liste de choses à faire plus tard.",
+      "Un débrief immédiat après chaque appel : ce qui a marché, ce qu’on change au suivant.",
     ],
   },
 ];
 
 const INCLUS = [
-  "6 demi-journées d’entraînement et d’atelier",
-  "6 demi-journées de prospection collective",
+  "12 demi-journées en salle, détaillées ci-dessus",
   "3 points individuels",
   "Des rodages chaque semaine entre participants",
   "Un accès illimité à la plateforme Kwala",
@@ -236,7 +287,7 @@ function Accroche({ sombre = false }: { sombre?: boolean }) {
       }`}
     >
       30 minutes avec un coach Kwala pour parler de votre projet et voir si le
-      programme est pertinent pour vous, maintenant. Sans engagement.
+      programme est pertinent pour vous, maintenant.
     </p>
   );
 }
@@ -515,7 +566,7 @@ export default function LyonStartUp() {
               {MOIS.map((mois) => (
                 <div
                   key={mois.nom}
-                  className="rounded-2xl bg-alabaster px-7 py-9"
+                  className="flex flex-col rounded-2xl bg-alabaster px-7 py-9"
                 >
                   <p className="font-asap text-[28px] font-bold italic leading-none text-wisteria-text">
                     {mois.nom}
@@ -523,13 +574,65 @@ export default function LyonStartUp() {
                   <p className="mt-2 font-asap text-[18px] font-bold italic text-onyx">
                     {mois.accroche}
                   </p>
-                  <ul className="mt-6 space-y-3 font-dm-sans text-[16px] leading-7 text-onyx/85">
-                    {mois.etapes.map((etape) => (
-                      <li key={etape} className="flex gap-3">
+
+                  <p className="mt-6 font-dm-sans text-[16px] leading-7 text-onyx/85">
+                    {mois.ouverture}
+                  </p>
+
+                  {/* Les deux journees de formation-action, detachees du
+                      reste : c'est la seule chose de la carte qui donne
+                      envie de venir. */}
+                  <div className="mt-6 rounded-xl bg-white px-5 py-5">
+                    <p className="font-dm-sans text-[13px] uppercase tracking-[0.1em] text-wisteria-text">
+                      2 journées de formation-action
+                    </p>
+                    <p className="mt-2 font-asap text-[17px] font-bold italic leading-snug text-onyx">
+                      {mois.formation.titre}
+                    </p>
+                    <ul className="mt-4 space-y-2 font-dm-sans text-[15px] leading-6 text-onyx/85">
+                      {mois.formation.points.map((point) => (
+                        <li key={point} className="flex gap-3">
+                          <span aria-hidden="true" className="text-wisteria-text">
+                            •
+                          </span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <p className="mt-6 font-dm-sans text-[16px] leading-7 text-onyx/85 lg:mt-auto lg:pt-6">
+                    {mois.suite}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ---------- LES 12 DEMI-JOURNEES ---------- */}
+        <section className={`bg-alabaster ${BANDE}`}>
+          <div className={LARGEUR}>
+            <p className={`${SURTITRE} text-wisteria-text`}>En salle</p>
+            <h2 className={`mt-4 ${TITRE_CLAIR}`}>
+              Les 12 demi-journées, dans le détail
+            </h2>
+            <div className="mt-12 grid gap-5 lg:grid-cols-2">
+              {DEMI_JOURNEES.map((bloc) => (
+                <div key={bloc.titre} className="rounded-2xl bg-white px-7 py-9 md:px-9">
+                  <p className="font-asap text-[28px] font-bold italic leading-none text-wisteria-text">
+                    {bloc.volume}
+                  </p>
+                  <p className="mt-2 font-asap text-[21px] font-bold italic text-onyx">
+                    {bloc.titre}
+                  </p>
+                  <ul className="mt-7 space-y-5 font-dm-sans text-[16px] leading-7 text-onyx/85">
+                    {bloc.detail.map((ligne) => (
+                      <li key={ligne} className="flex gap-4">
                         <span aria-hidden="true" className="text-wisteria-text">
                           •
                         </span>
-                        <span>{etape}</span>
+                        <span>{ligne}</span>
                       </li>
                     ))}
                   </ul>
@@ -763,7 +866,7 @@ export default function LyonStartUp() {
         {/* ---------- FORMULAIRE ---------- */}
         <Contact
           titre="Parlons de votre projet"
-          texte="30 minutes avec un coach Kwala pour parler de votre projet et voir si le programme est pertinent pour vous, maintenant. Sans engagement."
+          texte="30 minutes avec un coach Kwala pour parler de votre projet et voir si le programme est pertinent pour vous, maintenant."
           source="lyon-start-up"
           formulaire={{
             prenomEtNomSepares: true,
@@ -773,8 +876,7 @@ export default function LyonStartUp() {
             messagePlaceholder:
               "Idée, MVP en cours, premiers clients, premiers recrutements…",
             titre: "Réserver un rendez-vous d’information",
-            sousTitre:
-              "Un coach vous rappelle pour caler le rendez-vous, sans engagement.",
+            sousTitre: "Un coach vous rappelle pour caler le rendez-vous.",
             bouton: "Réserver mon rendez-vous",
             confirmationTitre: "Merci, c’est bien envoyé.",
             confirmationTexte:
